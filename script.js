@@ -152,7 +152,8 @@ const SCREEN_TITLES = {
   extras: "Contenido extra",
   "libro-detail": "Detalle del libro",
   proximos: "Próximos proyectos",
-  actualizaciones: "Actualizaciones"
+  actualizaciones: "Actualizaciones",
+  nosotras: "Nosotras"
 };
 
 /* ---------- Navegación ---------- */
@@ -181,6 +182,12 @@ function showScreen(name) {
   window.scrollTo({ top: 0, behavior: "auto" });
   renderTopbar(name);
   updateTelegramBackButton(name);
+}
+
+// ACTUALIZAR BARRA INFERIOR (NUEVO)
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.screen === name);
+  });
 }
 
 function renderTopbar(name) {
@@ -513,4 +520,17 @@ window.abrirDetalleIlustracion = function(categoria, id) {
     `;
   }
   openScreen('illustration-detail');
+};
+
+// ============================================
+//  NAVEGACIÓN INFERIOR
+// ============================================
+
+window.navigateTo = function(screenName) {
+  openScreen(screenName);
+  
+  // Actualizar la barra inferior: resaltar el botón activo
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.screen === screenName);
+  });
 };
