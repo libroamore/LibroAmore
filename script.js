@@ -341,3 +341,35 @@ document.addEventListener('DOMContentLoaded', function() {
   renderTopbar("home");
   renderBooksGrid();
 });
+/* ===========================================================
+   Modo oscuro / claro
+   =========================================================== */
+
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Si hay preferencia guardada, usarla. Si no, usar la preferencia del sistema.
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+}
+
+// Cargar tema al iniciar
+document.addEventListener('DOMContentLoaded', function() {
+    loadTheme();
+    
+    // Configurar el botón de cambio de tema
+    const toggleBtn = document.getElementById('themeToggle');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleTheme);
+    }
+});
