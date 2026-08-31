@@ -4,11 +4,7 @@
 
 const tg = window.Telegram?.WebApp;
 
-/* ---------- Datos de ejemplo (ficticios, solo para maquetar) ---------- */
-/* Para usar portadas reales más adelante, agrega "coverUrl" con la URL
-   de la imagen en cada libro. Si no hay coverUrl, se muestra un
-   marcador de posición generado automáticamente. */
-
+/* ---------- Datos de ejemplo ---------- */
 const BOOKS = [
   {
     id: "susurro-camelias",
@@ -20,8 +16,7 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Romance", "Fantasía", "Slow burn"],
-    synopsis:
-      "Entre invernaderos abandonados y cartas nunca enviadas, Ada descubre que el jardín de su abuela guarda un secreto que podría reunirla con el amor que creyó perdido para siempre.",
+    synopsis: "Entre invernaderos abandonados y cartas nunca enviadas, Ada descubre que el jardín de su abuela guarda un secreto que podría reunirla con el amor que creyó perdido para siempre.",
     coverUrl: null,
     hue: 340
   },
@@ -35,8 +30,7 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Drama", "Epistolar", "Romance"],
-    synopsis:
-      "Una correspondencia que cruza fronteras y estaciones: dos desconocidos se escriben durante un año entero sin saber que el destino ya los ha presentado antes.",
+    synopsis: "Una correspondencia que cruza fronteras y estaciones: dos desconocidos se escriben durante un año entero sin saber que el destino ya los ha presentado antes.",
     coverUrl: null,
     hue: 25
   },
@@ -50,8 +44,7 @@ const BOOKS = [
     status: "Próximamente",
     statusClass: "soon",
     tags: ["Fantasía oscura", "Misterio"],
-    synopsis:
-      "El escribano real oculta una verdad capaz de derrumbar la corte. Cuando Yeva la descubre por accidente, se convierte en la única testigo de una traición milenaria.",
+    synopsis: "El escribano real oculta una verdad capaz de derrumbar la corte. Cuando Yeva la descubre por accidente, se convierte en la única testigo de una traición milenaria.",
     coverUrl: null,
     hue: 260
   },
@@ -65,8 +58,7 @@ const BOOKS = [
     status: "En revisión",
     statusClass: "review",
     tags: ["Histórico", "Romance", "Baile"],
-    synopsis:
-      "En un salón de baile de 1920, una promesa susurrada entre dos pasos de vals cambia el rumbo de dos familias enfrentadas por generaciones.",
+    synopsis: "En un salón de baile de 1920, una promesa susurrada entre dos pasos de vals cambia el rumbo de dos familias enfrentadas por generaciones.",
     coverUrl: null,
     hue: 200
   },
@@ -80,8 +72,7 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Slice of life", "Romance", "Arte"],
-    synopsis:
-      "Un origamista solitario y una florista con insomnio comparten balcón, ventana y, poco a poco, todo lo demás.",
+    synopsis: "Un origamista solitario y una florista con insomnio comparten balcón, ventana y, poco a poco, todo lo demás.",
     coverUrl: null,
     hue: 150
   },
@@ -95,8 +86,7 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Fantasía", "Aventura", "Romance"],
-    synopsis:
-      "Para encontrar el reino perdido de su madre, Yeva solo tiene un mapa incompleto y la ayuda no solicitada del cartógrafo más insoportable del continente.",
+    synopsis: "Para encontrar el reino perdido de su madre, Yeva solo tiene un mapa incompleto y la ayuda no solicitada del cartógrafo más insoportable del continente.",
     coverUrl: null,
     hue: 15
   }
@@ -106,29 +96,29 @@ const SCREEN_TITLES = {
   anuncios: "Anuncios",
   libros: "Libros disponibles",
   autores: "Autores",
-  extras: "Contenido extra",
+  extras: "Contenido extra",  // CORREGIDO: ahora es "extras" (con s)
   "libro-detail": "Detalle del libro"
 };
 
-/* ---------- Navegación interna (pila tipo app) ---------- */
-
+/* ---------- Navegación ---------- */
 const navStack = ["home"];
 
-function openScreen(name) {
+// FUNCIONES GLOBALES (accesibles desde HTML)
+window.openScreen = function(name) {
   if (navStack[navStack.length - 1] !== name) navStack.push(name);
   showScreen(name);
-}
+};
 
-function goBack() {
+window.goBack = function() {
   if (navStack.length > 1) navStack.pop();
   showScreen(navStack[navStack.length - 1]);
-}
+};
 
-function goHome() {
+window.goHome = function() {
   navStack.length = 1;
   navStack[0] = "home";
   showScreen("home");
-}
+};
 
 function showScreen(name) {
   document.querySelectorAll(".screen").forEach((el) => {
@@ -149,7 +139,7 @@ function renderTopbar(name) {
       </span>
     `;
   } else {
-    const title = SCREEN_TITLES[name] || "";
+    const title = SCREEN_TITLES[name] || name;
     topbar.innerHTML = `
       <div class="topbar-nav">
         <button class="back-btn" onclick="goBack()" aria-label="Volver">
@@ -162,16 +152,13 @@ function renderTopbar(name) {
   }
 }
 
-/* ---------- Telegram WebApp ---------- */
-
+/* ---------- Telegram ---------- */
 if (tg) {
   tg.ready();
   tg.expand();
   try {
     tg.BackButton.onClick(goBack);
-  } catch (e) {
-    /* API no disponible en esta versión del cliente */
-  }
+  } catch (e) {}
 }
 
 function updateTelegramBackButton(name) {
@@ -179,13 +166,10 @@ function updateTelegramBackButton(name) {
   try {
     if (name === "home") tg.BackButton.hide();
     else tg.BackButton.show();
-  } catch (e) {
-    /* noop */
-  }
+  } catch (e) {}
 }
 
 /* ---------- Utilidades ---------- */
-
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;",
@@ -197,16 +181,15 @@ function escapeHtml(str) {
 }
 
 let toastTimer;
-function showToast(message) {
+window.showToast = function(message) {
   const el = document.getElementById("toast");
   el.textContent = message;
   el.classList.add("show");
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
-}
+};
 
-/* ---------- Portadas (con soporte para imagen real vía coverUrl) ---------- */
-
+/* ---------- Portadas ---------- */
 function coverMarkup(book, big) {
   if (book.coverUrl) {
     return `<img src="${escapeHtml(book.coverUrl)}" alt="Portada de ${escapeHtml(book.title)}" loading="lazy"
@@ -225,16 +208,16 @@ function placeholderCoverMarkup(book, big) {
   `;
 }
 
-function bookCoverFallback(imgEl, bookId, big) {
+window.bookCoverFallback = function(imgEl, bookId, big) {
   const book = BOOKS.find((b) => b.id === bookId);
   if (!book || !imgEl.parentElement) return;
   imgEl.parentElement.innerHTML = placeholderCoverMarkup(book, big);
-}
+};
 
-/* ---------- Libros disponibles ---------- */
-
+/* ---------- Libros ---------- */
 function renderBooksGrid() {
   const grid = document.getElementById("booksGrid");
+  if (!grid) return;
   grid.innerHTML = BOOKS.map((book, i) => `
     <button class="book-card" style="--i:${i}" onclick="openBookDetail('${book.id}')">
       <div class="book-cover">${coverMarkup(book, false)}</div>
@@ -245,12 +228,15 @@ function renderBooksGrid() {
   `).join("");
 }
 
-function openBookDetail(bookId) {
+window.openBookDetail = function(bookId) {
   const book = BOOKS.find((b) => b.id === bookId);
   if (!book) return;
-  document.getElementById("bookDetail").innerHTML = bookDetailMarkup(book);
+  const detailEl = document.getElementById("bookDetail");
+  if (detailEl) {
+    detailEl.innerHTML = bookDetailMarkup(book);
+  }
   openScreen("libro-detail");
-}
+};
 
 function bookDetailMarkup(book) {
   const formats = ["epub", "pdf", "fb2"].map((fmt) => {
@@ -271,7 +257,6 @@ function bookDetailMarkup(book) {
     <div class="detail-badge-row">
       <span class="status-badge status-${book.statusClass}">${escapeHtml(book.status)}</span>
     </div>
-
     <div class="detail-meta">
       <div class="meta-item">
         <span class="meta-label">Serie</span>
@@ -286,7 +271,6 @@ function bookDetailMarkup(book) {
         <span class="meta-value">${escapeHtml(book.classification)}</span>
       </div>
     </div>
-
     <div class="tag-row">
       ${book.tags.map((tag) => `
         <span class="tag">
@@ -295,10 +279,8 @@ function bookDetailMarkup(book) {
         </span>
       `).join("")}
     </div>
-
     <h2 class="detail-subheading">Sinopsis</h2>
     <p class="detail-synopsis">${escapeHtml(book.synopsis)}</p>
-
     <h2 class="detail-subheading">Descargar</h2>
     <div class="format-row">${formats}</div>
     ${book.status !== "Disponible"
@@ -307,11 +289,12 @@ function bookDetailMarkup(book) {
   `;
 }
 
-function downloadFormat(format) {
+window.downloadFormat = function(format) {
   showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
-}
+};
 
 /* ---------- Inicio ---------- */
-
-renderTopbar("home");
-renderBooksGrid();
+document.addEventListener('DOMContentLoaded', function() {
+  renderTopbar("home");
+  renderBooksGrid();
+});
