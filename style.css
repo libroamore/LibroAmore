@@ -1,6 +1,7 @@
 * { box-sizing: border-box; }
 
 :root {
+  /* Variables del tema claro */
   --bg: #fbeef1;
   --bg-deep: #f6dfe4;
   --surface: #ffffff;
@@ -24,6 +25,28 @@
   --shadow-pop: 0 16px 34px rgba(150, 78, 98, 0.18);
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Jost", "Trebuchet MS", sans-serif;
+}
+
+/* TEMA OSCURO */
+[data-theme="dark"] {
+  --bg: #1a1416;
+  --bg-deep: #2a1f22;
+  --surface: #2d2226;
+  --pink: #8a5a6a;
+  --pink-strong: #b87088;
+  --pink-ink: #d98ca8;
+  --pink-soft: #3d2a32;
+  --gold: #b8944a;
+  --green-soft: #2a4d3a;
+  --green-ink: #7ac49a;
+  --amber-soft: #4d3d2a;
+  --amber-ink: #d4b06a;
+  --grey-soft: #3d3240;
+  --grey-ink: #b0a0b8;
+  --ink: #f0e8ec;
+  --muted: #b0a0a8;
+  --shadow-card: 0 10px 26px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-pop: 0 16px 34px rgba(0, 0, 0, 0.5);
 }
 
 html, body {
