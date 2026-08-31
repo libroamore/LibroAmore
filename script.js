@@ -105,19 +105,75 @@ const BOOKS = [
     hue: 150
   },
   {
-    id: "mapa-constelado",
-    title: "El mapa constelado",
-    author: "Iris Vantel",
-    series: "Crónicas de Talvera",
+    id: "Hopeless Necromantic",
+    title: "Hopeless Necromantic",
+    author: "Shiloh Briar",
+    series: "The Catseye Chronicles",
     part: 1,
-    classification: "+16",
+    classification: "+18",
     status: "Disponible",
     statusClass: "available",
     tags: ["Fantasía", "Aventura", "Romance"],
-    synopsis: "Para encontrar el reino perdido de su madre, Yeva solo tiene un mapa incompleto y la ayuda no solicitada del cartógrafo más insoportable del continente.",
-    coverUrl: null,
+    synopsis: "ELLA DESATA EL INFIERNO. ÉL LEVANTA A LOS MUERTOS. ¿QUÉ PODRÍA SALIR MAL? Cuando la nueva recluta Helspira acepta la misión suicida que ningún otro soldado quiere, la vida —y la muerte— empiezan a complicarse un poco. Helspira deberá escoltar a Sikras, un necromante frustrantemente guapo con el poder de levantar a los muertos, mientras él intenta llevar a cabo una misión que ya ha fracasado dos veces: detener a un ejército de no muertos en las fronteras del reino. Nadie cree que vaya a lograrlo. Ni siquiera Sikras. Pero, cuanto más tiempo pasan juntos, más fácil les resulta imaginar un futuro mejor. A medida que salen a la luz los secretos y ambos estrechan su vínculo —y el esquelético compañero de Sikras, Benjamin, intente desesperadamente no ser un tercero en discordia—, ¿serán suficientes los sentimientos que nacen entre Sikras y Helspira para superar el peligro cada vez mayor? ALZA UNA COPA. LEVANTA A LOS MUERTOS. SOLO NO ALBERGUES DEMASIADAS ESPERANZAS.",
+    coverUrl: "shiloh briarhttps://m.media-amazon.com/images/I/91t8wUTqFNL._SL1500_.jpg",
     hue: 15
-  }
+  },
+  {
+    id: "Handle Me",
+    title: "Handle Me",
+    author: "Unfortunate Reads",
+    series: null,
+    part: null,
+    classification: "+18",
+    status: "Disponible",
+    statusClass: "available",
+    tags: ["MM", "Hockey", "Objeto Consciente"],
+    synopsis: "Jace Masterson es un dios. Hábil con las manos y con una boca deliciosamente obscena, es uno de los hombres más codiciados de Toronto. Y es mío. Si pudiera sonreír, lo haría. Amo estar aquí. Amo a Jace. Pero, sobre todo, amo la forma en que Jace me trata.",
+    coverUrl: "https://m.media-amazon.com/images/I/717qK5s0vCL._SL1500_.jpg",
+    hue: 15
+  },
+  {
+    id: "Spackled",
+    title: "Spackled",
+    author: "Thea Masen - Nicole Parker - Clover Holloway",
+    series: null,
+    part: null,
+    classification: "+18",
+    status: "Disponible",
+    statusClass: "available",
+    tags: ["Omegaverse", "Betas", "Clinica de celo"],
+    synopsis: "Asher trabaja en la clínica de celos por motivos que van más allá de un simple sueldo, pero algunos días pueden ser realmente duros. Omegas en celo, alfas posesivos y muchísimo lubricante. Menos mal que el atractivo contratista nuevo aparece para levantarle el ánimo... y alguna que otra cosa más. Emmett no tiene ninguna ilusión por su nuevo contrato para remodelar una antigua clínica de celo en el centro de la ciudad, hasta que ve al adorable beta de recepción. Es lujuria a primera vista, y de repente ambos hombres empiezan a entender a los pacientes que no pueden quitarse las manos el uno del otro. Después de un alfa fuera de control, un tranquilizante y una visita al hospital, Emmett y Asher finalmente se rinden a lo que sienten y descubren lo bien que pueden estar juntos.",
+    coverUrl: "spAckled nicole parkehttps://m.media-amazon.com/images/I/81NzAYTHJlL._SL1500_.jpg",
+    hue: 15
+  },
+  {
+    id: "My Date With A Rubber Duckie",
+    title: "My Date With A Rubber Duckie",
+    author: "Thea Masen",
+    series: "The Sentient Object Holiday",
+    part: 1,
+    classification: "+18",
+    status: "Disponible",
+    statusClass: "available",
+    tags: ["Romance", "Objeto Consciente", "Patito de goma"],
+    synopsis: "La hora del baño acaba de volverse mucho más divertida. Cuando Anita compra un patito de goma igual al que tenía de niña, cree que su terrible día está a punto de mejorar. No hay mejor confidente que un patito de goma, y ahora que tiene uno, está decidida a resolver todos los problemas de su vida con un largo baño. Pero este patito de goma no es lo que parece…",
+    coverUrl: "https://m.media-amazon.com/images/I/712GotZnc5L._SL1500_.jpg",
+    hue: 15
+  },
+  {
+    id: "Step Brother Bear",
+    title: "Step Brother Bear",
+    author: "G.M. Fairy",
+    series: null,
+    part: null,
+    classification: "+18",
+    status: "Disponible",
+    statusClass: "available",
+    tags: ["Cambiaforma", "Hermanastros", "Romance prohibido"],
+    synopsis: "Su hermanastro es un animal, y ella es su presa. Isabella siempre ha odiado a su rebelde hermanastro, Derek. Por suerte para ella, él pasó la mayor parte de su solitaria infancia y adolescencia en un internado para niños problemáticos. Ahora que es adulta y ha regresado a la casa donde creció, odia aún más al hombre tatuado y malhumorado en el que se ha convertido. Principalmente porque está justo en la habitación de al lado, decidido a hacerle la vida imposible y comportarse como un auténtico animal. La situación empeora aún más cuando su madre y su padrastro se marchan de la ciudad y le encargan cuidar del animal y de sus recién adquiridas heridas de bala. La cercanía entre ellos revela secretos acalorados con consecuencias monstruosas. Hay más en Derek de lo que parece a simple vista, dejando a Isabella excavar en sentimientos aterradores y confusos. ¿Podrá ver más allá de las garras, o decidirá que son simplemente especies completamente diferentes? ",
+    coverUrl: "https://m.media-amazon.com/images/I/81fDa8WnlEL._SL1500_.jpg",
+    hue: 15
+  },
 ];
 
 /* ---------- Libros próximos (para sección "Próximos proyectos") ---------- */
