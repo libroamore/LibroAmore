@@ -179,38 +179,32 @@ window.goHome = function() {
   showScreen("home");
 };
 
-function showScreen(name) {
-  document.querySelectorAll(".screen").forEach((el) => {
-    el.hidden = el.dataset.screen !== name;
-  });
-  window.scrollTo({ top: 0, behavior: "auto" });
-  renderTopbar(name);
-  updateTelegramBackButton(name);
-  
-  // Actualizar barra inferior
-  document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.screen === name);
-  });
-}
-
 function renderTopbar(name) {
   const topbar = document.getElementById("topbar");
+  const themeBtn = `<button id="themeToggle" onclick="toggleTheme()" style="background:none;border:none;font-size:22px;cursor:pointer;padding:4px 10px;border-radius:50%;z-index:30;margin-right:4px;">🌙</button>`;
+  
   if (name === "home") {
     topbar.innerHTML = `
-      <span class="topbar-brand">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
-        <span>LibroAmore</span>
-      </span>
+      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+        <span class="topbar-brand">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
+          <span>LibroAmore</span>
+        </span>
+        ${themeBtn}
+      </div>
     `;
   } else {
     const title = SCREEN_TITLES[name] || name;
     topbar.innerHTML = `
-      <div class="topbar-nav">
-        <button class="back-btn" onclick="goBack()" aria-label="Volver">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
-          <span>Volver</span>
-        </button>
-        <span class="topbar-title">${escapeHtml(title)}</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+        <div class="topbar-nav">
+          <button class="back-btn" onclick="goBack()" aria-label="Volver">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
+            <span>Volver</span>
+          </button>
+          <span class="topbar-title">${escapeHtml(title)}</span>
+        </div>
+        ${themeBtn}
       </div>
     `;
   }
