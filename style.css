@@ -1178,3 +1178,134 @@ body::after {
   border-radius: 999px;
   white-space: nowrap;
 }
+
+/* ---------- Reacciones ---------- */
+.reactions {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 16px 0 8px;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.reaction-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 12px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.reaction-btn:active {
+  transform: scale(0.92);
+}
+
+.reaction-btn .icon {
+  font-size: 28px;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+
+.reaction-btn .count {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.reaction-btn.active-heart .icon {
+  color: #e74c3c;
+}
+
+.reaction-btn.active-heart .count {
+  color: #e74c3c;
+}
+
+.reaction-btn.active-star .icon {
+  color: #f1c40f;
+}
+
+.reaction-btn.active-star .count {
+  color: #f1c40f;
+}
+
+/* ---------- Selector de estrellas ---------- */
+.star-selector-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.star-selector-overlay.show {
+  display: flex;
+}
+
+.star-selector {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px 28px;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-pop);
+  animation: fadeSlide 0.25s ease-out;
+}
+
+.star-selector h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.star-selector .stars {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+
+.star-selector .stars button {
+  background: none;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  transition: transform 0.15s;
+  color: #ddd;
+}
+
+.star-selector .stars button:hover,
+.star-selector .stars button.active {
+  transform: scale(1.1);
+  color: #f1c40f;
+}
+
+.star-selector .close-btn {
+  background: var(--pink-soft);
+  border: none;
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  color: var(--pink-ink);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.star-selector .close-btn:hover {
+  background: var(--pink);
+}
