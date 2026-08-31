@@ -163,6 +163,22 @@ const SCREEN_TITLES = {
 /* ---------- Navegación ---------- */
 const navStack = ["home"];
 
+// FUNCIÓN showScreen (definida PRIMERO)
+function showScreen(name) {
+  document.querySelectorAll(".screen").forEach((el) => {
+    el.hidden = el.dataset.screen !== name;
+  });
+  window.scrollTo({ top: 0, behavior: "auto" });
+  renderTopbar(name);
+  updateTelegramBackButton(name);
+  
+  // Actualizar barra inferior
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.screen === name);
+  });
+}
+
+// FUNCIONES DE NAVEGACIÓN (definidas DESPUÉS)
 window.openScreen = function(name) {
   if (navStack[navStack.length - 1] !== name) navStack.push(name);
   showScreen(name);
@@ -182,7 +198,6 @@ window.goHome = function() {
 function renderTopbar(name) {
   const topbar = document.getElementById("topbar");
   
-  // Botón de tema (estilos en línea para máxima compatibilidad)
   const themeBtn = `
     <button id="themeToggle" onclick="toggleTheme()" style="
       background: rgba(192, 57, 122, 0.12);
@@ -227,7 +242,6 @@ function renderTopbar(name) {
     `;
   }
   
-  // Actualizar el icono del botón según el tema guardado
   const btn = document.getElementById('themeToggle');
   if (btn) {
     const savedTheme = localStorage.getItem('theme');
@@ -291,7 +305,6 @@ function toggleTheme() {
   }
 }
 
-// Cargar tema guardado al iniciar
 function loadTheme() {
   const savedTheme = localStorage.getItem('theme');
   const btn = document.getElementById('themeToggle');
@@ -365,7 +378,6 @@ function bookDetailMarkup(book) {
     `;
   }).join("");
 
-  // Obtener datos guardados (si existen)
   const saved = getReactions(book.id);
   const heartActive = saved.heart ? 'active-heart' : '';
   const starCount = saved.stars || 0;
@@ -392,7 +404,6 @@ function bookDetailMarkup(book) {
       </div>
     </div>
 
-    <!-- REACCIONES -->
     <div class="reactions">
       <button class="reaction-btn ${heartActive}" onclick="toggleHeart('${book.id}')">
         <span class="icon">❤️</span>
@@ -421,6 +432,10 @@ function bookDetailMarkup(book) {
       : ""}
   `;
 }
+
+window.downloadFormat = function(format) {
+  showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
+};
 
 /* ---------- Orden de lectura (sección Autores) ---------- */
 function renderReadingOrder() {
@@ -690,29 +705,9 @@ window.navigateTo = function(screenName) {
 };
 
 // ============================================
-//  INICIO
-// ============================================
-
-document.addEventListener('DOMContentLoaded', function() {
-  if (!checkTelegramEnvironment()) return;
-  
-  loadTheme();  // ← NUEVA LÍNEA
-  
-  renderTopbar("home");
-  renderBooksGrid();
-  renderReadingOrder();
-  renderUpcomingBooks();
-  renderUpdates();
-  mostrarIlustraciones('nsfw', 'nsfwGrid');
-  mostrarIlustraciones('sfw', 'sfwGrid');
-  renderSeriesGrid();
-});
-
-// ============================================
 //  REACCIONES (Heart y Stars)
 // ============================================
 
-// Obtener reacciones guardadas de localStorage
 function getReactions(bookId) {
   try {
     const data = JSON.parse(localStorage.getItem('reacciones') || '{}');
@@ -722,7 +717,6 @@ function getReactions(bookId) {
   }
 }
 
-// Guardar reacciones en localStorage
 function saveReaction(bookId, type, value) {
   const data = JSON.parse(localStorage.getItem('reacciones') || '{}');
   if (!data[bookId]) data[bookId] = { heart: false, stars: 0 };
@@ -737,11 +731,9 @@ function saveReaction(bookId, type, value) {
   updateReactionUI(bookId);
 }
 
-// Actualizar la interfaz después de un voto
 function updateReactionUI(bookId) {
   const saved = getReactions(bookId);
   
-  // Actualizar corazón
   const heartCount = document.getElementById(`heart-count-${bookId}`);
   if (heartCount) {
     heartCount.textContent = saved.heart ? '1' : '0';
@@ -751,7 +743,6 @@ function updateReactionUI(bookId) {
     }
   }
   
-  // Actualizar estrellas
   const starCount = document.getElementById(`star-count-${bookId}`);
   if (starCount) {
     const count = saved.stars || 0;
@@ -763,7 +754,6 @@ function updateReactionUI(bookId) {
   }
 }
 
-// Toggle corazón
 window.toggleHeart = function(bookId) {
   const saved = getReactions(bookId);
   const newValue = !saved.heart;
@@ -771,12 +761,10 @@ window.toggleHeart = function(bookId) {
   showToast(newValue ? '❤️ Añadido a favoritos' : '💔 Eliminado de favoritos');
 };
 
-// Abrir selector de estrellas
 window.openStarSelector = function(bookId) {
   const saved = getReactions(bookId);
   const currentStars = saved.stars || 0;
   
-  // Crear el overlay
   const overlay = document.createElement('div');
   overlay.className = 'star-selector-overlay show';
   overlay.id = 'starSelectorOverlay';
@@ -794,7 +782,6 @@ window.openStarSelector = function(bookId) {
     </div>
   `;
   
-  // Cerrar al hacer clic fuera
   overlay.addEventListener('click', function(e) {
     if (e.target === this) closeStarSelector();
   });
@@ -802,18 +789,15 @@ window.openStarSelector = function(bookId) {
   document.body.appendChild(overlay);
 };
 
-// Seleccionar una estrella
 window.selectStar = function(bookId, value) {
   saveReaction(bookId, 'stars', value);
   
-  // Actualizar botones del selector
   document.querySelectorAll('.star-selector .stars button').forEach(btn => {
     const val = parseInt(btn.dataset.value);
     btn.textContent = val <= value ? '⭐' : '☆';
     btn.classList.toggle('active', val <= value);
   });
   
-  // Actualizar la interfaz principal
   const countEl = document.getElementById(`star-count-${bookId}`);
   if (countEl) {
     countEl.textContent = value;
@@ -827,8 +811,26 @@ window.selectStar = function(bookId, value) {
   setTimeout(closeStarSelector, 800);
 };
 
-// Cerrar selector de estrellas
 window.closeStarSelector = function() {
   const overlay = document.getElementById('starSelectorOverlay');
   if (overlay) overlay.remove();
 };
+
+// ============================================
+//  INICIO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (!checkTelegramEnvironment()) return;
+  
+  loadTheme();
+  
+  renderTopbar("home");
+  renderBooksGrid();
+  renderReadingOrder();
+  renderUpcomingBooks();
+  renderUpdates();
+  mostrarIlustraciones('nsfw', 'nsfwGrid');
+  mostrarIlustraciones('sfw', 'sfwGrid');
+  renderSeriesGrid();
+});
