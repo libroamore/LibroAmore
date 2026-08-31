@@ -253,6 +253,38 @@ window.showToast = function(message) {
   toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
 };
 
+// ============================================
+//  MODO OSCURO
+// ============================================
+
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById('themeToggle');
+  
+  body.classList.toggle('dark-mode');
+  
+  if (body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+    if (btn) btn.textContent = '☀️';
+  } else {
+    localStorage.setItem('theme', 'light');
+    if (btn) btn.textContent = '🌙';
+  }
+}
+
+// Cargar tema guardado al iniciar
+function loadTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  const btn = document.getElementById('themeToggle');
+  
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (btn) btn.textContent = '☀️';
+  } else {
+    if (btn) btn.textContent = '🌙';
+  }
+}
+
 /* ---------- Portadas ---------- */
 function coverMarkup(book, big) {
   if (book.coverUrl) {
@@ -644,6 +676,8 @@ window.navigateTo = function(screenName) {
 
 document.addEventListener('DOMContentLoaded', function() {
   if (!checkTelegramEnvironment()) return;
+  
+  loadTheme();  // ← NUEVA LÍNEA
   
   renderTopbar("home");
   renderBooksGrid();
