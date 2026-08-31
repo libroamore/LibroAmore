@@ -158,26 +158,48 @@
       </section>
 
       <!-- ============ ANUNCIOS ============ -->
-      <section class="screen screen--simple" data-screen="anuncios" id="screen-anuncios" hidden>
-        <div class="empty-state">
-          <span class="empty-state-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-megaphone"></use></svg>
-          </span>
-          <h3>Aún no hay anuncios</h3>
-          <p>Aquí aparecerán las próximas novedades, lanzamientos y avisos de LibroAmore.</p>
-        </div>
-      </section>
+<section class="screen screen--simple" data-screen="anuncios" id="screen-anuncios" hidden>
+  <div class="announcement-menu">
+    <button class="announcement-btn" onclick="openScreen('proximos')">
+      <span class="announcement-icon">🚀</span>
+      <div class="announcement-info">
+        <span class="announcement-label">PRÓXIMOS PROYECTOS</span>
+        <span class="announcement-desc">Descubre los libros que vienen</span>
+      </div>
+      <span class="announcement-arrow">›</span>
+    </button>
+    <button class="announcement-btn" onclick="openScreen('actualizaciones')">
+      <span class="announcement-icon">📋</span>
+      <div class="announcement-info">
+        <span class="announcement-label">ACTUALIZACIONES</span>
+        <span class="announcement-desc">Novedades de la app</span>
+      </div>
+      <span class="announcement-arrow">›</span>
+    </button>
+  </div>
+</section>
 
-      <!-- ============ AUTORES ============ -->
-      <section class="screen screen--simple" data-screen="autores" id="screen-autores" hidden>
-        <div class="empty-state">
-          <span class="empty-state-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-quill"></use></svg>
-          </span>
-          <h3>Fichas de autores en camino</h3>
-          <p>Pronto conocerás a las autoras y autores detrás de cada historia, con su biografía y sus obras.</p>
-        </div>
-      </section>
+      <!-- ============ PRÓXIMOS PROYECTOS ============ -->
+<section class="screen" data-screen="proximos" id="screen-proximos" hidden>
+  <div class="section-header">
+    <button class="back-btn" onclick="goBack()">← Volver</button>
+    <h2 class="section-title"> Próximos proyectos</h2>
+  </div>
+  <div class="books-grid" id="upcomingGrid">
+    <!-- Los libros se generarán con JavaScript -->
+  </div>
+</section>
+
+<!-- ============ ACTUALIZACIONES ============ -->
+<section class="screen" data-screen="actualizaciones" id="screen-actualizaciones" hidden>
+  <div class="section-header">
+    <button class="back-btn" onclick="goBack()">← Volver</button>
+    <h2 class="section-title">📋 Actualizaciones</h2>
+  </div>
+  <div class="updates-list" id="updatesList">
+    <!-- Las actualizaciones se generarán con JavaScript -->
+  </div>
+</section>
 
       <!-- ============ CONTENIDO EXTRA ============ -->
       <section class="screen screen--simple" data-screen="extras" id="screen-extras" hidden>
