@@ -1028,3 +1028,153 @@ body::after {
 .about-link-item strong {
   color: var(--pink-ink);
 }
+
+/* ---------- Series grid (Autores) ---------- */
+.series-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.serie-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--pink-soft);
+}
+
+.serie-card:active {
+  transform: scale(0.98);
+}
+
+.serie-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: white;
+}
+
+.serie-card .overlay h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.serie-card .overlay .serie-sub {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: 2px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.serie-card .overlay .serie-btn {
+  align-self: flex-end;
+  margin-top: 8px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(4px);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ---------- Detalle de serie ---------- */
+.serie-detail-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.serie-detail-header {
+  padding: 20px;
+  background: var(--pink-soft);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.serie-detail-header h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--pink-ink);
+}
+
+.serie-detail-header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.serie-detail-body {
+  padding: 20px;
+}
+
+.serie-detail-body .desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+}
+
+.order-item .num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--pink-strong);
+  min-width: 36px;
+}
+
+.order-item .info {
+  flex: 1;
+}
+
+.order-item .info .title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.order-item .info .sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.order-item .status {
+  font-size: 12px;
+  color: var(--green-ink);
+  background: var(--green-soft);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
