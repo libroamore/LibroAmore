@@ -1311,39 +1311,38 @@ body::after {
 }
 
 /* ============================================
-   MODO OSCURO
+   MODO OSCURO (GRIS CLARO)
    ============================================ */
 
-/* Variables para modo oscuro */
 body.dark-mode {
-  --bg: #1a1a2e;
-  --bg-deep: #16213e;
-  --surface: #1e1e3a;
-  --pink: #6a1b3a;
-  --pink-strong: #c0397a;
-  --pink-ink: #e06090;
-  --pink-soft: #2a1a3a;
-  --gold: #c79a55;
-  --green-soft: #1a3a2a;
-  --green-ink: #7ac09a;
-  --amber-soft: #3a2a1a;
-  --amber-ink: #d4a060;
-  --grey-soft: #2a2a3a;
-  --grey-ink: #a0a0b0;
-  --ink: #f0e6e8;
-  --muted: #b0a0a8;
-  --shadow-card: 0 10px 26px rgba(0, 0, 0, 0.4);
-  --shadow-pop: 0 16px 34px rgba(0, 0, 0, 0.5);
+  --bg: #e8e4e4;           /* Fondo principal: gris claro cálido */
+  --bg-deep: #dcd8d8;      /* Fondo secundario: gris un poco más oscuro */
+  --surface: #f2eeee;      /* Tarjetas: gris casi blanco */
+  --pink: #b08a8a;
+  --pink-strong: #a06767;
+  --pink-ink: #7a4a4a;
+  --pink-soft: #e6d4d4;
+  --gold: #b8985a;
+  --green-soft: #d4e6d4;
+  --green-ink: #3a6a4a;
+  --amber-soft: #e6d4b8;
+  --amber-ink: #8a7030;
+  --grey-soft: #d4d0d0;
+  --grey-ink: #5a5050;
+  --ink: #2d2a2e;          /* Texto: gris oscuro (casi negro) */
+  --muted: #6a5a60;        /* Texto secundario: gris medio */
+  --shadow-card: 0 10px 26px rgba(80, 60, 60, 0.12);
+  --shadow-pop: 0 16px 34px rgba(80, 60, 60, 0.18);
 }
 
 /* Ajustes para el modo oscuro */
 body.dark-mode .topbar {
-  background: rgba(26, 26, 46, 0.9);
-  border-bottom: 1px solid rgba(192, 57, 122, 0.2);
+  background: rgba(200, 190, 190, 0.9);
+  border-bottom: 1px solid rgba(160, 100, 100, 0.2);
 }
 
 body.dark-mode .hero {
-  background: linear-gradient(165deg, #2a1a2e 0%, var(--pink-soft) 100%);
+  background: linear-gradient(165deg, #e0d8d8 0%, var(--pink-soft) 100%);
 }
 
 body.dark-mode .card {
@@ -1371,25 +1370,25 @@ body.dark-mode .serie-detail-card {
 }
 
 body.dark-mode .cover-placeholder {
-  background: linear-gradient(155deg, #2a1a3a, #1a0a2a);
-  color: #e06090;
+  background: linear-gradient(155deg, #d4c8c8, #c8b8b8);
+  color: #7a4a4a;
 }
 
 body.dark-mode .bottom-nav {
-  background: rgba(26, 26, 46, 0.95);
-  border-top: 1px solid rgba(192, 57, 122, 0.15);
+  background: rgba(220, 210, 210, 0.95);
+  border-top: 1px solid rgba(160, 100, 100, 0.15);
 }
 
 body.dark-mode .about-link-item {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(80, 60, 60, 0.08);
 }
 
 body.dark-mode .order-item {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(80, 60, 60, 0.08);
 }
 
 body.dark-mode .update-item {
-  border-bottom-color: rgba(255, 255, 255, 0.05);
+  border-bottom-color: rgba(80, 60, 60, 0.1);
 }
 
 body.dark-mode .announcement-btn {
@@ -1409,19 +1408,102 @@ body.dark-mode .meta-item {
 }
 
 body.dark-mode .tag {
-  background: #2a1a3a;
-  color: #e06090;
+  background: #e6d4d4;
+  color: #7a4a4a;
 }
 
 body.dark-mode #blocked-message {
-  background: #1a1a2e;
-  color: #f0e6e8;
+  background: #e8e4e4;
+  color: #2d2a2e;
 }
 
 body.dark-mode #blocked-message h1 {
-  color: #e06090;
+  color: #7a4a4a;
 }
 
 body.dark-mode #blocked-message p {
-  color: #b0a0a8;
+  color: #6a5a60;
+}
+
+body.dark-mode .reactions {
+  background: var(--surface);
+}
+
+body.dark-mode .star-selector {
+  background: var(--surface);
+}
+
+body.dark-mode .star-selector h3 {
+  color: var(--ink);
+}
+
+body.dark-mode .star-selector .close-btn {
+  background: var(--pink-soft);
+  color: var(--pink-ink);
+}
+
+body.dark-mode .star-selector .close-btn:hover {
+  background: var(--pink);
+}
+
+body.dark-mode .serie-detail-header {
+  background: var(--pink-soft);
+}
+
+body.dark-mode .serie-detail-header h2 {
+  color: var(--pink-ink);
+}
+
+body.dark-mode .serie-detail-header p {
+  color: var(--muted);
+}
+
+body.dark-mode .order-item .num {
+  color: var(--pink-strong);
+}
+
+body.dark-mode .order-item .info .title {
+  color: var(--ink);
+}
+
+body.dark-mode .order-item .info .sub {
+  color: var(--muted);
+}
+
+body.dark-mode .order-item .status {
+  color: var(--green-ink);
+  background: var(--green-soft);
+}
+
+body.dark-mode .format-btn {
+  background: linear-gradient(155deg, var(--pink), var(--pink-strong));
+  color: white;
+}
+
+body.dark-mode .format-btn--disabled {
+  background: var(--grey-soft);
+  color: var(--grey-ink);
+}
+
+body.dark-mode .detail-note {
+  color: var(--muted);
+}
+
+body.dark-mode .sample-note {
+  color: var(--muted);
+}
+
+body.dark-mode .status-available {
+  background: var(--green-soft);
+  color: var(--green-ink);
+}
+
+body.dark-mode .status-soon {
+  background: var(--amber-soft);
+  color: var(--amber-ink);
+}
+
+body.dark-mode .status-review {
+  background: var(--grey-soft);
+  color: var(--grey-ink);
 }
