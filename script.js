@@ -487,40 +487,40 @@ const SERIES = [
     id: "wittmore",
     title: "Уиттмор и хоккей",
     subtitle: "ХОККЕЙНАЯ РОМАНТИКА • 4 книги + бонус",
-    image: "https://drive.google.com/uc?export=view&id=TU_ID_1", // ← Reemplaza con tu URL
+    image: "https://drive.google.com/uc?export=view&id=TU_ID_1",
     description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
     books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен" }
+      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
+      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
+      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
+      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
+      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
     ]
   },
   {
     id: "wolf-king",
     title: "Король волков",
     subtitle: "РОМЭНТЕЗИ • 3 книги",
-    image: "https://drive.google.com/uc?export=view&id=TU_ID_2", // ← Reemplaza con tu URL
+    image: "https://drive.google.com/uc?export=view&id=TU_ID_2",
     description: "3 книги • 2 из 3 готовы",
     books: [
-      { number: "01", title: "Книга 1", subtitle: "НАЧАЛО", status: "✅ перевод завершен" },
-      { number: "02", title: "Книга 2", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
-      { number: "03", title: "Книга 3", subtitle: "ФИНАЛ", status: "⏳ перевод в процессе" }
+      { number: "01", title: "Книга 1", subtitle: "НАЧАЛО", status: "✅ перевод завершен", id: "Pounded By Poseidon" },
+      { number: "02", title: "Книга 2", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Say My Name" },
+      { number: "03", title: "Книга 3", subtitle: "ФИНАЛ", status: "⏳ перевод в процессе", id: "MONSTROUS" }
     ]
   },
   {
     id: "mortal-vows",
     title: "Смертельные клятвы",
     subtitle: "МАФИОЗНАЯ РОМАНТИКА • 5 книг",
-    image: "https://drive.google.com/uc?export=view&id=TU_ID_3", // ← Reemplaza con tu URL
+    image: "https://drive.google.com/uc?export=view&id=TU_ID_3",
     description: "5 книг • перевод завершен",
     books: [
-      { number: "01", title: "Смертельные клятвы", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен" },
-      { number: "02", title: "Праведные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
-      { number: "03", title: "Коварные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
-      { number: "04", title: "Безумные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
-      { number: "05", title: "Неправильные клятвы", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен" }
+      { number: "01", title: "Смертельные клятвы", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" },
+      { number: "02", title: "Праведные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Pounded By Poseidon" },
+      { number: "03", title: "Коварные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Say My Name" },
+      { number: "04", title: "Безумные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
+      { number: "05", title: "Неправильные клятвы", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Fervor" }
     ]
   }
 ];
@@ -561,7 +561,7 @@ window.openSerieDetail = function(serieId) {
         <p class="desc">${escapeHtml(serie.description)}</p>
         <div class="order-list">
           ${serie.books.map(book => `
-            <div class="order-item">
+            <div class="order-item" onclick="openBookDetail('${book.id}')" style="cursor:pointer;">
               <span class="num">${book.number}</span>
               <div class="info">
                 <div class="title">${escapeHtml(book.title)}</div>
