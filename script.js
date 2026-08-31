@@ -459,7 +459,8 @@ const ILUSTRACIONES = {
       id: "nsfw-1",
       nombre: "Wattson x Jewel",
       libro: "Fully Charged",
-      imagen: "https://imgur.com/a/hk0Gwp9",
+      imagen: "https://drive.google.com/uc?export=view&id=14Up87-jtkH-BB7jk5SBRo52eHGpgwkoG",
+      descripcion: "Jewel y su Conejito."
     },
     {
       id: "nsfw-2",
