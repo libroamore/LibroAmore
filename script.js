@@ -2,37 +2,28 @@
    LibroAmore — navegación interna y datos de ejemplo
    =========================================================== */
 
-// ============================================
-//  VERIFICACIÓN DE ENTORNO (Telegram vs Web)
-// ============================================
-
 function checkTelegramEnvironment() {
     const tg = window.Telegram?.WebApp;
     const isTelegram = !!(tg && tg.initDataUnsafe && tg.initDataUnsafe.user);
-    
     if (!isTelegram) {
         const appShell = document.getElementById('appShell');
         if (appShell) appShell.style.display = 'none';
         const blockedMsg = document.getElementById('blocked-message');
-        if (blockedMsg) {
-            blockedMsg.style.display = 'flex';
-        }
+        if (blockedMsg) blockedMsg.style.display = 'flex';
         document.title = 'Solo en Telegram';
         return false;
     }
-    
     const appShell = document.getElementById('appShell');
     if (appShell) appShell.style.display = 'block';
     return true;
 }
 
 // ============================================
-//  DATOS DE EJEMPLO
+//  DATOS
 // ============================================
 
 const tg = window.Telegram?.WebApp;
 
-/* ---------- Libros disponibles ---------- */
 const BOOKS = [
   {
     id: "Banging My Birthday Bear",
@@ -44,7 +35,7 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Romance", "Fantasía", "Objeto Consciente"],
-    synopsis: "Pasar su trigésimo cumpleaños con amigas escondidas en las montañas es exactamente lo que quiere. Pero tener una aventura cruda y apasionada con un osito de peluche de tamaño real es exactamente lo que necesita. ¡Es el Dirty Thirty de Mia y está lista para divertirse! Cuando sus amigas la sorprenden con un osito de peluche gigante, con una anatomía realista, su día especial se convierte en algo de ensueño. Y me refiero a rellena, que es exactamente como pasa la noche con su sorpresa de cumpleaños, llena hasta el borde y lista para explotar. ¿Estás lista para enamorarte de Bear?",
+    synopsis: "Pasar su trigésimo cumpleaños con amigas escondidas en las montañas es exactamente lo que quiere. Pero tener una aventura cruda y apasionada con un osito de peluche de tamaño real es exactamente lo que necesita.",
     coverUrl: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
     hue: 340
   },
@@ -58,7 +49,7 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Romance", "Fantasía", "Objeto Consciente"],
-    synopsis: "Se suponía que ganar el concurso de esculturas de arena de Mountcastle Cove sería el boleto de Isla Moore para superar las acciones destructivas de su padre en el evento del año pasado. Cuando pierde y su impresionante escultura de arena es alcanzada por un rayo, cree que sus esperanzas se han desvanecido como la marea. Pero entonces conoce a un nuevo papi que quiere cuidarla y hacerla suya. Todo lo que necesita hacer es confiar en él y dejar todo bajo su control. Es más fácil decirlo que hacerlo. Papi viene por ti.",
+    synopsis: "Se suponía que ganar el concurso de esculturas de arena de Mountcastle Cove sería el boleto de Isla Moore para superar las acciones destructivas de su padre.",
     coverUrl: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
     hue: 25
   },
@@ -72,7 +63,7 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Fantasía oscura", "Misterio"],
-    synopsis: "Un trato con una demonio es su único camino hacia la libertad, pero ¿cuál será el precio?",
+    synopsis: "Un trato con una demonio es su único camino hacia la libertad.",
     coverUrl: "https://m.media-amazon.com/images/I/81qF3fLWVCL._SY425_.jpg",
     hue: 260
   },
@@ -86,7 +77,7 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Histórico", "Romance", "Retelling"],
-    synopsis: "En la Inglaterra victoriana de la década de 1840, la botánica Camellia Reed acepta un puesto como asistente de investigación del reservado Dr. Nicholas Ambrose, un brillante pero atormentado médico que estudia la pérdida de memoria mediante peligrosos experimentos con plantas. Desesperada por recuperar sus propios recuerdos perdidos después de un misterioso colapso que dejó vacíos en su pasado, Camellia se siente atraída tanto por la revolucionaria investigación del doctor como por el propio hombre. Pero la Casa Ambrose oculta oscuros secretos: un sirviente vegetal llamado Hawthorne, un invernadero lleno de especímenes que brillan en la oscuridad y el fantasma de la difunta esposa del doctor, cuya presencia impregna cada rincón de la casa. Sin embargo, Camellia también guarda sus propios secretos y jamás se quita la cinta de terciopelo verde que rodea su garganta. ¿Qué oculta?",
+    synopsis: "En la Inglaterra victoriana, la botánica Camellia Reed acepta un puesto como asistente de investigación.",
     coverUrl: "https://m.media-amazon.com/images/I/417DqRE5fmL._SY445_SX342_QL70_FMwebp_.jpg",
     hue: 200
   },
@@ -100,49 +91,15 @@ const BOOKS = [
     status: "Disponible",
     statusClass: "available",
     tags: ["Dark", "Romance", "Fantasía"],
-    synopsis: "La ha llamado durante toda su vida, pero ella nunca pudo responderle… Midonia, una transportista interplanetaria independiente, se encuentra en una situación delicada después de un accidente fatal ocurrido durante uno de sus trabajos. Por eso, no protesta cuando le encomiendan la tediosa tarea de llevar a la devota hermana Irena a un remoto planeta en los confines del espacio, donde una pequeña colonia religiosa venera a una extraña deidad llamada Angustia. Hasta ahora. Cuando una llamarada solar deja su nave en tierra, Midonia se encuentra atrapada junto a las hermanas de aquella secta. Y, para empeorar las cosas, él se le aparece durante la noche, con aquella voz familiar más fuerte que nunca. Invade su mente con su hambre, despertando en ella una obsesión voraz de la que será casi imposible escapar.",
+    synopsis: "Midonia, una transportista interplanetaria, se encuentra en una situación delicada.",
     coverUrl: "https://m.media-amazon.com/images/I/41egFhRk3UL._SY445_SX342_FMwebp_.jpg",
     hue: 150
-  },
-  {
-    id: "mapa-constelado",
-    title: "El mapa constelado",
-    author: "Iris Vantel",
-    series: "Crónicas de Talvera",
-    part: 1,
-    classification: "+16",
-    status: "Disponible",
-    statusClass: "available",
-    tags: ["Fantasía", "Aventura", "Romance"],
-    synopsis: "Para encontrar el reino perdido de su madre, Yeva solo tiene un mapa incompleto y la ayuda no solicitada del cartógrafo más insoportable del continente.",
-    coverUrl: null,
-    hue: 15
   }
 ];
 
-/* ---------- Libros próximos (para sección "Próximos proyectos") ---------- */
 const UPCOMING_BOOKS = [
-  {
-    id: "upcoming-1",
-    title: "El susurro del océano",
-    author: "Marina Sol",
-    coverUrl: null,
-    hue: 200
-  },
-  {
-    id: "upcoming-2",
-    title: "Bajo la luna de octubre",
-    author: "Luna Ríos",
-    coverUrl: null,
-    hue: 30
-  },
-  {
-    id: "upcoming-3",
-    title: "El jardín de las mariposas",
-    author: "Abril Montes",
-    coverUrl: null,
-    hue: 150
-  }
+  { id: "upcoming-1", title: "El susurro del océano", author: "Marina Sol", coverUrl: null, hue: 200 },
+  { id: "upcoming-2", title: "Bajo la luna de octubre", author: "Luna Ríos", coverUrl: null, hue: 30 }
 ];
 
 const SCREEN_TITLES = {
@@ -157,7 +114,10 @@ const SCREEN_TITLES = {
   sfw: "🖼️ SFW"
 };
 
-/* ---------- Navegación ---------- */
+// ============================================
+//  NAVEGACIÓN
+// ============================================
+
 const navStack = ["home"];
 
 window.openScreen = function(name) {
@@ -168,12 +128,6 @@ window.openScreen = function(name) {
 window.goBack = function() {
   if (navStack.length > 1) navStack.pop();
   showScreen(navStack[navStack.length - 1]);
-};
-
-window.goHome = function() {
-  navStack.length = 1;
-  navStack[0] = "home";
-  showScreen("home");
 };
 
 function showScreen(name) {
@@ -188,296 +142,114 @@ function showScreen(name) {
 function renderTopbar(name) {
   const topbar = document.getElementById("topbar");
   if (name === "home") {
-    topbar.innerHTML = `
-      <span class="topbar-brand">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
-        <span>LibroAmore</span>
-      </span>
-    `;
+    topbar.innerHTML = `<span class="topbar-brand"><svg viewBox="0 0 24 24" style="width:21px;height:21px;"><use href="#icon-book"></use></svg><span>LibroAmore</span></span>`;
   } else {
     const title = SCREEN_TITLES[name] || name;
-    topbar.innerHTML = `
-      <div class="topbar-nav">
-        <button class="back-btn" onclick="goBack()" aria-label="Volver">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
-          <span>Volver</span>
-        </button>
-        <span class="topbar-title">${escapeHtml(title)}</span>
-      </div>
-    `;
+    topbar.innerHTML = `<div class="topbar-nav"><button class="back-btn" onclick="goBack()">← Volver</button><span class="topbar-title">${title}</span></div>`;
   }
 }
 
-/* ---------- Telegram ---------- */
 if (tg) {
   tg.ready();
   tg.expand();
-  try {
-    tg.BackButton.onClick(goBack);
-  } catch (e) {}
+  try { tg.BackButton.onClick(goBack); } catch (e) {}
 }
 
 function updateTelegramBackButton(name) {
   if (!tg || !tg.BackButton) return;
-  try {
-    if (name === "home") tg.BackButton.hide();
-    else tg.BackButton.show();
-  } catch (e) {}
+  try { if (name === "home") tg.BackButton.hide(); else tg.BackButton.show(); } catch (e) {}
 }
 
-/* ---------- Utilidades ---------- */
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[c]));
 }
 
 let toastTimer;
 window.showToast = function(message) {
   const el = document.getElementById("toast");
+  if (!el) return;
   el.textContent = message;
   el.classList.add("show");
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
 };
 
-/* ---------- Portadas ---------- */
-function coverMarkup(book, big) {
-  if (book.coverUrl) {
-    return `<img src="${escapeHtml(book.coverUrl)}" alt="Portada de ${escapeHtml(book.title)}" loading="lazy"
-      onerror="bookCoverFallback(this, '${book.id}', ${big ? "true" : "false"})">`;
-  }
-  return placeholderCoverMarkup(book, big);
-}
+// ============================================
+//  FUNCIONES DE RENDER
+// ============================================
 
-function placeholderCoverMarkup(book, big) {
-  const letter = book.title.trim().charAt(0).toUpperCase();
-  return `
-    <div class="cover-placeholder${big ? " cover-placeholder--lg" : ""}" style="--hue:${book.hue}">
-      <svg class="cover-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
-      <span class="cover-letter">${escapeHtml(letter)}</span>
-    </div>
-  `;
-}
-
-window.bookCoverFallback = function(imgEl, bookId, big) {
-  const book = BOOKS.find((b) => b.id === bookId);
-  if (!book || !imgEl.parentElement) return;
-  imgEl.parentElement.innerHTML = placeholderCoverMarkup(book, big);
-};
-
-/* ---------- Libros disponibles ---------- */
 function renderBooksGrid() {
   const grid = document.getElementById("booksGrid");
   if (!grid) return;
   grid.innerHTML = BOOKS.map((book, i) => `
-    <button class="book-card" style="--i:${i}" onclick="openBookDetail('${book.id}')">
-      <div class="book-cover">${coverMarkup(book, false)}</div>
+    <div class="book-card" style="--i:${i}" onclick="openBookDetail('${book.id}')">
+      <div class="book-cover"><img src="${book.coverUrl}" alt="${book.title}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=padding:20px;text-align:center;>📖</div>'"></div>
       <h3 class="book-title">${escapeHtml(book.title)}</h3>
       <p class="book-author">${escapeHtml(book.author)}</p>
       <span class="status-badge status-${book.statusClass}">${escapeHtml(book.status)}</span>
-    </button>
-  `).join("");
+    </div>
+  `).join('');
 }
 
 window.openBookDetail = function(bookId) {
-  const book = BOOKS.find((b) => b.id === bookId);
+  const book = BOOKS.find(b => b.id === bookId);
   if (!book) return;
   const detailEl = document.getElementById("bookDetail");
   if (detailEl) {
-    detailEl.innerHTML = bookDetailMarkup(book);
+    detailEl.innerHTML = `<h1>${book.title}</h1><p>${book.synopsis}</p><button onclick="showToast('Descarga disponible pronto')">Descargar</button>`;
   }
   openScreen("libro-detail");
 };
 
-function bookDetailMarkup(book) {
-  const formats = ["epub", "pdf", "fb2"].map((fmt) => {
-    const available = book.status === "Disponible";
-    return `
-      <button class="format-btn${available ? "" : " format-btn--disabled"}"
-        ${available ? `onclick="downloadFormat('${fmt}')"` : "disabled"}>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-download"></use></svg>
-        ${fmt.toUpperCase()}
-      </button>
-    `;
-  }).join("");
-
-  return `
-    <div class="detail-cover">${coverMarkup(book, true)}</div>
-    <h1 class="detail-title">${escapeHtml(book.title)}</h1>
-    <p class="detail-author">${escapeHtml(book.author)}</p>
-    <div class="detail-badge-row">
-      <span class="status-badge status-${book.statusClass}">${escapeHtml(book.status)}</span>
-    </div>
-    <div class="detail-meta">
-      <div class="meta-item">
-        <span class="meta-label">Serie</span>
-        <span class="meta-value">${escapeHtml(book.series || "Único")}</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Parte</span>
-        <span class="meta-value">${book.part ?? "—"}</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Clasificación</span>
-        <span class="meta-value">${escapeHtml(book.classification)}</span>
-      </div>
-    </div>
-    <div class="tag-row">
-      ${book.tags.map((tag) => `
-        <span class="tag">
-          <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><use href="#icon-tag"></use></svg>
-          ${escapeHtml(tag)}
-        </span>
-      `).join("")}
-    </div>
-    <h2 class="detail-subheading">Sinopsis</h2>
-    <p class="detail-synopsis">${escapeHtml(book.synopsis)}</p>
-    <h2 class="detail-subheading">Descargar</h2>
-    <div class="format-row">${formats}</div>
-    ${book.status !== "Disponible"
-      ? `<p class="detail-note">Este título todavía no está disponible para descarga.</p>`
-      : ""}
-  `;
-}
-
-window.downloadFormat = function(format) {
-  showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
-};
-
-/* ---------- Orden de lectura (sección Autores) ---------- */
 function renderReadingOrder() {
   const container = document.getElementById('orderList');
   if (!container) return;
-
-  const orderIds = [
-    'mortal-vows',
-    'righteous-vows',
-    'treacherous-vows',
-    'reckless-vows',
-    'wrong-vows'
-  ];
-
-  const orderTitles = {
-    'mortal-vows': 'Смертельные клятвы',
-    'righteous-vows': 'Праведные клятвы',
-    'treacherous-vows': 'Коварные клятвы',
-    'reckless-vows': 'Безумные клятвы',
-    'wrong-vows': 'Неправильные клятвы'
-  };
-
-  const subtitles = {
-    'mortal-vows': 'НАЧАЛО ИСТОРИИ',
-    'righteous-vows': 'ПРОДОЛЖЕНИЕ',
-    'treacherous-vows': 'ПРОДОЛЖЕНИЕ',
-    'reckless-vows': 'ПРОДОЛЖЕНИЕ',
-    'wrong-vows': 'ФИНАЛ СЕРИИ'
-  };
-
-  container.innerHTML = orderIds.map((id, index) => {
-    const book = BOOKS.find(b => b.id === id);
-    const statusText = book && book.status === 'Disponible' ? '✅ перевод завершен' : '⏳ перевод в процессе';
-    return `
-      <div class="order-item" onclick="openBookDetail('${id}')">
-        <span class="order-number">${String(index + 1).padStart(2, '0')}</span>
-        <div class="order-info">
-          <div class="order-title">${orderTitles[id] || id}</div>
-          <div class="order-subtitle">${subtitles[id] || ''}</div>
-        </div>
-        <span class="order-status">${statusText}</span>
-      </div>
-    `;
-  }).join('');
+  container.innerHTML = `
+    <div class="order-item" onclick="showToast('Libro 1')"><span class="order-number">01</span><div><div>Смертельные клятвы</div><div>НАЧАЛО ИСТОРИИ</div></div><span>✅</span></div>
+    <div class="order-item" onclick="showToast('Libro 2')"><span class="order-number">02</span><div><div>Праведные клятвы</div><div>ПРОДОЛЖЕНИЕ</div></div><span>✅</span></div>
+  `;
 }
 
-/* ---------- Próximos proyectos ---------- */
 function renderUpcomingBooks() {
   const grid = document.getElementById('upcomingGrid');
   if (!grid) return;
-
-  grid.innerHTML = UPCOMING_BOOKS.map((book, i) => `
-    <div class="book-card" style="--i:${i}">
-      <div class="book-cover">
-        ${book.coverUrl 
-          ? `<img src="${book.coverUrl}" alt="${book.title}" loading="lazy">`
-          : `<div class="cover-placeholder" style="--hue:${book.hue}">
-              <svg class="cover-icon" viewBox="0 0 24 24"><use href="#icon-book"></use></svg>
-              <span class="cover-letter">${book.title.charAt(0)}</span>
-            </div>`
-        }
-      </div>
-      <h3 class="book-title">${escapeHtml(book.title)}</h3>
-      <p class="book-author">${escapeHtml(book.author)}</p>
-      <span class="status-badge status-soon">Próximo</span>
-    </div>
+  grid.innerHTML = UPCOMING_BOOKS.map(book => `
+    <div class="book-card"><div class="book-cover"><div style="padding:20px;text-align:center;">📖</div></div><h3>${book.title}</h3><p>${book.author}</p><span class="status-badge status-soon">Próximo</span></div>
   `).join('');
 }
 
-/* ---------- Actualizaciones ---------- */
 function renderUpdates() {
   const container = document.getElementById('updatesList');
   if (!container) return;
-
-  const updates = [
-    { version: "v1.0.0", date: "30/08/2026", desc: "Lanzamiento inicial de LibroAmore con catálogo básico." },
-    { version: "v1.1.0", date: "Próximamente", desc: "Sección de 'Próximos proyectos' y 'Actualizaciones' añadida." }
-  ];
-
-  container.innerHTML = updates.map(update => `
-    <div class="update-item">
-      <div>
-        <span class="update-version">${update.version}</span>
-        <span class="update-date">${update.date}</span>
-      </div>
-      <div class="update-desc">${escapeHtml(update.desc)}</div>
-    </div>
-  `).join('');
+  container.innerHTML = `<div class="update-item"><div><span>v1.0.0</span> <span>30/08/2026</span></div><div>Lanzamiento inicial</div></div>`;
 }
 
 // ============================================
-//  ILUSTRACIONES (fácil de editar)
+//  ILUSTRACIONES
 // ============================================
 
 const ILUSTRACIONES = {
   nsfw: [
-    {
-      titulo: "Banging My Birthday Bear",
-      autor: "Holly Wilde",
-      imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
-      descripcion: "Ilustración NSFW de Banging My Birthday Bear."
-    },
-    {
-      titulo: "Pounded By Poseidon",
-      autor: "Thea Masen - Holly Wilde",
-      imagen: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
-      descripcion: "Ilustración NSFW de Pounded By Poseidon."
-    }
+    { titulo: "Banging My Birthday Bear", autor: "Holly Wilde", imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg" },
+    { titulo: "Pounded By Poseidon", autor: "Thea Masen", imagen: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg" }
   ],
   sfw: [
-    {
-      titulo: "El susurro del océano",
-      autor: "Marina Sol",
-      imagen: "https://ejemplo.com/imagen-sfw-1.jpg",
-      descripcion: "Ilustración SFW de El susurro del océano."
-    }
+    { titulo: "El susurro del océano", autor: "Marina Sol", imagen: "https://ejemplo.com/imagen-sfw-1.jpg" }
   ]
 };
 
 function mostrarIlustraciones(categoria, contenedorId) {
   const contenedor = document.getElementById(contenedorId);
-  if (!contenedor) return;
-  
+  if (!contenedor) {
+    console.warn('Contenedor no encontrado:', contenedorId);
+    return;
+  }
   const items = ILUSTRACIONES[categoria] || [];
   contenedor.innerHTML = items.map(item => `
     <div class="book-card" onclick="showToast('${item.titulo} - ${item.autor}')">
-      <div class="book-cover">
-        <img src="${item.imagen}" alt="${item.titulo}" loading="lazy" 
-             onerror="this.parentElement.innerHTML='<div class=cover-placeholder style=--hue:200><svg class=cover-icon viewBox=0 0 24 24><use href=#icon-book></use></svg><span class=cover-letter>${item.titulo.charAt(0)}</span></div>'">
-      </div>
+      <div class="book-cover"><img src="${item.imagen}" alt="${item.titulo}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=padding:20px;text-align:center;>📖</div>'"></div>
       <h3 class="book-title">${item.titulo}</h3>
       <p class="book-author">${item.autor}</p>
       <span class="status-badge status-soon">Ver</span>
@@ -485,9 +257,19 @@ function mostrarIlustraciones(categoria, contenedorId) {
   `).join('');
 }
 
-/* ---------- Inicio ---------- */
+// ============================================
+//  INICIO
+// ============================================
+
 document.addEventListener('DOMContentLoaded', function() {
-  if (!checkTelegramEnvironment()) return;
+  console.log('✅ DOM cargado');
+  
+  if (!checkTelegramEnvironment()) {
+    console.log('❌ No es Telegram');
+    return;
+  }
+  
+  console.log('✅ Es Telegram, iniciando app...');
   
   renderTopbar("home");
   renderBooksGrid();
@@ -496,4 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
   renderUpdates();
   mostrarIlustraciones('nsfw', 'nsfwGrid');
   mostrarIlustraciones('sfw', 'sfwGrid');
+  
+  console.log('✅ App iniciada correctamente');
 });
