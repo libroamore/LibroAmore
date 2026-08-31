@@ -445,4 +445,72 @@ document.addEventListener('DOMContentLoaded', function() {
   renderReadingOrder();
   renderUpcomingBooks();
   renderUpdates();
+  mostrarIlustraciones('nsfw', 'nsfwGrid');
+  mostrarIlustraciones('sfw', 'sfwGrid');
 });
+
+// ============================================
+//  ILUSTRACIONES (fácil de editar)
+// ============================================
+
+const ILUSTRACIONES = {
+  nsfw: [
+    {
+      id: "nsfw-1",
+      nombre: "Caleb x Sara",
+      libro: "Nimbus",
+      imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
+      descripcion: "Escena íntima entre Caleb y Sara en el jardín de Nimbus."
+    },
+    {
+      id: "nsfw-2",
+      nombre: "Mia x Bear",
+      libro: "Banging My Birthday Bear",
+      imagen: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
+      descripcion: "Mia y su osito de peluche en la cabaña de montaña."
+    }
+  ],
+  sfw: [
+    {
+      id: "sfw-1",
+      nombre: "Paisaje de Nimbus",
+      libro: "Nimbus",
+      imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
+      descripcion: "Ilustración del paisaje de Nimbus al atardecer."
+    }
+  ]
+};
+
+function mostrarIlustraciones(categoria, contenedorId) {
+  const contenedor = document.getElementById(contenedorId);
+  if (!contenedor) return;
+  
+  const items = ILUSTRACIONES[categoria] || [];
+  contenedor.innerHTML = items.map(item => `
+    <div class="illustration-card" onclick="abrirDetalleIlustracion('${categoria}', '${item.id}')">
+      <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
+      <div class="illustration-name">${item.nombre}</div>
+    </div>
+  `).join('');
+}
+
+window.abrirDetalleIlustracion = function(categoria, id) {
+  const items = ILUSTRACIONES[categoria] || [];
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+
+  const detailEl = document.getElementById('illustrationDetail');
+  if (detailEl) {
+    detailEl.innerHTML = `
+      <div class="detail-illustration">
+        <img src="${item.imagen}" alt="${item.nombre}">
+        <div class="detail-info">
+          <h2>${item.nombre}</h2>
+          <p class="detail-book">📖 <strong>Libro:</strong> ${item.libro}</p>
+          <p class="detail-desc">${item.descripcion}</p>
+        </div>
+      </div>
+    `;
+  }
+  openScreen('illustration-detail');
+};
