@@ -158,79 +158,83 @@
       </section>
 
       <!-- ============ ANUNCIOS ============ -->
-<section class="screen screen--simple" data-screen="anuncios" id="screen-anuncios" hidden>
-  <div class="announcement-menu">
-    <button class="announcement-btn" onclick="openScreen('proximos')">
-      <span class="announcement-icon">🚀</span>
-      <div class="announcement-info">
-        <span class="announcement-label">PRÓXIMOS PROYECTOS</span>
-        <span class="announcement-desc">Descubre los libros que vienen</span>
-      </div>
-      <span class="announcement-arrow">›</span>
-    </button>
-    <button class="announcement-btn" onclick="openScreen('actualizaciones')">
-      <span class="announcement-icon">📋</span>
-      <div class="announcement-info">
-        <span class="announcement-label">ACTUALIZACIONES</span>
-        <span class="announcement-desc">Novedades de la app</span>
-      </div>
-      <span class="announcement-arrow">›</span>
-    </button>
-  </div>
-</section>
+      <section class="screen screen--simple" data-screen="anuncios" id="screen-anuncios" hidden>
+        <div class="announcement-menu">
+          <button class="announcement-btn" onclick="openScreen('proximos')">
+            <span class="announcement-icon">🚀</span>
+            <div class="announcement-info">
+              <span class="announcement-label">PRÓXIMOS PROYECTOS</span>
+              <span class="announcement-desc">Descubre los libros que vienen</span>
+            </div>
+            <span class="announcement-arrow">›</span>
+          </button>
+          <button class="announcement-btn" onclick="openScreen('actualizaciones')">
+            <span class="announcement-icon">📋</span>
+            <div class="announcement-info">
+              <span class="announcement-label">ACTUALIZACIONES</span>
+              <span class="announcement-desc">Novedades de la app</span>
+            </div>
+            <span class="announcement-arrow">›</span>
+          </button>
+        </div>
+      </section>
 
       <!-- ============ PRÓXIMOS PROYECTOS ============ -->
-<section class="screen" data-screen="proximos" id="screen-proximos" hidden>
-  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px;">
-  </div>
-  <div class="books-grid" id="upcomingGrid"></div>
-</section>
+      <section class="screen" data-screen="proximos" id="screen-proximos" hidden>
+        <button class="back-btn" onclick="goBack()">← Volver</button>
+        <div class="books-grid" id="upcomingGrid" style="margin-top:12px;"></div>
+      </section>
 
-<!-- ============ ACTUALIZACIONES ============ -->
-<section class="screen" data-screen="actualizaciones" id="screen-actualizaciones" hidden>
-  <div class="section-header">
-  <div class="updates-list" id="updatesList">
-    <!-- Las actualizaciones se generarán con JavaScript -->
-  </div>
-</section>
+      <!-- ============ ACTUALIZACIONES ============ -->
+      <section class="screen" data-screen="actualizaciones" id="screen-actualizaciones" hidden>
+        <button class="back-btn" onclick="goBack()">← Volver</button>
+        <div class="updates-list" id="updatesList" style="margin-top:12px;"></div>
+      </section>
 
       <!-- ============ CONTENIDO EXTRA ============ -->
-<section class="screen screen--simple" data-screen="extras" id="screen-extras" hidden>
-  <div class="announcement-menu">
-    <button class="announcement-btn" onclick="openScreen('nsfw')">
-      <span class="announcement-icon">🔞</span>
-      <div class="announcement-info">
-        <span class="announcement-label">Ilustraciones NSFW</span>
-        <span class="announcement-desc">Contenido para adultos +18</span>
-      </div>
-      <span class="announcement-arrow">›</span>
-    </button>
-    <button class="announcement-btn" onclick="openScreen('sfw')">
-      <span class="announcement-icon">🖼️</span>
-      <div class="announcement-info">
-        <span class="announcement-label">Ilustraciones SFW</span>
-        <span class="announcement-desc">Contenido para todos</span>
-      </div>
-      <span class="announcement-arrow">›</span>
-    </button>
-  </div>
-</section>
+      <section class="screen screen--simple" data-screen="extras" id="screen-extras" hidden>
+        <div class="announcement-menu">
+          <button class="announcement-btn" onclick="openScreen('nsfw')">
+            <span class="announcement-icon">🔞</span>
+            <div class="announcement-info">
+              <span class="announcement-label">Ilustraciones NSFW</span>
+              <span class="announcement-desc">Contenido para adultos +18</span>
+            </div>
+            <span class="announcement-arrow">›</span>
+          </button>
+          <button class="announcement-btn" onclick="openScreen('sfw')">
+            <span class="announcement-icon">🖼️</span>
+            <div class="announcement-info">
+              <span class="announcement-label">Ilustraciones SFW</span>
+              <span class="announcement-desc">Contenido para todos</span>
+            </div>
+            <span class="announcement-arrow">›</span>
+          </button>
+        </div>
+      </section>
 
-<!-- Pantalla NSFW -->
-<section class="screen" data-screen="nsfw" id="screen-nsfw" hidden>
-  <button class="back-btn" onclick="goBack()">← Volver</button>
-  <div id="nsfwGrid" class="books-grid" style="margin-top:12px;"></div>
-</section>
+      <!-- ============ ILUSTRACIONES NSFW ============ -->
+      <section class="screen" data-screen="nsfw" id="screen-nsfw" hidden>
+        <button class="back-btn" onclick="goBack()">← Volver</button>
+        <h2 style="font-family: var(--font-display); font-size: 18px; margin: 8px 0 16px;">🔞 Ilustraciones NSFW</h2>
+        <div class="illustrations-grid" id="nsfwGrid"></div>
+      </section>
 
-<!-- Pantalla SFW -->
-<section class="screen" data-screen="sfw" id="screen-sfw" hidden>
-  <button class="back-btn" onclick="goBack()">← Volver</button>
-  <div id="sfwGrid" class="books-grid" style="margin-top:12px;"></div>
-</section>
+      <!-- ============ ILUSTRACIONES SFW ============ -->
+      <section class="screen" data-screen="sfw" id="screen-sfw" hidden>
+        <button class="back-btn" onclick="goBack()">← Volver</button>
+        <h2 style="font-family: var(--font-display); font-size: 18px; margin: 8px 0 16px;">🖼️ Ilustraciones SFW</h2>
+        <div class="illustrations-grid" id="sfwGrid"></div>
+      </section>
+
+      <!-- ============ DETALLE DE ILUSTRACIÓN ============ -->
+      <section class="screen" data-screen="illustration-detail" id="screen-illustration-detail" hidden>
+        <button class="back-btn" onclick="goBack()">← Volver</button>
+        <div id="illustrationDetail" style="margin-top:12px;"></div>
+      </section>
 
       <!-- ============ LIBROS DISPONIBLES ============ -->
       <section class="screen" data-screen="libros" id="screen-libros" hidden>
-        <p class="sample-note">Portadas y datos de ejemplo para probar el diseño — no son libros reales de LibroAmore.</p>
         <div class="books-grid" id="booksGrid"></div>
       </section>
 
