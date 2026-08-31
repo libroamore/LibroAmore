@@ -156,7 +156,8 @@ const SCREEN_TITLES = {
   nsfw: "🔞 NSFW",
   sfw: "🖼️ SFW",
   "illustration-detail": "Detalle",
-  nosotras: "Nosotras"
+  nosotras: "Nosotras",
+  "serie-detail": "Detalle de serie"
 };
 
 /* ---------- Navegación ---------- */
@@ -477,6 +478,106 @@ const ILUSTRACIONES = {
   ]
 };
 
+// ============================================
+//  SERIES (para la sección Autores)
+// ============================================
+
+const SERIES = [
+  {
+    id: "wittmore",
+    title: "Уиттмор и хоккей",
+    subtitle: "ХОККЕЙНАЯ РОМАНТИКА • 4 книги + бонус",
+    image: "https://drive.google.com/uc?export=view&id=TU_ID_1", // ← Reemplaza con tu URL
+    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
+    books: [
+      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен" },
+      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
+      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
+      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен" },
+      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен" }
+    ]
+  },
+  {
+    id: "wolf-king",
+    title: "Король волков",
+    subtitle: "РОМЭНТЕЗИ • 3 книги",
+    image: "https://drive.google.com/uc?export=view&id=TU_ID_2", // ← Reemplaza con tu URL
+    description: "3 книги • 2 из 3 готовы",
+    books: [
+      { number: "01", title: "Книга 1", subtitle: "НАЧАЛО", status: "✅ перевод завершен" },
+      { number: "02", title: "Книга 2", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
+      { number: "03", title: "Книга 3", subtitle: "ФИНАЛ", status: "⏳ перевод в процессе" }
+    ]
+  },
+  {
+    id: "mortal-vows",
+    title: "Смертельные клятвы",
+    subtitle: "МАФИОЗНАЯ РОМАНТИКА • 5 книг",
+    image: "https://drive.google.com/uc?export=view&id=TU_ID_3", // ← Reemplaza con tu URL
+    description: "5 книг • перевод завершен",
+    books: [
+      { number: "01", title: "Смертельные клятвы", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен" },
+      { number: "02", title: "Праведные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
+      { number: "03", title: "Коварные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
+      { number: "04", title: "Безумные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен" },
+      { number: "05", title: "Неправильные клятвы", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен" }
+    ]
+  }
+];
+
+// ============================================
+//  RENDERIZAR SERIES
+// ============================================
+
+function renderSeriesGrid() {
+  const grid = document.getElementById('seriesGrid');
+  if (!grid) return;
+
+  grid.innerHTML = SERIES.map(serie => `
+    <div class="serie-card" style="background-image: url('${serie.image}');" onclick="openSerieDetail('${serie.id}')">
+      <div class="overlay">
+        <h3>${escapeHtml(serie.title)}</h3>
+        <div class="serie-sub">${escapeHtml(serie.subtitle)}</div>
+        <div class="serie-btn">Порядок чтения ›</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+window.openSerieDetail = function(serieId) {
+  const serie = SERIES.find(s => s.id === serieId);
+  if (!serie) return;
+
+  const container = document.getElementById('serieDetail');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="serie-detail-card">
+      <div class="serie-detail-header">
+        <h2>${escapeHtml(serie.title)}</h2>
+        <p>${escapeHtml(serie.subtitle)}</p>
+      </div>
+      <div class="serie-detail-body">
+        <p class="desc">${escapeHtml(serie.description)}</p>
+        <div class="order-list">
+          ${serie.books.map(book => `
+            <div class="order-item">
+              <span class="num">${book.number}</span>
+              <div class="info">
+                <div class="title">${escapeHtml(book.title)}</div>
+                <div class="sub">${escapeHtml(book.subtitle)}</div>
+              </div>
+              <span class="status">${escapeHtml(book.status)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  openScreen('serie-detail');
+};
+
 function mostrarIlustraciones(categoria, contenedorId) {
   const contenedor = document.getElementById(contenedorId);
   if (!contenedor) return;
@@ -537,4 +638,5 @@ document.addEventListener('DOMContentLoaded', function() {
   renderUpdates();
   mostrarIlustraciones('nsfw', 'nsfwGrid');
   mostrarIlustraciones('sfw', 'sfwGrid');
+  renderSeriesGrid();
 });
