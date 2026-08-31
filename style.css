@@ -1309,3 +1309,119 @@ body::after {
 .star-selector .close-btn:hover {
   background: var(--pink);
 }
+
+/* ============================================
+   MODO OSCURO
+   ============================================ */
+
+/* Variables para modo oscuro */
+body.dark-mode {
+  --bg: #1a1a2e;
+  --bg-deep: #16213e;
+  --surface: #1e1e3a;
+  --pink: #6a1b3a;
+  --pink-strong: #c0397a;
+  --pink-ink: #e06090;
+  --pink-soft: #2a1a3a;
+  --gold: #c79a55;
+  --green-soft: #1a3a2a;
+  --green-ink: #7ac09a;
+  --amber-soft: #3a2a1a;
+  --amber-ink: #d4a060;
+  --grey-soft: #2a2a3a;
+  --grey-ink: #a0a0b0;
+  --ink: #f0e6e8;
+  --muted: #b0a0a8;
+  --shadow-card: 0 10px 26px rgba(0, 0, 0, 0.4);
+  --shadow-pop: 0 16px 34px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajustes para el modo oscuro */
+body.dark-mode .topbar {
+  background: rgba(26, 26, 46, 0.9);
+  border-bottom: 1px solid rgba(192, 57, 122, 0.2);
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(165deg, #2a1a2e 0%, var(--pink-soft) 100%);
+}
+
+body.dark-mode .card {
+  background: var(--surface);
+}
+
+body.dark-mode .menu-tile {
+  background: var(--surface);
+}
+
+body.dark-mode .book-card {
+  background: var(--surface);
+}
+
+body.dark-mode .notice {
+  background: var(--surface);
+}
+
+body.dark-mode .about-card {
+  background: var(--surface);
+}
+
+body.dark-mode .serie-detail-card {
+  background: var(--surface);
+}
+
+body.dark-mode .cover-placeholder {
+  background: linear-gradient(155deg, #2a1a3a, #1a0a2a);
+  color: #e06090;
+}
+
+body.dark-mode .bottom-nav {
+  background: rgba(26, 26, 46, 0.95);
+  border-top: 1px solid rgba(192, 57, 122, 0.15);
+}
+
+body.dark-mode .about-link-item {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .order-item {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .update-item {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .announcement-btn {
+  background: var(--surface);
+}
+
+body.dark-mode .empty-state {
+  background: var(--surface);
+}
+
+body.dark-mode .detail-synopsis {
+  background: var(--surface);
+}
+
+body.dark-mode .meta-item {
+  background: var(--surface);
+}
+
+body.dark-mode .tag {
+  background: #2a1a3a;
+  color: #e06090;
+}
+
+body.dark-mode #blocked-message {
+  background: #1a1a2e;
+  color: #f0e6e8;
+}
+
+body.dark-mode #blocked-message h1 {
+  color: #e06090;
+}
+
+body.dark-mode #blocked-message p {
+  color: #b0a0a8;
+}
