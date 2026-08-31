@@ -243,7 +243,47 @@
         <div id="bookDetail"></div>
       </section>
 
+            <!-- ============ NOSOTRAS (MI) ============ -->
+      <section class="screen" data-screen="nosotras" id="screen-nosotras" hidden>
+        <button class="back-btn" onclick="goBack()">← Volver</button>
+        <div class="about-card">
+          <div class="about-header">
+            <h1>ACADEMY</h1>
+            <p class="about-subtitle">📚 BIBLIOTECA DE TRADUCCIONES</p>
+          </div>
+          <div class="about-body">
+            <p class="about-lema">Leemos gratis. Apoyamos voluntariamente.</p>
+            <p class="about-desc">
+              <strong>AKS</strong> — proyecto lector sin fines de lucro.<br>
+              El acceso a las traducciones no depende de donaciones: todos los libros terminados están abiertos y disponibles por completo.
+            </p>
+            <div class="about-links">
+              <div class="about-link-item">
+                <span class="about-link-icon">📢</span>
+                <span><strong>Telegram-canal</strong> <span style="color: var(--muted);">@knizhnyeshlyuhi</span> • noticias y debates</span>
+              </div>
+              <div class="about-link-item">
+                <span class="about-link-icon">🔞</span>
+                <span><strong>Reglas y seguridad</strong> 18+ • moderación • derechos de autor</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
+
+    <!-- ============ BARRA DE NAVEGACIÓN INFERIOR ============ -->
+    <nav class="bottom-nav" id="bottomNav">
+      <button class="nav-btn active" data-screen="home" onclick="navigateTo('home')">
+        <span class="nav-icon">📚</span>
+        <span class="nav-label">Biblioteca</span>
+      </button>
+      <button class="nav-btn" data-screen="nosotras" onclick="navigateTo('nosotras')">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Mi</span>
+      </button>
+    </nav>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
