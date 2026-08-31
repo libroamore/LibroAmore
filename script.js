@@ -8,32 +8,21 @@
 
 function checkTelegramEnvironment() {
     const tg = window.Telegram?.WebApp;
-    // Verifica que exista el objeto de Telegram y que tenga datos de usuario
     const isTelegram = !!(tg && tg.initDataUnsafe && tg.initDataUnsafe.user);
     
-    // Si NO está en Telegram:
     if (!isTelegram) {
-        // 1. Ocultar la app
         const appShell = document.getElementById('appShell');
         if (appShell) appShell.style.display = 'none';
-        
-        // 2. Mostrar el mensaje de bloqueo
         const blockedMsg = document.getElementById('blocked-message');
         if (blockedMsg) {
             blockedMsg.style.display = 'flex';
         }
-        
-        // 3. Cambiar título de la página
         document.title = 'Solo en Telegram';
-        
-        // 4. Detener la ejecución del resto del script
         return false;
     }
     
-    // Si está en Telegram: mostrar la app
     const appShell = document.getElementById('appShell');
     if (appShell) appShell.style.display = 'block';
-    
     return true;
 }
 
@@ -43,7 +32,7 @@ function checkTelegramEnvironment() {
 
 const tg = window.Telegram?.WebApp;
 
-/* ---------- Datos de ejemplo ---------- */
+/* ---------- Libros disponibles ---------- */
 const BOOKS = [
   {
     id: "Banging My Birthday Bear",
@@ -131,18 +120,44 @@ const BOOKS = [
   }
 ];
 
+/* ---------- Libros próximos (para sección "Próximos proyectos") ---------- */
+const UPCOMING_BOOKS = [
+  {
+    id: "upcoming-1",
+    title: "El susurro del océano",
+    author: "Marina Sol",
+    coverUrl: null,
+    hue: 200
+  },
+  {
+    id: "upcoming-2",
+    title: "Bajo la luna de octubre",
+    author: "Luna Ríos",
+    coverUrl: null,
+    hue: 30
+  },
+  {
+    id: "upcoming-3",
+    title: "El jardín de las mariposas",
+    author: "Abril Montes",
+    coverUrl: null,
+    hue: 150
+  }
+];
+
 const SCREEN_TITLES = {
   anuncios: "Anuncios",
   libros: "Libros disponibles",
   autores: "Autores",
   extras: "Contenido extra",
-  "libro-detail": "Detalle del libro"
+  "libro-detail": "Detalle del libro",
+  proximos: "Próximos proyectos",
+  actualizaciones: "Actualizaciones"
 };
 
 /* ---------- Navegación ---------- */
 const navStack = ["home"];
 
-// FUNCIONES GLOBALES (accesibles desde HTML)
 window.openScreen = function(name) {
   if (navStack[navStack.length - 1] !== name) navStack.push(name);
   showScreen(name);
@@ -253,7 +268,7 @@ window.bookCoverFallback = function(imgEl, bookId, big) {
   imgEl.parentElement.innerHTML = placeholderCoverMarkup(book, big);
 };
 
-/* ---------- Libros ---------- */
+/* ---------- Libros disponibles ---------- */
 function renderBooksGrid() {
   const grid = document.getElementById("booksGrid");
   if (!grid) return;
@@ -332,12 +347,102 @@ window.downloadFormat = function(format) {
   showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
 };
 
+/* ---------- Orden de lectura (sección Autores) ---------- */
+function renderReadingOrder() {
+  const container = document.getElementById('orderList');
+  if (!container) return;
+
+  const orderIds = [
+    'mortal-vows',
+    'righteous-vows',
+    'treacherous-vows',
+    'reckless-vows',
+    'wrong-vows'
+  ];
+
+  const orderTitles = {
+    'mortal-vows': 'Смертельные клятвы',
+    'righteous-vows': 'Праведные клятвы',
+    'treacherous-vows': 'Коварные клятвы',
+    'reckless-vows': 'Безумные клятвы',
+    'wrong-vows': 'Неправильные клятвы'
+  };
+
+  const subtitles = {
+    'mortal-vows': 'НАЧАЛО ИСТОРИИ',
+    'righteous-vows': 'ПРОДОЛЖЕНИЕ',
+    'treacherous-vows': 'ПРОДОЛЖЕНИЕ',
+    'reckless-vows': 'ПРОДОЛЖЕНИЕ',
+    'wrong-vows': 'ФИНАЛ СЕРИИ'
+  };
+
+  container.innerHTML = orderIds.map((id, index) => {
+    const book = BOOKS.find(b => b.id === id);
+    const statusText = book && book.status === 'Disponible' ? '✅ перевод завершен' : '⏳ перевод в процессе';
+    return `
+      <div class="order-item" onclick="openBookDetail('${id}')">
+        <span class="order-number">${String(index + 1).padStart(2, '0')}</span>
+        <div class="order-info">
+          <div class="order-title">${orderTitles[id] || id}</div>
+          <div class="order-subtitle">${subtitles[id] || ''}</div>
+        </div>
+        <span class="order-status">${statusText}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ---------- Próximos proyectos ---------- */
+function renderUpcomingBooks() {
+  const grid = document.getElementById('upcomingGrid');
+  if (!grid) return;
+
+  grid.innerHTML = UPCOMING_BOOKS.map((book, i) => `
+    <div class="book-card" style="--i:${i}">
+      <div class="book-cover">
+        ${book.coverUrl 
+          ? `<img src="${book.coverUrl}" alt="${book.title}" loading="lazy">`
+          : `<div class="cover-placeholder" style="--hue:${book.hue}">
+              <svg class="cover-icon" viewBox="0 0 24 24"><use href="#icon-book"></use></svg>
+              <span class="cover-letter">${book.title.charAt(0)}</span>
+            </div>`
+        }
+      </div>
+      <h3 class="book-title">${escapeHtml(book.title)}</h3>
+      <p class="book-author">${escapeHtml(book.author)}</p>
+      <span class="status-badge status-soon">Próximo</span>
+    </div>
+  `).join('');
+}
+
+/* ---------- Actualizaciones ---------- */
+function renderUpdates() {
+  const container = document.getElementById('updatesList');
+  if (!container) return;
+
+  const updates = [
+    { version: "v1.0.0", date: "30/08/2026", desc: "Lanzamiento inicial de LibroAmore con catálogo básico." },
+    { version: "v1.1.0", date: "Próximamente", desc: "Sección de 'Próximos proyectos' y 'Actualizaciones' añadida." }
+  ];
+
+  container.innerHTML = updates.map(update => `
+    <div class="update-item">
+      <div>
+        <span class="update-version">${update.version}</span>
+        <span class="update-date">${update.date}</span>
+      </div>
+      <div class="update-desc">${escapeHtml(update.desc)}</div>
+    </div>
+  `).join('');
+}
+
 /* ---------- Inicio ---------- */
 document.addEventListener('DOMContentLoaded', function() {
-  // PRIMERO: verificar el entorno
   if (!checkTelegramEnvironment()) return;
   
-  // Si está en Telegram, iniciar la app
   renderTopbar("home");
   renderBooksGrid();
+  renderReadingOrder();
+  renderUpcomingBooks();
+  renderUpdates();
 });
