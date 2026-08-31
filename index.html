@@ -1,343 +1,258 @@
-/* ===========================================================
-   LibroAmore — navegación interna y datos de ejemplo
-   =========================================================== */
-
-// ============================================
-//  VERIFICACIÓN DE ENTORNO (Telegram vs Web)
-// ============================================
-
-function checkTelegramEnvironment() {
-    const tg = window.Telegram?.WebApp;
-    // Verifica que exista el objeto de Telegram y que tenga datos de usuario
-    const isTelegram = !!(tg && tg.initDataUnsafe && tg.initDataUnsafe.user);
-    
-    // Si NO está en Telegram:
-    if (!isTelegram) {
-        // 1. Ocultar la app
-        const appShell = document.getElementById('appShell');
-        if (appShell) appShell.style.display = 'none';
-        
-        // 2. Mostrar el mensaje de bloqueo
-        const blockedMsg = document.getElementById('blocked-message');
-        if (blockedMsg) {
-            blockedMsg.style.display = 'flex';
-        }
-        
-        // 3. Cambiar título de la página
-        document.title = 'Solo en Telegram';
-        
-        // 4. Detener la ejecución del resto del script
-        return false;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f8e9ec">
+  <title>LibroAmore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos para el mensaje de bloqueo (fuera de Telegram) */
+    #blocked-message {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      font-family: 'Jost', sans-serif;
+      max-width: 400px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #fbeef1;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    
-    // Si está en Telegram: mostrar la app
-    const appShell = document.getElementById('appShell');
-    if (appShell) appShell.style.display = 'block';
-    
-    return true;
-}
+    #blocked-message .icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+    #blocked-message h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      color: #c0397a;
+      margin: 0 0 16px;
+    }
+    #blocked-message p {
+      color: #555;
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+    #blocked-message .btn-telegram {
+      display: inline-block;
+      margin-top: 20px;
+      background: #c0397a;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    #blocked-message .btn-telegram:hover {
+      background: #a02d63;
+    }
+    /* Ocultar app por defecto (se muestra solo si es Telegram) */
+    #appShell {
+      display: none;
+    }
+  </style>
+</head>
+<body>
 
-// ============================================
-//  DATOS DE EJEMPLO
-// ============================================
+  <!-- ============================================ -->
+  <!--  MENSAJE PARA NAVEGADORES WEB (fuera de Telegram) -->
+  <!-- ============================================ -->
+  <div id="blocked-message">
+    <div class="icon">📱</div>
+    <h1>Solo en Telegram</h1>
+    <p>Esta aplicación solo funciona dentro de Telegram.<br>Abre este enlace desde la aplicación de Telegram.</p>
+    <p style="font-size: 14px; color: #999;">Busca el bot: <strong>@TuNombreDeBot</strong></p>
+    <a href="https://t.me/TuNombreDeBot" class="btn-telegram">Abrir en Telegram</a>
+  </div>
 
-const tg = window.Telegram?.WebApp;
+  <!-- ============================================ -->
+  <!--  CONTENIDO DE TU APP (solo visible en Telegram) -->
+  <!-- ============================================ -->
+  <div class="app-shell" id="appShell">
 
-/* ---------- Datos de ejemplo ---------- */
-const BOOKS = [
-  {
-    id: "susurro-camelias",
-    title: "El susurro de las camelias",
-    author: "Noelia Ferrand",
-    series: "Jardines de cristal",
-    part: 1,
-    classification: "+16",
-    status: "Disponible",
-    statusClass: "available",
-    tags: ["Romance", "Fantasía", "Slow burn"],
-    synopsis: "Entre invernaderos abandonados y cartas nunca enviadas, Ada descubre que el jardín de su abuela guarda un secreto que podría reunirla con el amor que creyó perdido para siempre.",
-    coverUrl: null,
-    hue: 340
-  },
-  {
-    id: "cartas-invierno",
-    title: "Cartas para un invierno eterno",
-    author: "Damir Osei",
-    series: null,
-    part: null,
-    classification: "Todo público",
-    status: "Disponible",
-    statusClass: "available",
-    tags: ["Drama", "Epistolar", "Romance"],
-    synopsis: "Una correspondencia que cruza fronteras y estaciones: dos desconocidos se escriben durante un año entero sin saber que el destino ya los ha presentado antes.",
-    coverUrl: null,
-    hue: 25
-  },
-  {
-    id: "sombra-escribano",
-    title: "La sombra del escribano",
-    author: "Iris Vantel",
-    series: "Crónicas de Talvera",
-    part: 2,
-    classification: "+18",
-    status: "Próximamente",
-    statusClass: "soon",
-    tags: ["Fantasía oscura", "Misterio"],
-    synopsis: "El escribano real oculta una verdad capaz de derrumbar la corte. Cuando Yeva la descubre por accidente, se convierte en la única testigo de una traición milenaria.",
-    coverUrl: null,
-    hue: 260
-  },
-  {
-    id: "vals-extranos",
-    title: "Un vals para dos extraños",
-    author: "Marguerite Solaas",
-    series: null,
-    part: null,
-    classification: "+16",
-    status: "En revisión",
-    statusClass: "review",
-    tags: ["Histórico", "Romance", "Baile"],
-    synopsis: "En un salón de baile de 1920, una promesa susurrada entre dos pasos de vals cambia el rumbo de dos familias enfrentadas por generaciones.",
-    coverUrl: null,
-    hue: 200
-  },
-  {
-    id: "jardinero-papel",
-    title: "El jardinero de papel",
-    author: "Renji Okoro",
-    series: "Jardines de cristal",
-    part: 2,
-    classification: "Todo público",
-    status: "Disponible",
-    statusClass: "available",
-    tags: ["Slice of life", "Romance", "Arte"],
-    synopsis: "Un origamista solitario y una florista con insomnio comparten balcón, ventana y, poco a poco, todo lo demás.",
-    coverUrl: null,
-    hue: 150
-  },
-  {
-    id: "mapa-constelado",
-    title: "El mapa constelado",
-    author: "Iris Vantel",
-    series: "Crónicas de Talvera",
-    part: 1,
-    classification: "+16",
-    status: "Disponible",
-    statusClass: "available",
-    tags: ["Fantasía", "Aventura", "Romance"],
-    synopsis: "Para encontrar el reino perdido de su madre, Yeva solo tiene un mapa incompleto y la ayuda no solicitada del cartógrafo más insoportable del continente.",
-    coverUrl: null,
-    hue: 15
-  }
-];
+    <header class="topbar" id="topbar">
+      <!-- populated by script.js -->
+    </header>
 
-const SCREEN_TITLES = {
-  anuncios: "Anuncios",
-  libros: "Libros disponibles",
-  autores: "Autores",
-  extras: "Contenido extra",
-  "libro-detail": "Detalle del libro"
-};
+    <main class="app">
 
-/* ---------- Navegación ---------- */
-const navStack = ["home"];
+      <!-- ============ HOME ============ -->
+      <section class="screen" data-screen="home" id="screen-home">
 
-// FUNCIONES GLOBALES (accesibles desde HTML)
-window.openScreen = function(name) {
-  if (navStack[navStack.length - 1] !== name) navStack.push(name);
-  showScreen(name);
-};
+        <section class="hero">
+          <div class="hero-blob hero-blob--a"></div>
+          <div class="hero-blob hero-blob--b"></div>
+          <svg class="hero-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
+          <h1>LibroAmore</h1>
+          <p>Historias con corazón, palabra a palabra</p>
+          <svg class="hero-divider" viewBox="0 0 160 12" aria-hidden="true">
+            <path d="M2 6C30 -2 50 14 80 6C110 -2 130 14 158 6" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </svg>
+        </section>
 
-window.goBack = function() {
-  if (navStack.length > 1) navStack.pop();
-  showScreen(navStack[navStack.length - 1]);
-};
+        <section class="card welcome">
+          <h2>Bienvenida, querido lector ♡</h2>
+          <p>
+            Este es tu rincón para descubrir libros, seguir anuncios y
+            conocer a los autores detrás de tus historias favoritas.
+          </p>
+        </section>
 
-window.goHome = function() {
-  navStack.length = 1;
-  navStack[0] = "home";
-  showScreen("home");
-};
+        <div class="section-heading" id="menu-heading">
+          <span class="section-heading-line"></span>
+          <h2>Menú</h2>
+          <span class="section-heading-line"></span>
+        </div>
 
-function showScreen(name) {
-  document.querySelectorAll(".screen").forEach((el) => {
-    el.hidden = el.dataset.screen !== name;
-  });
-  window.scrollTo({ top: 0, behavior: "auto" });
-  renderTopbar(name);
-  updateTelegramBackButton(name);
-}
+        <nav class="menu-grid">
+          <button class="menu-tile" style="--i:0" onclick="openScreen('anuncios')">
+            <span class="menu-tile-icon menu-tile-icon--rose">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-megaphone"></use></svg>
+            </span>
+            <span class="menu-tile-label">Anuncios</span>
+            <span class="menu-tile-sub">Novedades y avisos</span>
+          </button>
 
-function renderTopbar(name) {
-  const topbar = document.getElementById("topbar");
-  if (name === "home") {
-    topbar.innerHTML = `
-      <span class="topbar-brand">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
-        <span>LibroAmore</span>
-      </span>
-    `;
-  } else {
-    const title = SCREEN_TITLES[name] || name;
-    topbar.innerHTML = `
-      <div class="topbar-nav">
-        <button class="back-btn" onclick="goBack()" aria-label="Volver">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
-          <span>Volver</span>
-        </button>
-        <span class="topbar-title">${escapeHtml(title)}</span>
-      </div>
-    `;
-  }
-}
+          <button class="menu-tile" style="--i:1" onclick="openScreen('libros')">
+            <span class="menu-tile-icon menu-tile-icon--gold">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
+            </span>
+            <span class="menu-tile-label">Libros disponibles</span>
+            <span class="menu-tile-sub">Catálogo completo</span>
+          </button>
 
-/* ---------- Telegram ---------- */
-if (tg) {
-  tg.ready();
-  tg.expand();
-  try {
-    tg.BackButton.onClick(goBack);
-  } catch (e) {}
-}
+          <button class="menu-tile" style="--i:2" onclick="openScreen('autores')">
+            <span class="menu-tile-icon menu-tile-icon--mauve">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-quill"></use></svg>
+            </span>
+            <span class="menu-tile-label">Autores</span>
+            <span class="menu-tile-sub">Fichas y perfiles</span>
+          </button>
 
-function updateTelegramBackButton(name) {
-  if (!tg || !tg.BackButton) return;
-  try {
-    if (name === "home") tg.BackButton.hide();
-    else tg.BackButton.show();
-  } catch (e) {}
-}
+          <button class="menu-tile" style="--i:3" onclick="openScreen('extras')">
+            <span class="menu-tile-icon menu-tile-icon--rose">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sparkle"></use></svg>
+            </span>
+            <span class="menu-tile-label">Contenido extra</span>
+            <span class="menu-tile-sub">Material adicional</span>
+          </button>
+        </nav>
 
-/* ---------- Utilidades ---------- */
-function escapeHtml(str) {
-  return String(str).replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[c]));
-}
+        <section class="card notice">
+          <span class="notice-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-info"></use></svg>
+          </span>
+          <div>
+            <h3>Importante</h3>
+            <p>Revisa las indicaciones de cada sección antes de acceder a los archivos.</p>
+          </div>
+        </section>
 
-let toastTimer;
-window.showToast = function(message) {
-  const el = document.getElementById("toast");
-  el.textContent = message;
-  el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
-};
+      </section>
 
-/* ---------- Portadas ---------- */
-function coverMarkup(book, big) {
-  if (book.coverUrl) {
-    return `<img src="${escapeHtml(book.coverUrl)}" alt="Portada de ${escapeHtml(book.title)}" loading="lazy"
-      onerror="bookCoverFallback(this, '${book.id}', ${big ? "true" : "false"})">`;
-  }
-  return placeholderCoverMarkup(book, big);
-}
+      <!-- ============ ANUNCIOS ============ -->
+      <section class="screen screen--simple" data-screen="anuncios" id="screen-anuncios" hidden>
+        <div class="empty-state">
+          <span class="empty-state-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-megaphone"></use></svg>
+          </span>
+          <h3>Aún no hay anuncios</h3>
+          <p>Aquí aparecerán las próximas novedades, lanzamientos y avisos de LibroAmore.</p>
+        </div>
+      </section>
 
-function placeholderCoverMarkup(book, big) {
-  const letter = book.title.trim().charAt(0).toUpperCase();
-  return `
-    <div class="cover-placeholder${big ? " cover-placeholder--lg" : ""}" style="--hue:${book.hue}">
-      <svg class="cover-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
-      <span class="cover-letter">${escapeHtml(letter)}</span>
-    </div>
-  `;
-}
+      <!-- ============ AUTORES ============ -->
+      <section class="screen screen--simple" data-screen="autores" id="screen-autores" hidden>
+        <div class="empty-state">
+          <span class="empty-state-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-quill"></use></svg>
+          </span>
+          <h3>Fichas de autores en camino</h3>
+          <p>Pronto conocerás a las autoras y autores detrás de cada historia, con su biografía y sus obras.</p>
+        </div>
+      </section>
 
-window.bookCoverFallback = function(imgEl, bookId, big) {
-  const book = BOOKS.find((b) => b.id === bookId);
-  if (!book || !imgEl.parentElement) return;
-  imgEl.parentElement.innerHTML = placeholderCoverMarkup(book, big);
-};
+      <!-- ============ CONTENIDO EXTRA ============ -->
+      <section class="screen screen--simple" data-screen="extras" id="screen-extras" hidden>
+        <div class="empty-state">
+          <span class="empty-state-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sparkle"></use></svg>
+          </span>
+          <h3>Contenido extra por llegar</h3>
+          <p>Material especial, extras de historias y sorpresas para la comunidad se agregarán aquí.</p>
+        </div>
+      </section>
 
-/* ---------- Libros ---------- */
-function renderBooksGrid() {
-  const grid = document.getElementById("booksGrid");
-  if (!grid) return;
-  grid.innerHTML = BOOKS.map((book, i) => `
-    <button class="book-card" style="--i:${i}" onclick="openBookDetail('${book.id}')">
-      <div class="book-cover">${coverMarkup(book, false)}</div>
-      <h3 class="book-title">${escapeHtml(book.title)}</h3>
-      <p class="book-author">${escapeHtml(book.author)}</p>
-      <span class="status-badge status-${book.statusClass}">${escapeHtml(book.status)}</span>
-    </button>
-  `).join("");
-}
+      <!-- ============ LIBROS DISPONIBLES ============ -->
+      <section class="screen" data-screen="libros" id="screen-libros" hidden>
+        <p class="sample-note">Portadas y datos de ejemplo para probar el diseño — no son libros reales de LibroAmore.</p>
+        <div class="books-grid" id="booksGrid"></div>
+      </section>
 
-window.openBookDetail = function(bookId) {
-  const book = BOOKS.find((b) => b.id === bookId);
-  if (!book) return;
-  const detailEl = document.getElementById("bookDetail");
-  if (detailEl) {
-    detailEl.innerHTML = bookDetailMarkup(book);
-  }
-  openScreen("libro-detail");
-};
+      <!-- ============ DETALLE DE LIBRO ============ -->
+      <section class="screen" data-screen="libro-detail" id="screen-libro-detail" hidden>
+        <div id="bookDetail"></div>
+      </section>
 
-function bookDetailMarkup(book) {
-  const formats = ["epub", "pdf", "fb2"].map((fmt) => {
-    const available = book.status === "Disponible";
-    return `
-      <button class="format-btn${available ? "" : " format-btn--disabled"}"
-        ${available ? `onclick="downloadFormat('${fmt}')"` : "disabled"}>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-download"></use></svg>
-        ${fmt.toUpperCase()}
-      </button>
-    `;
-  }).join("");
+    </main>
 
-  return `
-    <div class="detail-cover">${coverMarkup(book, true)}</div>
-    <h1 class="detail-title">${escapeHtml(book.title)}</h1>
-    <p class="detail-author">${escapeHtml(book.author)}</p>
-    <div class="detail-badge-row">
-      <span class="status-badge status-${book.statusClass}">${escapeHtml(book.status)}</span>
-    </div>
-    <div class="detail-meta">
-      <div class="meta-item">
-        <span class="meta-label">Serie</span>
-        <span class="meta-value">${escapeHtml(book.series || "Único")}</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Parte</span>
-        <span class="meta-value">${book.part ?? "—"}</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Clasificación</span>
-        <span class="meta-value">${escapeHtml(book.classification)}</span>
-      </div>
-    </div>
-    <div class="tag-row">
-      ${book.tags.map((tag) => `
-        <span class="tag">
-          <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><use href="#icon-tag"></use></svg>
-          ${escapeHtml(tag)}
-        </span>
-      `).join("")}
-    </div>
-    <h2 class="detail-subheading">Sinopsis</h2>
-    <p class="detail-synopsis">${escapeHtml(book.synopsis)}</p>
-    <h2 class="detail-subheading">Descargar</h2>
-    <div class="format-row">${formats}</div>
-    ${book.status !== "Disponible"
-      ? `<p class="detail-note">Este título todavía no está disponible para descarga.</p>`
-      : ""}
-  `;
-}
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-window.downloadFormat = function(format) {
-  showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
-};
+  </div>
 
-/* ---------- Inicio ---------- */
-document.addEventListener('DOMContentLoaded', function() {
-  // PRIMERO: verificar el entorno
-  if (!checkTelegramEnvironment()) return;
-  
-  // Si está en Telegram, iniciar la app
-  renderTopbar("home");
-  renderBooksGrid();
-});
+  <!-- Icon sprite -->
+  <svg class="icon-sprite" aria-hidden="true">
+    <defs>
+      <symbol id="icon-book" viewBox="0 0 24 24">
+        <path d="M4 5.6C4 4.72 4.72 4 5.6 4H11.4V19.2H5.6C4.72 19.2 4 18.48 4 17.6V5.6Z"/>
+        <path d="M20 5.6C20 4.72 19.28 4 18.4 4H12.6V19.2H18.4C19.28 19.2 20 18.48 20 17.6V5.6Z"/>
+        <path d="M12 4V19.2"/>
+      </symbol>
+      <symbol id="icon-megaphone" viewBox="0 0 24 24">
+        <path d="M3 9.8V14.2H6.2L13.4 18.2V5.8L6.2 9.8H3Z"/>
+        <path d="M16.4 9C17.4 10.1 17.4 13.9 16.4 15"/>
+        <path d="M9.6 14.2V17.6C9.6 18.5 8.9 19.2 8 19.2C7.1 19.2 6.4 18.5 6.4 17.6V14.2"/>
+      </symbol>
+      <symbol id="icon-quill" viewBox="0 0 24 24">
+        <path d="M19.5 4.5C13 5.6 7.3 10.3 5 19.5"/>
+        <path d="M19.5 4.5C19.9 8.2 18 11 15 12.6C13 13.7 11.4 13.4 10.2 13.9"/>
+        <path d="M5 19.5L8.4 18.2"/>
+      </symbol>
+      <symbol id="icon-sparkle" viewBox="0 0 24 24">
+        <path d="M11.5 4L13 9.2L18 11L13 12.8L11.5 18L10 12.8L5 11L10 9.2L11.5 4Z"/>
+        <path d="M18.2 3.6L18.7 5.1L20.2 5.6L18.7 6.1L18.2 7.6L17.7 6.1L16.2 5.6L17.7 5.1L18.2 3.6Z"/>
+      </symbol>
+      <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+        <path d="M15 5L8 12L15 19"/>
+      </symbol>
+      <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+        <path d="M9 5L16 12L9 19"/>
+      </symbol>
+      <symbol id="icon-info" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8.4"/>
+        <path d="M12 11V16"/>
+        <circle cx="12" cy="8.1" r="0.15" fill="currentColor" stroke="currentColor" stroke-width="1.4"/>
+      </symbol>
+      <symbol id="icon-download" viewBox="0 0 24 24">
+        <path d="M12 3.5V14.5"/>
+        <path d="M7.5 11L12 15.5L16.5 11"/>
+        <path d="M5 18.5H19"/>
+      </symbol>
+      <symbol id="icon-tag" viewBox="0 0 24 24">
+        <path d="M11.4 3.6H6.4C5.3 3.6 4.4 4.5 4.4 5.6V10.6C4.4 11.15 4.62 11.68 5 12.06L12.94 20C13.71 20.77 14.96 20.77 15.73 20L20 15.73C20.77 14.96 20.77 13.71 20 12.94L12.06 5C11.68 4.62 11.15 4.4 10.6 4.4"/>
+        <circle cx="8.4" cy="8.1" r="1.1" fill="currentColor" stroke="none"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
