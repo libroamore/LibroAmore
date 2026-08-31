@@ -220,7 +220,7 @@
         <div class="illustrations-grid" id="nsfwGrid"></div>
       </section>
 
-      <!-- ============ ILUSTRACIONES SFW ============ -->
+            <!-- ============ ILUSTRACIONES SFW ============ -->
       <section class="screen" data-screen="sfw" id="screen-sfw" hidden>
         <button class="back-btn" onclick="goBack()">← Volver</button>
         <h2 style="font-family: var(--font-display); font-size: 18px; margin: 8px 0 16px;">🖼️ Ilustraciones SFW</h2>
@@ -233,6 +233,17 @@
         <div id="illustrationDetail" style="margin-top:12px;"></div>
       </section>
 
+      <!-- ============ AUTORES (SERIES) ============ -->
+      <section class="screen" data-screen="autores" id="screen-autores" hidden>
+        <div class="series-grid" id="seriesGrid"></div>
+      </section>
+
+      <!-- ============ DETALLE DE SERIE ============ -->
+      <section class="screen" data-screen="serie-detail" id="screen-serie-detail" hidden>
+        <button class="back-btn" onclick="goBack()">← Volver</button>
+        <div id="serieDetail"></div>
+      </section>
+
       <!-- ============ LIBROS DISPONIBLES ============ -->
       <section class="screen" data-screen="libros" id="screen-libros" hidden>
         <div class="books-grid" id="booksGrid"></div>
@@ -242,13 +253,13 @@
       <section class="screen" data-screen="libro-detail" id="screen-libro-detail" hidden>
         <div id="bookDetail"></div>
       </section>
-
-            <!-- ============ NOSOTRAS (MI) ============ -->
+      
+            <!-- ============ NOSOTRAS (Nosotras) ============ -->
       <section class="screen" data-screen="nosotras" id="screen-nosotras" hidden>
         <button class="back-btn" onclick="goBack()">← Volver</button>
         <div class="about-card">
           <div class="about-header">
-            <h1>ACADEMY</h1>
+            <h1>LibroAmore</h1>
             <p class="about-subtitle">📚 BIBLIOTECA DE TRADUCCIONES</p>
           </div>
           <div class="about-body">
@@ -260,7 +271,7 @@
             <div class="about-links">
               <div class="about-link-item">
                 <span class="about-link-icon">📢</span>
-                <span><strong>Telegram-canal</strong> <span style="color: var(--muted);">@knizhnyeshlyuhi</span> • noticias y debates</span>
+                <span><strong>Telegram-canal</strong> <span style="color: var(--muted);">@Libroamore</span> • LIBROS Y TRADUCCIONES</span>
               </div>
               <div class="about-link-item">
                 <span class="about-link-icon">🔞</span>
@@ -281,7 +292,7 @@
       </button>
       <button class="nav-btn" data-screen="nosotras" onclick="navigateTo('nosotras')">
         <span class="nav-icon">👥</span>
-        <span class="nav-label">Mi</span>
+        <span class="nav-label">Nosotras</span>
       </button>
     </nav>
 
