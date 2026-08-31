@@ -2,45 +2,6 @@
    LibroAmore — navegación interna y datos de ejemplo
    =========================================================== */
 
-// ============================================
-//  VERIFICACIÓN DE ENTORNO (Telegram vs Web)
-// ============================================
-
-function checkTelegramEnvironment() {
-    const tg = window.Telegram?.WebApp;
-    // Verifica que exista el objeto de Telegram y que tenga datos de usuario
-    const isTelegram = !!(tg && tg.initDataUnsafe && tg.initDataUnsafe.user);
-    
-    // Si NO está en Telegram:
-    if (!isTelegram) {
-        // 1. Ocultar la app
-        const appShell = document.getElementById('appShell');
-        if (appShell) appShell.style.display = 'none';
-        
-        // 2. Mostrar el mensaje de bloqueo
-        const blockedMsg = document.getElementById('blocked-message');
-        if (blockedMsg) {
-            blockedMsg.style.display = 'flex';
-        }
-        
-        // 3. Cambiar título de la página
-        document.title = 'Solo en Telegram';
-        
-        // 4. Detener la ejecución del resto del script
-        return false;
-    }
-    
-    // Si está en Telegram: mostrar la app
-    const appShell = document.getElementById('appShell');
-    if (appShell) appShell.style.display = 'block';
-    
-    return true;
-}
-
-// ============================================
-//  DATOS DE EJEMPLO
-// ============================================
-
 const tg = window.Telegram?.WebApp;
 
 /* ---------- Datos de ejemplo ---------- */
@@ -142,7 +103,6 @@ const SCREEN_TITLES = {
 /* ---------- Navegación ---------- */
 const navStack = ["home"];
 
-// FUNCIONES GLOBALES (accesibles desde HTML)
 window.openScreen = function(name) {
   if (navStack[navStack.length - 1] !== name) navStack.push(name);
   showScreen(name);
@@ -171,24 +131,49 @@ function showScreen(name) {
 function renderTopbar(name) {
   const topbar = document.getElementById("topbar");
   if (name === "home") {
-    topbar.innerHTML = `
-      <span class="topbar-brand">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
-        <span>LibroAmore</span>
-      </span>
-    `;
+    // Mantener el topbar con el botón de tema
+    // No sobrescribir el contenido que ya tiene el botón
   } else {
-    const title = SCREEN_TITLES[name] || name;
-    topbar.innerHTML = `
-      <div class="topbar-nav">
-        <button class="back-btn" onclick="goBack()" aria-label="Volver">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
-          <span>Volver</span>
-        </button>
-        <span class="topbar-title">${escapeHtml(title)}</span>
-      </div>
-    `;
+    // Para otras pantallas, añadir la navegación
+    const existingContent = topbar.querySelector('.topbar-content');
+    if (existingContent) {
+      // Preservar el botón de tema y añadir la navegación
+      const themeBtn = existingContent.querySelector('.theme-toggle');
+      topbar.innerHTML = `
+        <div class="topbar-content">
+          <div class="topbar-nav">
+            <button class="back-btn" onclick="goBack()" aria-label="Volver">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
+              <span>Volver</span>
+            </button>
+            <span class="topbar-title">${escapeHtml(SCREEN_TITLES[name] || name)}</span>
+          </div>
+          ${themeBtn ? themeBtn.outerHTML : ''}
+        </div>
+      `;
+      // Reasignar el evento del botón de tema
+      const newThemeBtn = topbar.querySelector('#themeToggle');
+      if (newThemeBtn) {
+        newThemeBtn.addEventListener('click', toggleTheme);
+      }
+    }
   }
+}
+
+/* ---------- Modo oscuro ---------- */
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
 }
 
 /* ---------- Telegram ---------- */
@@ -334,42 +319,15 @@ window.downloadFormat = function(format) {
 
 /* ---------- Inicio ---------- */
 document.addEventListener('DOMContentLoaded', function() {
-  // PRIMERO: verificar el entorno
-  if (!checkTelegramEnvironment()) return;
+  // Cargar tema primero
+  loadTheme();
   
-  // Si está en Telegram, iniciar la app
-  renderTopbar("home");
+  // Configurar el botón de cambio de tema
+  const toggleBtn = document.getElementById('themeToggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', toggleTheme);
+  }
+  
+  // Iniciar la app
   renderBooksGrid();
-});
-/* ===========================================================
-   Modo oscuro / claro
-   =========================================================== */
-
-function toggleTheme() {
-    const html = document.documentElement;
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-}
-
-function loadTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // Si hay preferencia guardada, usarla. Si no, usar la preferencia del sistema.
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
-}
-
-// Cargar tema al iniciar
-document.addEventListener('DOMContentLoaded', function() {
-    loadTheme();
-    
-    // Configurar el botón de cambio de tema
-    const toggleBtn = document.getElementById('themeToggle');
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', toggleTheme);
-    }
 });
