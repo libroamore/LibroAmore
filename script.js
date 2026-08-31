@@ -901,9 +901,9 @@ const ILUSTRACIONES = {
 const SERIES = [
   {
     id: "wittmore",
-    title: "Уиттмор и хоккей",
-    subtitle: "ХОККЕЙНАЯ РОМАНТИКА • 4 книги + бонус",
-    image: "https://drive.google.com/uc?export=view&id=TU_ID_1",
+    title: "G.M. Fairy",
+    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
+    image: "https://drive.google.com/uc?export=view&id=1Oo04Ko5nXOzp8F9KRrpvnxG1CVrJ6o-C",
     description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
     books: [
       { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
