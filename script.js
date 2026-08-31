@@ -945,6 +945,31 @@ const SERIES = [
 //  RENDERIZAR SERIES
 // ============================================
 
+// ============================================
+//  CATEGORÍAS (para el detalle de serie)
+// ============================================
+
+const CATEGORIES = [
+  {
+    id: "serie-ghostlight",
+    label: "👻 Serie Ghostlight",
+    type: "series",
+    seriesId: "wittmore"
+  },
+  {
+    id: "serie-dark-empire",
+    label: "⚔️ Serie Dark Empire",
+    type: "series",
+    seriesId: "wolf-king"
+  },
+  {
+    id: "libros-unicos",
+    label: "📖 Libros únicos",
+    type: "books",
+    bookIds: ["Banging My Birthday Bear", "Pounded By Poseidon", "Say My Name", "MONSTROUS", "Fervor", "mapa-constelado", "Hopeless Necromantic", "Handle Me", "Spackled", "My Date With A Rubber Duckie", "Step Brother Bear", "Shower Head", "Fully Charged", "Bad BeehAvior", "Gimme A Pizza Dat Azz", "Rake", "Formaldehyde", "Laid by the Lint Monster", "Goldie and the Bear Affair", "Scream For Me", "Dead... Serious About You", "Fear, and Other Love Languages", "Hopper", "Eat Your Heart Out", "SPF ME", "SINFUL", "Slay Bells", "Hallowpeen", "Taking Daddys Load", "susurros-en-la-oscuridad"]
+  }
+];
+
 function renderSeriesGrid() {
   const grid = document.getElementById('seriesGrid');
   if (!grid) return;
@@ -960,37 +985,84 @@ function renderSeriesGrid() {
   `).join('');
 }
 
-window.openSerieDetail = function(serieId) {
-  const serie = SERIES.find(s => s.id === serieId);
-  if (!serie) return;
+// ============================================
+//  RENDERIZAR CATEGORÍAS (en detalle de serie)
+// ============================================
 
-  const container = document.getElementById('serieDetail');
+function renderCategoryMenuDetail() {
+  const menu = document.getElementById('categoryMenuDetail');
+  if (!menu) return;
+
+  menu.innerHTML = CATEGORIES.map(cat => `
+    <button class="category-btn" data-category="${cat.id}" onclick="selectCategoryDetail('${cat.id}')">
+      ${cat.label}
+    </button>
+  `).join('');
+
+  if (CATEGORIES.length > 0) {
+    selectCategoryDetail(CATEGORIES[0].id);
+  }
+}
+
+function selectCategoryDetail(categoryId) {
+  document.querySelectorAll('#categoryMenuDetail .category-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.category === categoryId);
+  });
+
+  const category = CATEGORIES.find(c => c.id === categoryId);
+  if (!category) return;
+
+  const container = document.getElementById('categoryContentDetail');
   if (!container) return;
 
-  container.innerHTML = `
-    <div class="serie-detail-card">
-      <div class="serie-detail-header">
-        <h2>${escapeHtml(serie.title)}</h2>
-        <p>${escapeHtml(serie.subtitle)}</p>
-      </div>
-      <div class="serie-detail-body">
-        <p class="desc">${escapeHtml(serie.description)}</p>
-        <div class="order-list">
-          ${serie.books.map(book => `
-            <div class="order-item" onclick="openBookDetail('${book.id}')" style="cursor:pointer;">
-              <span class="num">${book.number}</span>
-              <div class="info">
-                <div class="title">${escapeHtml(book.title)}</div>
-                <div class="sub">${escapeHtml(book.subtitle)}</div>
+  if (category.type === 'series') {
+    const serie = SERIES.find(s => s.id === category.seriesId);
+    if (!serie) return;
+
+    container.innerHTML = `
+      <div class="serie-detail-card">
+        <div class="serie-detail-header">
+          <h2>${escapeHtml(serie.title)}</h2>
+          <p>${escapeHtml(serie.subtitle)}</p>
+        </div>
+        <div class="serie-detail-body">
+          <p class="desc">${escapeHtml(serie.description)}</p>
+          <div class="order-list">
+            ${serie.books.map(book => `
+              <div class="order-item" onclick="openBookDetail('${book.id}')" style="cursor:pointer;">
+                <span class="num">${book.number}</span>
+                <div class="info">
+                  <div class="title">${escapeHtml(book.title)}</div>
+                  <div class="sub">${escapeHtml(book.subtitle)}</div>
+                </div>
+                <span class="status">${escapeHtml(book.status)}</span>
               </div>
-              <span class="status">${escapeHtml(book.status)}</span>
-            </div>
-          `).join('')}
+            `).join('')}
+          </div>
         </div>
       </div>
-    </div>
-  `;
+    `;
+  } else if (category.type === 'books') {
+    const booksList = category.bookIds
+      .map(id => BOOKS.find(b => b.id === id))
+      .filter(b => b !== undefined);
 
+    container.innerHTML = `
+      <div class="books-grid">
+        ${booksList.map(book => `
+          <button class="book-card" onclick="openBookDetail('${book.id}')">
+            <div class="book-cover">${coverMarkup(book, false)}</div>
+            <h3 class="book-title">${escapeHtml(book.title)}</h3>
+            <p class="book-author">${escapeHtml(book.author)}</p>
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
+}
+
+window.openSerieDetail = function(serieId) {
+  renderCategoryMenuDetail();
   openScreen('serie-detail');
 };
 
