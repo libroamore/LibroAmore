@@ -46,17 +46,17 @@ const tg = window.Telegram?.WebApp;
 /* ---------- Datos de ejemplo ---------- */
 const BOOKS = [
   {
-    id: "susurro-camelias",
-    title: "El susurro de las camelias",
-    author: "Noelia Ferrand",
-    series: "Jardines de cristal",
+    id: "Banging My Birthday Bear",
+    title: "Banging My Birthday Bear",
+    author: "Holly Wilde",
+    series: "Sentient Celebrations",
     part: 1,
-    classification: "+16",
+    classification: "+18",
     status: "Disponible",
     statusClass: "available",
-    tags: ["Romance", "Fantasía", "Slow burn"],
-    synopsis: "Entre invernaderos abandonados y cartas nunca enviadas, Ada descubre que el jardín de su abuela guarda un secreto que podría reunirla con el amor que creyó perdido para siempre.",
-    coverUrl: null,
+    tags: ["Romance", "Fantasía", "Objeto Consciente"],
+    synopsis: "Pasar su trigésimo cumpleaños con amigas escondidas en las montañas es exactamente lo que quiere. Pero tener una aventura cruda y apasionada con un osito de peluche de tamaño real es exactamente lo que necesita. ¡Es el Dirty Thirty de Mia y está lista para divertirse! Cuando sus amigas la sorprenden con un osito de peluche gigante, con una anatomía realista, su día especial se convierte en algo de ensueño. Y me refiero a rellena, que es exactamente como pasa la noche con su sorpresa de cumpleaños, llena hasta el borde y lista para explotar. ¿Estás lista para enamorarte de Bear?",
+    coverUrl: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
     hue: 340
   },
   {
