@@ -181,14 +181,32 @@ window.goHome = function() {
 
 function renderTopbar(name) {
   const topbar = document.getElementById("topbar");
-  const themeBtn = `<button id="themeToggle" onclick="toggleTheme()" style="background:none;border:none;font-size:22px;cursor:pointer;padding:4px 10px;border-radius:50%;z-index:30;margin-right:4px;">🌙</button>`;
+  
+  // Botón de tema (estilos en línea para máxima compatibilidad)
+  const themeBtn = `
+    <button id="themeToggle" onclick="toggleTheme()" style="
+      background: rgba(192, 57, 122, 0.12);
+      border: 1px solid var(--pink-strong);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-left: 8px;
+      color: var(--pink-strong);
+    ">🌙</button>
+  `;
   
   if (name === "home") {
     topbar.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 4px;">
         <span class="topbar-brand">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-book"></use></svg>
-          <span>LibroAmore</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" style="width:24px;height:24px;"><use href="#icon-book"></use></svg>
+          <span style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--ink);">LibroAmore</span>
         </span>
         ${themeBtn}
       </div>
@@ -196,17 +214,24 @@ function renderTopbar(name) {
   } else {
     const title = SCREEN_TITLES[name] || name;
     topbar.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
-        <div class="topbar-nav">
-          <button class="back-btn" onclick="goBack()" aria-label="Volver">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
+      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 4px;">
+        <div style="display:flex;align-items:center;gap:8px;overflow:hidden;flex:1;">
+          <button class="back-btn" onclick="goBack()" style="display:flex;align-items:center;gap:4px;background:none;border:none;color:var(--pink-ink);font-weight:600;font-size:15px;padding:8px 4px;cursor:pointer;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;"><use href="#icon-chevron-left"></use></svg>
             <span>Volver</span>
           </button>
-          <span class="topbar-title">${escapeHtml(title)}</span>
+          <span style="font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(title)}</span>
         </div>
         ${themeBtn}
       </div>
     `;
+  }
+  
+  // Actualizar el icono del botón según el tema guardado
+  const btn = document.getElementById('themeToggle');
+  if (btn) {
+    const savedTheme = localStorage.getItem('theme');
+    btn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
   }
 }
 
