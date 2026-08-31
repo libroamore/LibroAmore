@@ -903,7 +903,7 @@ const SERIES = [
     id: "wittmore",
     title: "G.M. Fairy",
     subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://drive.google.com/uc?export=view&id=1Oo04Ko5nXOzp8F9KRrpvnxG1CVrJ6o-C",
+    image: "https://i.postimg.cc/Kc0hLxfP/bunny-NSFW-Watermark.png",
     description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
     books: [
       { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
