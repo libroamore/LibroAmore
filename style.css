@@ -798,3 +798,80 @@ body::after {
   color: var(--ink);
   line-height: 1.5;
 }
+
+/* ---------- Galería de ilustraciones ---------- */
+.illustrations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.illustration-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.illustration-card:active {
+  transform: scale(0.97);
+}
+
+.illustration-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.illustration-name {
+  padding: 10px 12px 12px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* ---------- Detalle de ilustración ---------- */
+.detail-illustration {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.detail-illustration img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  display: block;
+  background: #f5f0f2;
+}
+
+.detail-info {
+  padding: 20px;
+}
+
+.detail-info h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.detail-info .detail-book {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.detail-info .detail-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
