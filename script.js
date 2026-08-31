@@ -314,6 +314,11 @@ function bookDetailMarkup(book) {
     `;
   }).join("");
 
+  // Obtener datos guardados (si existen)
+  const saved = getReactions(book.id);
+  const heartActive = saved.heart ? 'active-heart' : '';
+  const starCount = saved.stars || 0;
+
   return `
     <div class="detail-cover">${coverMarkup(book, true)}</div>
     <h1 class="detail-title">${escapeHtml(book.title)}</h1>
@@ -335,6 +340,19 @@ function bookDetailMarkup(book) {
         <span class="meta-value">${escapeHtml(book.classification)}</span>
       </div>
     </div>
+
+    <!-- REACCIONES -->
+    <div class="reactions">
+      <button class="reaction-btn ${heartActive}" onclick="toggleHeart('${book.id}')">
+        <span class="icon">❤️</span>
+        <span class="count" id="heart-count-${book.id}">${saved.heart ? '1' : '0'}</span>
+      </button>
+      <button class="reaction-btn ${starCount > 0 ? 'active-star' : ''}" onclick="openStarSelector('${book.id}')">
+        <span class="icon">⭐</span>
+        <span class="count" id="star-count-${book.id}">${starCount > 0 ? starCount : '0'}</span>
+      </button>
+    </div>
+
     <div class="tag-row">
       ${book.tags.map((tag) => `
         <span class="tag">
@@ -352,10 +370,6 @@ function bookDetailMarkup(book) {
       : ""}
   `;
 }
-
-window.downloadFormat = function(format) {
-  showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
-};
 
 /* ---------- Orden de lectura (sección Autores) ---------- */
 function renderReadingOrder() {
