@@ -8,21 +8,29 @@
 
 function checkTelegramEnvironment() {
     const tg = window.Telegram?.WebApp;
+    // Verifica que exista el objeto de Telegram y que tenga datos de usuario
     const isTelegram = !!(tg && tg.initDataUnsafe && tg.initDataUnsafe.user);
     
+    // Si NO está en Telegram:
     if (!isTelegram) {
+        // 1. Ocultar la app
         const appShell = document.getElementById('appShell');
         if (appShell) appShell.style.display = 'none';
         
+        // 2. Mostrar el mensaje de bloqueo
         const blockedMsg = document.getElementById('blocked-message');
         if (blockedMsg) {
             blockedMsg.style.display = 'flex';
         }
         
+        // 3. Cambiar título de la página
         document.title = 'Solo en Telegram';
+        
+        // 4. Detener la ejecución del resto del script
         return false;
     }
     
+    // Si está en Telegram: mostrar la app
     const appShell = document.getElementById('appShell');
     if (appShell) appShell.style.display = 'block';
     
@@ -30,11 +38,12 @@ function checkTelegramEnvironment() {
 }
 
 // ============================================
-//  RESTO DE TU CÓDIGO (BOOKS, NAVEGACIÓN, ETC.)
+//  DATOS DE EJEMPLO
 // ============================================
 
 const tg = window.Telegram?.WebApp;
 
+/* ---------- Datos de ejemplo ---------- */
 const BOOKS = [
   {
     id: "susurro-camelias",
@@ -130,8 +139,10 @@ const SCREEN_TITLES = {
   "libro-detail": "Detalle del libro"
 };
 
+/* ---------- Navegación ---------- */
 const navStack = ["home"];
 
+// FUNCIONES GLOBALES (accesibles desde HTML)
 window.openScreen = function(name) {
   if (navStack[navStack.length - 1] !== name) navStack.push(name);
   showScreen(name);
@@ -180,6 +191,7 @@ function renderTopbar(name) {
   }
 }
 
+/* ---------- Telegram ---------- */
 if (tg) {
   tg.ready();
   tg.expand();
@@ -196,6 +208,7 @@ function updateTelegramBackButton(name) {
   } catch (e) {}
 }
 
+/* ---------- Utilidades ---------- */
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;",
@@ -215,6 +228,7 @@ window.showToast = function(message) {
   toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
 };
 
+/* ---------- Portadas ---------- */
 function coverMarkup(book, big) {
   if (book.coverUrl) {
     return `<img src="${escapeHtml(book.coverUrl)}" alt="Portada de ${escapeHtml(book.title)}" loading="lazy"
@@ -239,6 +253,7 @@ window.bookCoverFallback = function(imgEl, bookId, big) {
   imgEl.parentElement.innerHTML = placeholderCoverMarkup(book, big);
 };
 
+/* ---------- Libros ---------- */
 function renderBooksGrid() {
   const grid = document.getElementById("booksGrid");
   if (!grid) return;
@@ -317,8 +332,12 @@ window.downloadFormat = function(format) {
   showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
 };
 
+/* ---------- Inicio ---------- */
 document.addEventListener('DOMContentLoaded', function() {
+  // PRIMERO: verificar el entorno
   if (!checkTelegramEnvironment()) return;
+  
+  // Si está en Telegram, iniciar la app
   renderTopbar("home");
   renderBooksGrid();
 });
