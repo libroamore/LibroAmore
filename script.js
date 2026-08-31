@@ -153,6 +153,8 @@ const SCREEN_TITLES = {
   "libro-detail": "Detalle del libro",
   proximos: "Próximos proyectos",
   actualizaciones: "Actualizaciones"
+   nsfw: "🔞 NSFW",
+  sfw: "🖼️ SFW"
 };
 
 /* ---------- Navegación ---------- */
@@ -445,4 +447,58 @@ document.addEventListener('DOMContentLoaded', function() {
   renderReadingOrder();
   renderUpcomingBooks();
   renderUpdates();
+  mostrarIlustraciones('nsfw', 'nsfwGrid');  // <-- AGREGADO
+  mostrarIlustraciones('sfw', 'sfwGrid');    // <-- AGREGADO
+});
+
+// ============================================
+//  ILUSTRACIONES (fácil de editar)
+// ============================================
+
+const ILUSTRACIONES = {
+  nsfw: [
+    {
+      titulo: "Banging My Birthday Bear",
+      autor: "Holly Wilde",
+      imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
+      descripcion: "Ilustración NSFW de Banging My Birthday Bear."
+    },
+    {
+      titulo: "Pounded By Poseidon",
+      autor: "Thea Masen - Holly Wilde",
+      imagen: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
+      descripcion: "Ilustración NSFW de Pounded By Poseidon."
+    }
+  ],
+  sfw: [
+    {
+      titulo: "El susurro del océano",
+      autor: "Marina Sol",
+      imagen: "https://ejemplo.com/imagen-sfw-1.jpg",
+      descripcion: "Ilustración SFW de El susurro del océano."
+    }
+  ]
+};
+
+function mostrarIlustraciones(categoria, contenedorId) {
+  const contenedor = document.getElementById(contenedorId);
+  if (!contenedor) return;
+  
+  const items = ILUSTRACIONES[categoria] || [];
+  contenedor.innerHTML = items.map(item => `
+    <div class="book-card" onclick="showToast('${item.titulo} - ${item.autor}')">
+      <div class="book-cover">
+        <img src="${item.imagen}" alt="${item.titulo}" loading="lazy" 
+             onerror="this.parentElement.innerHTML='<div class=cover-placeholder style=--hue:200><svg class=cover-icon viewBox=0 0 24 24><use href=#icon-book></use></svg><span class=cover-letter>${item.titulo.charAt(0)}</span></div>'">
+      </div>
+      <h3 class="book-title">${item.titulo}</h3>
+      <p class="book-author">${item.autor}</p>
+      <span class="status-badge status-soon">Ver</span>
+    </div>
+  `).join('');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  // ... (tu código existente) ...
+  mostrarIlustraciones('nsfw', 'nsfwGrid');
+  mostrarIlustraciones('sfw', 'sfwGrid');
 });
