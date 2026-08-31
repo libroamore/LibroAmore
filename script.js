@@ -152,8 +152,8 @@ const SCREEN_TITLES = {
   extras: "Contenido extra",
   "libro-detail": "Detalle del libro",
   proximos: "Próximos proyectos",
-  actualizaciones: "Actualizaciones"
-   nsfw: "🔞 NSFW",
+  actualizaciones: "Actualizaciones",
+  nsfw: "🔞 NSFW",
   sfw: "🖼️ SFW"
 };
 
@@ -438,19 +438,6 @@ function renderUpdates() {
   `).join('');
 }
 
-/* ---------- Inicio ---------- */
-document.addEventListener('DOMContentLoaded', function() {
-  if (!checkTelegramEnvironment()) return;
-  
-  renderTopbar("home");
-  renderBooksGrid();
-  renderReadingOrder();
-  renderUpcomingBooks();
-  renderUpdates();
-  mostrarIlustraciones('nsfw', 'nsfwGrid');  // <-- AGREGADO
-  mostrarIlustraciones('sfw', 'sfwGrid');    // <-- AGREGADO
-});
-
 // ============================================
 //  ILUSTRACIONES (fácil de editar)
 // ============================================
@@ -497,8 +484,16 @@ function mostrarIlustraciones(categoria, contenedorId) {
     </div>
   `).join('');
 }
+
+/* ---------- Inicio ---------- */
 document.addEventListener('DOMContentLoaded', function() {
-  // ... (tu código existente) ...
+  if (!checkTelegramEnvironment()) return;
+  
+  renderTopbar("home");
+  renderBooksGrid();
+  renderReadingOrder();
+  renderUpcomingBooks();
+  renderUpdates();
   mostrarIlustraciones('nsfw', 'nsfwGrid');
   mostrarIlustraciones('sfw', 'sfwGrid');
 });
