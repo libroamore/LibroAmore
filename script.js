@@ -153,6 +153,9 @@ const SCREEN_TITLES = {
   "libro-detail": "Detalle del libro",
   proximos: "Próximos proyectos",
   actualizaciones: "Actualizaciones",
+  nsfw: "🔞 NSFW",
+  sfw: "🖼️ SFW",
+  "illustration-detail": "Detalle",
   nosotras: "Nosotras"
 };
 
@@ -182,9 +185,8 @@ function showScreen(name) {
   window.scrollTo({ top: 0, behavior: "auto" });
   renderTopbar(name);
   updateTelegramBackButton(name);
-}
-
-// ACTUALIZAR BARRA INFERIOR (NUEVO)
+  
+  // Actualizar barra inferior
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.screen === name);
   });
@@ -443,21 +445,8 @@ function renderUpdates() {
   `).join('');
 }
 
-/* ---------- Inicio ---------- */
-document.addEventListener('DOMContentLoaded', function() {
-  if (!checkTelegramEnvironment()) return;
-  
-  renderTopbar("home");
-  renderBooksGrid();
-  renderReadingOrder();
-  renderUpcomingBooks();
-  renderUpdates();
-  mostrarIlustraciones('nsfw', 'nsfwGrid');
-  mostrarIlustraciones('sfw', 'sfwGrid');
-});
-
 // ============================================
-//  ILUSTRACIONES (fácil de editar)
+//  ILUSTRACIONES
 // ============================================
 
 const ILUSTRACIONES = {
@@ -466,7 +455,7 @@ const ILUSTRACIONES = {
       id: "nsfw-1",
       nombre: "Wattson x Jewel",
       libro: "Fully Charged",
-      imagen: "https://drive.google.com/uc?export=view&id=14Up87-jtkH-BB7jk5SBRo52eHGpgwkoG",
+      imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
       descripcion: "Jewel y su Conejito."
     },
     {
@@ -529,8 +518,23 @@ window.abrirDetalleIlustracion = function(categoria, id) {
 window.navigateTo = function(screenName) {
   openScreen(screenName);
   
-  // Actualizar la barra inferior: resaltar el botón activo
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.screen === screenName);
   });
 };
+
+// ============================================
+//  INICIO
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (!checkTelegramEnvironment()) return;
+  
+  renderTopbar("home");
+  renderBooksGrid();
+  renderReadingOrder();
+  renderUpcomingBooks();
+  renderUpdates();
+  mostrarIlustraciones('nsfw', 'nsfwGrid');
+  mostrarIlustraciones('sfw', 'sfwGrid');
+});
