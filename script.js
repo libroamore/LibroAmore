@@ -457,10 +457,9 @@ const ILUSTRACIONES = {
   nsfw: [
     {
       id: "nsfw-1",
-      nombre: "Caleb x Sara",
-      libro: "Nimbus",
-      imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
-      descripcion: "Escena íntima entre Caleb y Sara en el jardín de Nimbus."
+      nombre: "Wattson x Jewel",
+      libro: "Fully Charged",
+      imagen: "https://imgur.com/a/hk0Gwp9",
     },
     {
       id: "nsfw-2",
