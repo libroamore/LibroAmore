@@ -77,9 +77,21 @@
   <!-- ============================================ -->
   <div class="app-shell" id="appShell">
 
-    <header class="topbar" id="topbar">
-      <!-- populated by script.js -->
-    </header>
+    <header class="topbar" id="topbar" style="display: flex; justify-content: space-between; align-items: center;">
+  <!-- El contenido se genera con JavaScript -->
+  <button id="themeToggle" onclick="toggleTheme()" style="
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 50%;
+    transition: background 0.3s;
+    position: relative;
+    z-index: 30;
+    margin-right: 4px;
+  ">🌙</button>
+</header>
 
     <main class="app">
 
