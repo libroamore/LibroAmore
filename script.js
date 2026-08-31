@@ -654,3 +654,128 @@ document.addEventListener('DOMContentLoaded', function() {
   mostrarIlustraciones('sfw', 'sfwGrid');
   renderSeriesGrid();
 });
+
+// ============================================
+//  REACCIONES (Heart y Stars)
+// ============================================
+
+// Obtener reacciones guardadas de localStorage
+function getReactions(bookId) {
+  try {
+    const data = JSON.parse(localStorage.getItem('reacciones') || '{}');
+    return data[bookId] || { heart: false, stars: 0 };
+  } catch {
+    return { heart: false, stars: 0 };
+  }
+}
+
+// Guardar reacciones en localStorage
+function saveReaction(bookId, type, value) {
+  const data = JSON.parse(localStorage.getItem('reacciones') || '{}');
+  if (!data[bookId]) data[bookId] = { heart: false, stars: 0 };
+  
+  if (type === 'heart') {
+    data[bookId].heart = value;
+  } else if (type === 'stars') {
+    data[bookId].stars = value;
+  }
+  
+  localStorage.setItem('reacciones', JSON.stringify(data));
+  updateReactionUI(bookId);
+}
+
+// Actualizar la interfaz después de un voto
+function updateReactionUI(bookId) {
+  const saved = getReactions(bookId);
+  
+  // Actualizar corazón
+  const heartCount = document.getElementById(`heart-count-${bookId}`);
+  if (heartCount) {
+    heartCount.textContent = saved.heart ? '1' : '0';
+    const heartBtn = heartCount.closest('.reaction-btn');
+    if (heartBtn) {
+      heartBtn.classList.toggle('active-heart', saved.heart);
+    }
+  }
+  
+  // Actualizar estrellas
+  const starCount = document.getElementById(`star-count-${bookId}`);
+  if (starCount) {
+    const count = saved.stars || 0;
+    starCount.textContent = count > 0 ? count : '0';
+    const starBtn = starCount.closest('.reaction-btn');
+    if (starBtn) {
+      starBtn.classList.toggle('active-star', count > 0);
+    }
+  }
+}
+
+// Toggle corazón
+window.toggleHeart = function(bookId) {
+  const saved = getReactions(bookId);
+  const newValue = !saved.heart;
+  saveReaction(bookId, 'heart', newValue);
+  showToast(newValue ? '❤️ Añadido a favoritos' : '💔 Eliminado de favoritos');
+};
+
+// Abrir selector de estrellas
+window.openStarSelector = function(bookId) {
+  const saved = getReactions(bookId);
+  const currentStars = saved.stars || 0;
+  
+  // Crear el overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'star-selector-overlay show';
+  overlay.id = 'starSelectorOverlay';
+  overlay.innerHTML = `
+    <div class="star-selector">
+      <h3>⭐ Califica este libro</h3>
+      <div class="stars">
+        ${[1, 2, 3, 4, 5].map(n => `
+          <button data-value="${n}" class="${n <= currentStars ? 'active' : ''}" onclick="selectStar('${bookId}', ${n})">
+            ${n <= currentStars ? '⭐' : '☆'}
+          </button>
+        `).join('')}
+      </div>
+      <button class="close-btn" onclick="closeStarSelector()">Cerrar</button>
+    </div>
+  `;
+  
+  // Cerrar al hacer clic fuera
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) closeStarSelector();
+  });
+  
+  document.body.appendChild(overlay);
+};
+
+// Seleccionar una estrella
+window.selectStar = function(bookId, value) {
+  saveReaction(bookId, 'stars', value);
+  
+  // Actualizar botones del selector
+  document.querySelectorAll('.star-selector .stars button').forEach(btn => {
+    const val = parseInt(btn.dataset.value);
+    btn.textContent = val <= value ? '⭐' : '☆';
+    btn.classList.toggle('active', val <= value);
+  });
+  
+  // Actualizar la interfaz principal
+  const countEl = document.getElementById(`star-count-${bookId}`);
+  if (countEl) {
+    countEl.textContent = value;
+    const starBtn = countEl.closest('.reaction-btn');
+    if (starBtn) {
+      starBtn.classList.toggle('active-star', true);
+    }
+  }
+  
+  showToast(`⭐ Calificación: ${value} estrella${value > 1 ? 's' : ''}`);
+  setTimeout(closeStarSelector, 800);
+};
+
+// Cerrar selector de estrellas
+window.closeStarSelector = function() {
+  const overlay = document.getElementById('starSelectorOverlay');
+  if (overlay) overlay.remove();
+};
