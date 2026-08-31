@@ -118,6 +118,18 @@ body::after {
   border-bottom: 1px solid rgba(184, 90, 118, 0.14);
 }
 
+[data-theme="dark"] .topbar {
+  background: rgba(26, 20, 22, 0.9);
+  border-bottom: 1px solid rgba(217, 140, 168, 0.14);
+}
+
+.topbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .topbar-brand {
   display: flex;
   align-items: center;
@@ -133,6 +145,41 @@ body::after {
   font-size: 20px;
   letter-spacing: 0.4px;
   color: var(--ink);
+}
+
+/* === BOTÓN DE TEMA === */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink);
+  padding: 6px 10px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: var(--pink-soft);
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.theme-icon-dark {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-light {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon-dark {
+  display: block;
 }
 
 .topbar-nav {
@@ -203,6 +250,10 @@ body::after {
   text-align: center;
   padding: 30px 20px 26px;
   margin-bottom: 22px;
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(165deg, #2d2226 0%, var(--pink-soft) 100%);
 }
 
 .hero-blob {
@@ -488,6 +539,11 @@ body::after {
   color: hsl(var(--hue), 40%, 38%);
 }
 
+[data-theme="dark"] .cover-placeholder {
+  background: linear-gradient(155deg, hsl(var(--hue), 50%, 25%), hsl(var(--hue), 45%, 18%));
+  color: hsl(var(--hue), 60%, 70%);
+}
+
 .cover-placeholder .cover-icon { width: 22px; height: 22px; opacity: 0.7; }
 
 .cover-placeholder .cover-letter {
@@ -712,45 +768,4 @@ body::after {
 
 @media (min-width: 640px) {
   .app { padding-top: 26px; }
-}
-/* === BOTÓN DE TEMA === */
-.topbar-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--ink);
-  padding: 6px 10px;
-  border-radius: 50%;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-toggle:hover {
-  background: var(--pink-soft);
-}
-
-.theme-toggle svg {
-  width: 22px;
-  height: 22px;
-}
-
-.theme-icon-dark {
-  display: none;
-}
-
-[data-theme="dark"] .theme-icon-light {
-  display: none;
-}
-
-[data-theme="dark"] .theme-icon-dark {
-  display: block;
 }
