@@ -1507,3 +1507,41 @@ body.dark-mode .status-review {
   background: var(--grey-soft);
   color: var(--grey-ink);
 }
+
+/* ---------- Categorías (menú en detalle de serie) ---------- */
+.category-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.category-btn {
+  background: var(--surface);
+  border: 1px solid rgba(184, 90, 118, 0.15);
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.category-btn:active {
+  transform: scale(0.96);
+}
+
+.category-btn.active {
+  background: var(--pink-strong);
+  color: white;
+  border-color: var(--pink-strong);
+  box-shadow: 0 4px 16px rgba(217, 116, 143, 0.3);
+}
+
+.category-btn:hover:not(.active) {
+  background: var(--pink-soft);
+  border-color: var(--pink-strong);
+}
