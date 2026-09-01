@@ -266,9 +266,20 @@
 </section>
 
       <!-- ============ LIBROS DISPONIBLES ============ -->
-      <section class="screen" data-screen="libros" id="screen-libros" hidden>
-        <div class="books-grid" id="booksGrid"></div>
-      </section>
+<section class="screen" data-screen="libros" id="screen-libros" hidden>
+  <!-- Controles de búsqueda y orden -->
+  <div class="search-controls">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar por título o autor..." oninput="filterBooks()">
+    </div>
+    <div class="sort-controls">
+      <button class="sort-btn active" id="sortAlphaAsc" onclick="sortBooks('alpha-asc')" title="Ordenar A-Z">A-Z</button>
+      <button class="sort-btn" id="sortAlphaDesc" onclick="sortBooks('alpha-desc')" title="Ordenar Z-A">Z-A</button>
+    </div>
+  </div>
+  <div class="books-grid" id="booksGrid"></div>
+</section>
 
       <!-- ============ DETALLE DE LIBRO ============ -->
       <section class="screen" data-screen="libro-detail" id="screen-libro-detail" hidden>
