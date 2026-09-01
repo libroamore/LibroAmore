@@ -245,25 +245,18 @@
         <div id="illustrationDetail" style="margin-top:12px;"></div>
       </section>
 
-      <!-- ============ AUTORES (CATEGORÍAS) ============ -->
+      <!-- ============ AUTORES ============ -->
 <section class="screen" data-screen="autores" id="screen-autores" hidden>
-  <!-- Barra de búsqueda para autores/series -->
+  <!-- Barra de búsqueda -->
   <div class="search-controls">
     <div class="search-bar">
       <span class="search-icon">🔍</span>
-      <input type="text" id="searchAutoresInput" placeholder="Buscar serie..." oninput="filterSeries()">
+      <input type="text" id="searchAutoresInput" placeholder="Buscar serie o autor..." oninput="filterSeriesGrid()">
     </div>
   </div>
   
-  <!-- Menú de categorías -->
-  <div class="category-menu" id="categoryMenu">
-    <!-- Generado con JavaScript -->
-  </div>
-  
-  <!-- Contenedor del contenido -->
-  <div id="categoryContent" style="margin-top:16px;">
-    <!-- Generado con JavaScript -->
-  </div>
+  <!-- Grid de series -->
+  <div class="series-grid" id="seriesGrid"></div>
 </section>
 
       <!-- ============ DETALLE DE SERIE ============ -->
