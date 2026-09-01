@@ -1174,11 +1174,18 @@ function renderAutoresIlustraciones() {
   if (!grid) return;
   
   const items = ILUSTRACIONES[categoriaIlustraciones] || [];
-  const autores = [...new Set(items.map(item => item.autor))];
+  
+  // Contar cuántas ilustraciones tiene cada autor
+  const autoresMap = {};
+  items.forEach(item => {
+    autoresMap[item.autor] = (autoresMap[item.autor] || 0) + 1;
+  });
+  
+  const autores = Object.keys(autoresMap);
   
   if (autores.length === 0) {
     grid.innerHTML = `
-      <div class="empty-state">
+      <div class="empty-state" style="grid-column: 1 / -1;">
         <span class="empty-state-icon">🖼️</span>
         <h3>No hay ilustraciones</h3>
         <p>No hay ilustraciones disponibles en esta categoría.</p>
@@ -1186,6 +1193,26 @@ function renderAutoresIlustraciones() {
     `;
     return;
   }
+
+  // Colores de fondo para los avatares (variados)
+  const colores = ['#eeb0c0', '#c9a3c2', '#f3d9ad', '#b8d4e3', '#d9ecda', '#f6e6c4', '#e6e1ea'];
+  
+  grid.innerHTML = autores.map((autor, index) => {
+    const inicial = autor.charAt(0).toUpperCase();
+    const colorFondo = colores[index % colores.length];
+    const count = autoresMap[autor];
+    
+    return `
+      <div class="autor-card" onclick="abrirGaleriaAutor('${autor}')">
+        <div class="autor-avatar" style="background:${colorFondo};">
+          ${inicial}
+        </div>
+        <div class="autor-name">${escapeHtml(autor)}</div>
+        <div class="autor-count">${count} ${count === 1 ? 'ilustración' : 'ilustraciones'}</div>
+      </div>
+    `;
+  }).join('');
+}
 
   grid.innerHTML = autores.map(autor => `
     <button class="autor-btn" onclick="abrirGaleriaAutor('${autor}')">${escapeHtml(autor)}</button>
