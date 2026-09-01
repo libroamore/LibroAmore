@@ -903,7 +903,7 @@ const SERIES = [
     id: "wittmore",
     title: "G.M. Fairy",
     subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/Kc0hLxfP/bunny-NSFW-Watermark.png",
+    image: "https://i.postimg.cc/25rZPQWB/1.png",
     description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
     books: [
       { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
@@ -917,7 +917,7 @@ const SERIES = [
     id: "wolf-king",
     title: "Король волков",
     subtitle: "РОМЭНТЕЗИ • 3 книги",
-    image: "https://drive.google.com/uc?export=view&id=TU_ID_2",
+    image: "https://i.postimg.cc/Y2ZmpKgp/2.png",
     description: "3 книги • 2 из 3 готовы",
     books: [
       { number: "01", title: "Книга 1", subtitle: "НАЧАЛО", status: "✅ перевод завершен", id: "Pounded By Poseidon" },
@@ -929,7 +929,7 @@ const SERIES = [
     id: "mortal-vows",
     title: "Смертельные клятвы",
     subtitle: "МАФИОЗНАЯ РОМАНТИКА • 5 книг",
-    image: "https://drive.google.com/uc?export=view&id=TU_ID_3",
+    image: "https://i.postimg.cc/BnGLKTMB/3.png",
     description: "5 книг • перевод завершен",
     books: [
       { number: "01", title: "Смертельные клятвы", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" },
