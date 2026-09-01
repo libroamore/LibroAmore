@@ -439,21 +439,7 @@ const BOOKS = [
     synopsis: "Una historia de suspense y romance donde los secretos del pasado amenazan con destruir el futuro.",
     coverUrl: "https://m.media-amazon.com/images/I/81wM1hKJ3bL._SY425_.jpg",
     hue: 180
-  },
-  {
-    id: "susurros-en-la-oscuridad",
-    title: "Susurros en la oscuridad",
-    author: "A. C. QUINTERO",
-    series: null,
-    part: null,
-    classification: "+18",
-    status: "Disponible",
-    statusClass: "available",
-    tags: ["Romance", "Fantasía", "Misterio"],
-    synopsis: "Una historia de suspense y romance donde los secretos del pasado amenazan con destruir el futuro.",
-    coverUrl: "https://m.media-amazon.com/images/I/81wM1hKJ3bL._SY425_.jpg",
-    hue: 180
-  },
+  }
 ];
 
 /* ---------- Libros próximos (para sección "Próximos proyectos") ---------- */
@@ -480,6 +466,14 @@ const UPCOMING_BOOKS = [
     hue: 150
   }
 ];
+
+// ============================================
+//  ESTADO DE BÚSQUEDA Y ORDEN
+// ============================================
+
+let currentSort = 'alpha-asc';
+let searchTerm = '';
+let searchTermAutores = '';
 
 const SCREEN_TITLES = {
   anuncios: "Anuncios",
@@ -678,18 +672,58 @@ window.bookCoverFallback = function(imgEl, bookId, big) {
   imgEl.parentElement.innerHTML = placeholderCoverMarkup(book, big);
 };
 
-/* ---------- Libros disponibles ---------- */
+// ============================================
+//  FILTRAR Y ORDENAR LIBROS
+// ============================================
+
+function filterBooks() {
+  const input = document.getElementById('searchInput');
+  searchTerm = input ? input.value.toLowerCase().trim() : '';
+  renderBooksGrid();
+}
+
+function sortBooks(order) {
+  currentSort = order;
+  
+  // Actualizar botones activos
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const btn = document.getElementById(order === 'alpha-asc' ? 'sortAlphaAsc' : 'sortAlphaDesc');
+  if (btn) btn.classList.add('active');
+  
+  renderBooksGrid();
+}
+
 function renderBooksGrid() {
   const grid = document.getElementById("booksGrid");
   if (!grid) return;
-  grid.innerHTML = BOOKS.map((book, i) => `
+
+  // 1. Filtrar libros
+  let filtered = BOOKS;
+  if (searchTerm) {
+    filtered = filtered.filter(book =>
+      book.title.toLowerCase().includes(searchTerm) ||
+      book.author.toLowerCase().includes(searchTerm)
+    );
+  }
+
+  // 2. Ordenar libros
+  if (currentSort === 'alpha-asc') {
+    filtered.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (currentSort === 'alpha-desc') {
+    filtered.sort((a, b) => b.title.localeCompare(a.title));
+  }
+
+  // 3. Renderizar
+  grid.innerHTML = filtered.map((book, i) => `
     <button class="book-card" style="--i:${i}" onclick="openBookDetail('${book.id}')">
       <div class="book-cover">${coverMarkup(book, false)}</div>
       <h3 class="book-title">${escapeHtml(book.title)}</h3>
       <p class="book-author">${escapeHtml(book.author)}</p>
       <span class="status-badge status-${book.statusClass}">${escapeHtml(book.status)}</span>
     </button>
-  `).join("");
+  `).join('');
 }
 
 window.openBookDetail = function(bookId) {
@@ -942,10 +976,6 @@ const SERIES = [
 ];
 
 // ============================================
-//  RENDERIZAR SERIES
-// ============================================
-
-// ============================================
 //  CATEGORÍAS (para el detalle de serie)
 // ============================================
 
@@ -970,6 +1000,10 @@ const CATEGORIES = [
   }
 ];
 
+// ============================================
+//  RENDERIZAR SERIES
+// ============================================
+
 function renderSeriesGrid() {
   const grid = document.getElementById('seriesGrid');
   if (!grid) return;
@@ -983,6 +1017,115 @@ function renderSeriesGrid() {
       </div>
     </div>
   `).join('');
+}
+
+// ============================================
+//  FILTRAR SERIES (en Autores)
+// ============================================
+
+function filterSeries() {
+  const input = document.getElementById('searchAutoresInput');
+  searchTermAutores = input ? input.value.toLowerCase().trim() : '';
+  renderCategoryMenu();
+}
+
+function renderCategoryMenu() {
+  const menu = document.getElementById('categoryMenu');
+  if (!menu) return;
+
+  // Filtrar categorías y series
+  let filteredCategories = CATEGORIES.filter(cat => {
+    if (cat.type === 'series') {
+      const serie = SERIES.find(s => s.id === cat.seriesId);
+      if (!serie) return false;
+      return serie.title.toLowerCase().includes(searchTermAutores) ||
+             serie.subtitle.toLowerCase().includes(searchTermAutores);
+    }
+    if (cat.type === 'books') {
+      return cat.label.toLowerCase().includes(searchTermAutores);
+    }
+    return false;
+  });
+
+  // Si la búsqueda está vacía, mostrar todas
+  if (!searchTermAutores) {
+    filteredCategories = CATEGORIES;
+  }
+
+  menu.innerHTML = filteredCategories.map(cat => `
+    <button class="category-btn" data-category="${cat.id}" onclick="selectCategory('${cat.id}')">
+      ${cat.label}
+    </button>
+  `).join('');
+
+  // Seleccionar la primera categoría visible (si existe)
+  if (filteredCategories.length > 0) {
+    const currentActive = document.querySelector('#categoryMenu .category-btn.active');
+    if (!currentActive || !filteredCategories.some(c => c.id === currentActive.dataset.category)) {
+      selectCategory(filteredCategories[0].id);
+    } else {
+      selectCategory(currentActive.dataset.category);
+    }
+  } else {
+    // No hay resultados
+    const container = document.getElementById('categoryContent');
+    if (container) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <span class="empty-state-icon">🔍</span>
+          <h3>No se encontraron series</h3>
+          <p>Intenta con otro término de búsqueda.</p>
+        </div>
+      `;
+    }
+  }
+}
+
+function selectCategory(categoryId) {
+  // Actualizar botones activos
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.category === categoryId);
+  });
+
+  const category = CATEGORIES.find(c => c.id === categoryId);
+  if (!category) return;
+
+  const container = document.getElementById('categoryContent');
+  if (!container) return;
+
+  if (category.type === 'series') {
+    // Mostrar series con números
+    const seriesList = category.seriesIds
+      ? category.seriesIds.map(id => SERIES.find(s => s.id === id)).filter(s => s !== undefined)
+      : [SERIES.find(s => s.id === category.seriesId)].filter(s => s !== undefined);
+
+    container.innerHTML = seriesList.map(serie => `
+      <div class="serie-card" style="background-image: url('${serie.image}');" onclick="openSerieDetail('${serie.id}')">
+        <div class="overlay">
+          <h3>${escapeHtml(serie.title)}</h3>
+          <div class="serie-sub">${escapeHtml(serie.subtitle)}</div>
+          <div class="serie-btn">Порядок чтения ›</div>
+        </div>
+      </div>
+    `).join('');
+  } else if (category.type === 'books') {
+    // Mostrar libros sin números
+    const booksList = category.bookIds
+      .map(id => BOOKS.find(b => b.id === id))
+      .filter(b => b !== undefined);
+
+    container.innerHTML = `
+      <div class="books-grid">
+        ${booksList.map(book => `
+          <button class="book-card" onclick="openBookDetail('${book.id}')">
+            <div class="book-cover">${coverMarkup(book, false)}</div>
+            <h3 class="book-title">${escapeHtml(book.title)}</h3>
+            <p class="book-author">${escapeHtml(book.author)}</p>
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
 }
 
 // ============================================
@@ -1241,4 +1384,5 @@ document.addEventListener('DOMContentLoaded', function() {
   mostrarIlustraciones('nsfw', 'nsfwGrid');
   mostrarIlustraciones('sfw', 'sfwGrid');
   renderSeriesGrid();
+  renderCategoryMenu();
 });
