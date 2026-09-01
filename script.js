@@ -697,6 +697,8 @@ const UPCOMING_BOOKS = [
 
 let currentSort = 'alpha-asc';
 let searchTerm = '';
+let categoriaIlustraciones = 'nsfw';
+let autorSeleccionado = null;
 
 const SCREEN_TITLES = {
   anuncios: "Anuncios",
@@ -710,7 +712,8 @@ const SCREEN_TITLES = {
   sfw: "🖼️ SFW",
   "illustration-detail": "Detalle",
   nosotras: "Nosotras",
-  "serie-detail": "Detalle de serie"
+  "serie-detail": "Detalle de serie",
+  "ilustraciones-autores": "Autores"
 };
 
 /* ---------- Navegación ---------- */
@@ -780,7 +783,10 @@ function renderTopbar(name) {
       </div>
     `;
   } else {
-    const title = SCREEN_TITLES[name] || name;
+    let title = SCREEN_TITLES[name] || name;
+if ((name === 'nsfw' || name === 'sfw') && autorSeleccionado) {
+    title = `👤 ${escapeHtml(autorSeleccionado)}`;
+}
     topbar.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 4px;">
         <div style="display:flex;align-items:center;gap:8px;overflow:hidden;flex:1;">
@@ -1125,6 +1131,8 @@ const ILUSTRACIONES = {
       id: "nsfw-1",
       nombre: "Wattson x Jewel",
       libro: "Fully Charged",
+      bookId: "Fully Charged",
+      autor: "Holly Wilde",
       imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
       descripcion: "Jewel y su Conejito."
     },
@@ -1132,6 +1140,8 @@ const ILUSTRACIONES = {
       id: "nsfw-2",
       nombre: "Mia x Bear",
       libro: "Banging My Birthday Bear",
+      bookId: "Banging My Birthday Bear",
+      autor: "Holly Wilde",
       imagen: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
       descripcion: "Mia y su osito de peluche en la cabaña de montaña."
     }
@@ -1141,10 +1151,102 @@ const ILUSTRACIONES = {
       id: "sfw-1",
       nombre: "Paisaje de Nimbus",
       libro: "Nimbus",
+      bookId: "Nimbus",
+      autor: "Nicole Parker",
       imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
       descripcion: "Ilustración del paisaje de Nimbus al atardecer."
     }
   ]
+};
+
+// ============================================
+//  AUTORES DE ILUSTRACIONES (nuevo)
+// ============================================
+
+window.abrirAutoresIlustraciones = function(categoria) {
+  categoriaIlustraciones = categoria;
+  autorSeleccionado = null;
+  openScreen('ilustraciones-autores');
+};
+
+function renderAutoresIlustraciones() {
+  const grid = document.getElementById('autoresGrid');
+  if (!grid) return;
+  
+  const items = ILUSTRACIONES[categoriaIlustraciones] || [];
+  const autores = [...new Set(items.map(item => item.autor))];
+  
+  if (autores.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <span class="empty-state-icon">🖼️</span>
+        <h3>No hay ilustraciones</h3>
+        <p>No hay ilustraciones disponibles en esta categoría.</p>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = autores.map(autor => `
+    <button class="autor-btn" onclick="abrirGaleriaAutor('${autor}')">${escapeHtml(autor)}</button>
+  `).join('');
+}
+
+window.abrirGaleriaAutor = function(autor) {
+  autorSeleccionado = autor;
+  openScreen(categoriaIlustraciones);
+};
+
+// Modificar mostrarIlustraciones para filtrar por autor
+function mostrarIlustraciones(categoria, contenedorId) {
+  const contenedor = document.getElementById(contenedorId);
+  if (!contenedor) return;
+  
+  let items = ILUSTRACIONES[categoria] || [];
+  if (autorSeleccionado) {
+    items = items.filter(item => item.autor === autorSeleccionado);
+  }
+  
+  if (items.length === 0) {
+    contenedor.innerHTML = `
+      <div class="empty-state">
+        <span class="empty-state-icon">🖼️</span>
+        <h3>No hay ilustraciones</h3>
+        <p>${autorSeleccionado ? 'Este autor no tiene ilustraciones en esta categoría.' : 'No hay ilustraciones disponibles.'}</p>
+      </div>
+    `;
+    return;
+  }
+
+  contenedor.innerHTML = items.map(item => `
+    <div class="illustration-card" onclick="abrirDetalleIlustracion('${categoria}', '${item.id}')">
+      <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
+      <div class="illustration-name">${escapeHtml(item.nombre)}</div>
+    </div>
+  `).join('');
+}
+
+// Modificar abrirDetalleIlustracion para incluir botón "LIBRO"
+window.abrirDetalleIlustracion = function(categoria, id) {
+  const items = ILUSTRACIONES[categoria] || [];
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+
+  const detailEl = document.getElementById('illustrationDetail');
+  if (detailEl) {
+    detailEl.innerHTML = `
+      <div class="detail-illustration">
+        <img src="${item.imagen}" alt="${item.nombre}">
+        <div class="detail-info">
+          <h2>${escapeHtml(item.nombre)}</h2>
+          <p class="detail-book">📖 <strong>Libro:</strong> ${escapeHtml(item.libro)}</p>
+          <p class="detail-desc">${escapeHtml(item.descripcion)}</p>
+          <button class="btn-libro" onclick="openBookDetail('${item.bookId}')">📚 Ver libro</button>
+        </div>
+      </div>
+    `;
+  }
+  openScreen('illustration-detail');
 };
 
 // ============================================
@@ -1494,4 +1596,5 @@ document.addEventListener('DOMContentLoaded', function() {
   mostrarIlustraciones('nsfw', 'nsfwGrid');
   mostrarIlustraciones('sfw', 'sfwGrid');
   renderSeriesGrid();
+  renderAutoresIlustraciones();
 });
