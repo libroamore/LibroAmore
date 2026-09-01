@@ -635,20 +635,7 @@ const BOOKS = [
     synopsis: "Un tipo agradable como tú merece a alguien que le ayude a superar la tormenta. Owen está teniendo otro de esos días de el cielo se está cayendo. Un día en el que nada le sale bien y su ansiedad se descontrola por completo. Se lleva más que una sorpresa al descubrir que esta vez el cielo realmente se cae, pero no de la manera que temía. Le espera algo mucho más impactante",
     coverUrl: "https://m.media-amazon.com/images/I/812JO7GmLwL._SL1500_.jpg",
     hue: 180
-  },
-  {
-    id: "Spread Wider For Uncle",
-    title: "Spread Wider For Uncle",
-    author: "J. Snow",
-    series: "After Dark Taboo",
-    part: null,
-    classification: "+18",
-    status: "Disponible",
-    statusClass: "available",
-    tags: ["Taboo", "Trío", "Gemelos (hermanos)"],
-    synopsis: "Necesitaba ganar algo de dinero extra. Y vender mi cuerpo en línea era la forma más rápida de conseguirlo. Pero luego descubrí que mi tío era un cliente y lo que quería de mí era un trío en directo no solo con él, sino también con mi padre, su gemelo",
-    coverUrl: "https://jenikasnow.com/wp-content/uploads/2024/06/Spread_Wider_For_Uncle_Final-scaled.jpg",
-    hue: 180
+  }
 ];
 
 /* ---------- Libros próximos (para sección "Próximos proyectos") ---------- */
