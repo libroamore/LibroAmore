@@ -1545,3 +1545,106 @@ body.dark-mode .status-review {
   background: var(--pink-soft);
   border-color: var(--pink-strong);
 }
+
+/* ---------- Controles de búsqueda y orden ---------- */
+.search-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border-radius: 30px;
+  padding: 0 14px;
+  min-width: 160px;
+}
+
+.search-icon {
+  font-size: 16px;
+  color: var(--muted);
+  margin-right: 8px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 4px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.sort-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.sort-btn {
+  background: var(--bg);
+  border: 1px solid rgba(184, 90, 118, 0.15);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sort-btn:active {
+  transform: scale(0.94);
+}
+
+.sort-btn.active {
+  background: var(--pink-strong);
+  color: white;
+  border-color: var(--pink-strong);
+}
+
+.sort-btn:hover:not(.active) {
+  background: var(--pink-soft);
+  border-color: var(--pink-strong);
+}
+
+/* Modo oscuro */
+body.dark-mode .search-controls {
+  background: var(--surface);
+}
+
+body.dark-mode .search-bar {
+  background: rgba(255,255,255,0.08);
+}
+
+body.dark-mode .search-bar input {
+  color: var(--ink);
+}
+
+body.dark-mode .sort-btn {
+  background: rgba(255,255,255,0.08);
+  color: var(--muted);
+  border-color: rgba(255,255,255,0.1);
+}
+
+body.dark-mode .sort-btn.active {
+  background: var(--pink-strong);
+  color: white;
+  border-color: var(--pink-strong);
+}
