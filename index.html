@@ -245,10 +245,26 @@
         <div id="illustrationDetail" style="margin-top:12px;"></div>
       </section>
 
-      <!-- ============ AUTORES (SERIES) ============ -->
-      <section class="screen" data-screen="autores" id="screen-autores" hidden>
-        <div class="series-grid" id="seriesGrid"></div>
-      </section>
+      <!-- ============ AUTORES (CATEGORÍAS) ============ -->
+<section class="screen" data-screen="autores" id="screen-autores" hidden>
+  <!-- Barra de búsqueda para autores/series -->
+  <div class="search-controls">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchAutoresInput" placeholder="Buscar serie..." oninput="filterSeries()">
+    </div>
+  </div>
+  
+  <!-- Menú de categorías -->
+  <div class="category-menu" id="categoryMenu">
+    <!-- Generado con JavaScript -->
+  </div>
+  
+  <!-- Contenedor del contenido -->
+  <div id="categoryContent" style="margin-top:16px;">
+    <!-- Generado con JavaScript -->
+  </div>
+</section>
 
       <!-- ============ DETALLE DE SERIE ============ -->
 <section class="screen" data-screen="serie-detail" id="screen-serie-detail" hidden>
@@ -266,9 +282,20 @@
 </section>
 
       <!-- ============ LIBROS DISPONIBLES ============ -->
-      <section class="screen" data-screen="libros" id="screen-libros" hidden>
-        <div class="books-grid" id="booksGrid"></div>
-      </section>
+<section class="screen" data-screen="libros" id="screen-libros" hidden>
+  <!-- Controles de búsqueda y orden -->
+  <div class="search-controls">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar por título o autor..." oninput="filterBooks()">
+    </div>
+    <div class="sort-controls">
+      <button class="sort-btn" id="sortAlphaAsc" onclick="sortBooks('alpha-asc')" title="Ordenar A-Z">A-Z</button>
+      <button class="sort-btn" id="sortAlphaDesc" onclick="sortBooks('alpha-desc')" title="Ordenar Z-A">Z-A</button>
+    </div>
+  </div>
+  <div class="books-grid" id="booksGrid"></div>
+</section>
 
       <!-- ============ DETALLE DE LIBRO ============ -->
       <section class="screen" data-screen="libro-detail" id="screen-libro-detail" hidden>
