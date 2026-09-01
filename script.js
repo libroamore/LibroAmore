@@ -1214,11 +1214,6 @@ function renderAutoresIlustraciones() {
   }).join('');
 }
 
-  grid.innerHTML = autores.map(autor => `
-    <button class="autor-btn" onclick="abrirGaleriaAutor('${autor}')">${escapeHtml(autor)}</button>
-  `).join('');
-}
-
 window.abrirGaleriaAutor = function(autor) {
   autorSeleccionado = autor;
   openScreen(categoriaIlustraciones);
