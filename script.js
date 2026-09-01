@@ -49,6 +49,48 @@ const BOOKS = [
     hue: 340
   },
   {
+    id: "ice scream for you",
+    title: "ice scream for you",
+    author: "T.R. Oldin - Nerdy Reed",
+    series: "Erotic Eatz",
+    part: 4,
+    classification: "+18",
+    status: "Disponible",
+    statusClass: "available",
+    tags: ["Romance", "Objetto Consciente", "FF"],
+    synopsis: "Nikki y Rae están de viaje para celebrar su aniversario cuando alguien les recomienda una nueva tienda de champán y helados a la vuelta de la esquina. Incapaces de resistirse, la visitan y descubren un delicioso helado de fresa que combina a la perfección con un mágico Prosecco rosado. Su acogedor viaje de aniversario da un giro inesperado cuando una mujer fresa con conciencia propia aparece en su habitación de hotel. Al principio, nadie sabe qué hacer con una mujer capaz de hacer que el helado brote de las yemas de sus dedos, así como de… otros lugares. Nikki y Rae siempre están dispuestas a hacerle un lugar a una tercera, pero nunca habían vivido una experiencia como esta. Las dos se lo pasan tan bien con ella que temen que algo así no pueda repetirse jamás. Cuando después pasan un tiempo solas en su habitación de hotel, la decepción se apodera de ellas. Pero no se preocupen: una aventura más hará que encuentren a su unicornio perfecto. Uno que hará que griten pidiendo helado.",
+    coverUrl: "https://m.media-amazon.com/images/I/71OSC2qOjoL._SL1500_.jpg",
+    hue: 340
+  },
+  {
+    id: "paper-and-passion",
+    title: "Paper and Passion",
+    author: "Thea Masen",
+    series: "Ghostlight Falls",
+    part: 2,
+    classification: "+18",
+    status: "Disponible",
+    statusClass: "available",
+    tags: ["Romance", "Fantasía", "MMF"],
+    synopsis: "Tillie lleva poco tiempo siendo dueña de Sheet-y Stationery, y ya desearía no haberlo sido. La tienda es rebelde e impredecible. No deja de cambiar de lugar y de ahuyentar a los posibles empleados que intenta contratar. Después de incontables entrevistas que salen mal, se queda sorprendida cuando una hermosa criatura a la que nunca antes había visto entra por la puerta para solicitar trabajo. Alex es preciosa, segura de sí misma, serena y deja muy claro que quiere algo más que un empleo. Quiere a Tillie. Y su esposo también la quiere. Pero Tillie ya ha sufrido antes y no está segura de querer formar parte de una relación ya establecida. Ni siquiera si ellos dicen que es su pareja destinada.",
+    coverUrl: "https://m.media-amazon.com/images/I/71sUZHOlmhL._SL1500_.jpg",
+    hue: 200
+  },
+  {
+    id: "spread",
+    title: "Spread",
+    author: "Nicole Parker",
+    series: "Kyleverse",
+    part: 5,
+    classification: "+18",
+    status: "Disponible",
+    statusClass: "available",
+    tags: ["Romance", "Demonio", "Objeto Consciente"],
+    synopsis: "Me recoge a mí en su lugar, frotando sus manos sobre mi mango ergonómico. —Bueno. La silicona es silicona, ¿no? Mel está limpiando después de una fiesta cuando encuentra algo que no le pertenece. Ella no sabe que su hallazgo es afortunado en más de un sentido. Cuando una apuesta sale mal, Spatha termina atrapado en una situación bastante desafortunada. Por suerte, cae en las excelentes manos de Mel.",
+    coverUrl: "https://m.media-amazon.com/images/I/818YLTs7DvL._SL1500_.jpg",
+    hue: 180
+  },
+  {
     id: "Pounded By Poseidon",
     title: "Pounded By Poseidon",
     author: "Thea Masen - Holly Wilde",
