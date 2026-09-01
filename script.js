@@ -1272,78 +1272,21 @@ window.abrirDetalleIlustracion = function(categoria, id) {
 };
 
 // ============================================
-//  SERIES (para la sección Autores)
+//  SERIES (CORREGIDO: UNO POR AUTOR)
 // ============================================
 
 const SERIES = [
   {
     id: "wittmore",
     title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía y Ciencia ficción",
+    subtitle: "Libros de romance, Fantasía y Ciencia ficción",
     image: "https://i.postimg.cc/25rZPQWB/1.png",
     description: "Esta es una serie ambientada en un mismo universo, situada en el pueblito paranormal más adorable de Oregón. Aquí hay un poquito de todo tipo de seres no humanos: desde cambiaformas hasta objetos conscientes, e incluso algunos encuentros con extraterrestres.",
     books: [
       { number: "01", title: "The Totally Typical Tale of Mappy McMapface", subtitle: "Mappy x Miguel", status: "✅ Traducido", id: "The Totally Typical Tale Of Mappy McMapface" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
-    ]
-  },
-  {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
-    books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
-    ]
-  },
-  {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
-    books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
-    ]
-  },
-  {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
-    books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
-    ]
-  },
-  {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
-    books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
+      { number: "02", title: "Hello, Nurse!", subtitle: "Rebecca x Blabbo, Absurdo y Angelina", status: "✅ Traducido", id: "Hello, Nurse!" },
+      { number: "03", title: "Paper and Passion", subtitle: "Tillie x Alex", status: "✅ Traducido", id: "paper-and-passion" },
+      { number: "04", title: "Romanced By The Rat", subtitle: "Ramsay x Charlotte", status: "✅ Traducido", id: "Romanced By The Rat" }
     ]
   },
   {
@@ -1375,33 +1318,63 @@ const SERIES = [
 ];
 
 // ============================================
+//  CATEGORÍAS POR SERIE (dinámico y escalable)
+// ============================================
+
+const CATEGORIAS_POR_SERIE = {
+  "wittmore": [
+    {
+      id: "serie-ghostlight",
+      label: "👻 Serie Ghostlight",
+      type: "series",
+      seriesIds: ["wittmore"]
+    },
+    {
+      id: "serie-dark-empire",
+      label: "⚔️ Serie Dark Empire",
+      type: "series",
+      seriesIds: ["wolf-king"]
+    },
+    {
+      id: "libros-unicos",
+      label: "📖 Libros únicos",
+      type: "books",
+      bookIds: ["Banging My Birthday Bear", "Pounded By Poseidon", "Say My Name", "MONSTROUS", "Fervor", "mapa-constelado", "Hopeless Necromantic", "Handle Me", "Spackled", "My Date With A Rubber Duckie", "Step Brother Bear", "Shower Head", "Fully Charged", "Bad BeehAvior", "Gimme A Pizza Dat Azz", "Rake", "Formaldehyde", "Laid by the Lint Monster", "Goldie and the Bear Affair", "Scream For Me", "Dead... Serious About You", "Fear, and Other Love Languages", "Hopper", "Eat Your Heart Out", "SPF ME", "SINFUL", "Slay Bells", "Hallowpeen", "Taking Daddys Load", "susurros-en-la-oscuridad"]
+    }
+  ],
+  "wolf-king": [
+    {
+      id: "serie-wolf-king",
+      label: "🐺 Serie Wolf King",
+      type: "series",
+      seriesIds: ["wolf-king"]
+    },
+    {
+      id: "libros-unicos",
+      label: "📖 Libros únicos",
+      type: "books",
+      bookIds: ["Banging My Birthday Bear", "Pounded By Poseidon", "Say My Name", "MONSTROUS", "Fervor", "mapa-constelado", "Hopeless Necromantic", "Handle Me", "Spackled", "My Date With A Rubber Duckie", "Step Brother Bear", "Shower Head", "Fully Charged", "Bad BeehAvior", "Gimme A Pizza Dat Azz", "Rake", "Formaldehyde", "Laid by the Lint Monster", "Goldie and the Bear Affair", "Scream For Me", "Dead... Serious About You", "Fear, and Other Love Languages", "Hopper", "Eat Your Heart Out", "SPF ME", "SINFUL", "Slay Bells", "Hallowpeen", "Taking Daddys Load", "susurros-en-la-oscuridad"]
+    }
+  ],
+  "mortal-vows": [
+    {
+      id: "serie-mortal-vows",
+      label: "⚰️ Serie Mortal Vows",
+      type: "series",
+      seriesIds: ["mortal-vows"]
+    },
+    {
+      id: "libros-unicos",
+      label: "📖 Libros únicos",
+      type: "books",
+      bookIds: ["Banging My Birthday Bear", "Pounded By Poseidon", "Say My Name", "MONSTROUS", "Fervor", "mapa-constelado", "Hopeless Necromantic", "Handle Me", "Spackled", "My Date With A Rubber Duckie", "Step Brother Bear", "Shower Head", "Fully Charged", "Bad BeehAvior", "Gimme A Pizza Dat Azz", "Rake", "Formaldehyde", "Laid by the Lint Monster", "Goldie and the Bear Affair", "Scream For Me", "Dead... Serious About You", "Fear, and Other Love Languages", "Hopper", "Eat Your Heart Out", "SPF ME", "SINFUL", "Slay Bells", "Hallowpeen", "Taking Daddys Load", "susurros-en-la-oscuridad"]
+    }
+  ]
+};
+
+// ============================================
 //  RENDERIZAR SERIES
 // ============================================
-
-// ============================================
-//  CATEGORÍAS (para el detalle de serie)
-// ============================================
-
-const CATEGORIES = [
-  {
-    id: "serie-ghostlight",
-    label: "👻 Serie Ghostlight",
-    type: "series",
-    seriesId: "wittmore"
-  },
-  {
-    id: "serie-dark-empire",
-    label: "⚔️ Serie Dark Empire",
-    type: "series",
-    seriesId: "wolf-king"
-  },
-  {
-    id: "libros-unicos",
-    label: "📖 Libros únicos",
-    type: "books",
-    bookIds: ["Banging My Birthday Bear", "Pounded By Poseidon", "Say My Name", "MONSTROUS", "Fervor", "mapa-constelado", "Hopeless Necromantic", "Handle Me", "Spackled", "My Date With A Rubber Duckie", "Step Brother Bear", "Shower Head", "Fully Charged", "Bad BeehAvior", "Gimme A Pizza Dat Azz", "Rake", "Formaldehyde", "Laid by the Lint Monster", "Goldie and the Bear Affair", "Scream For Me", "Dead... Serious About You", "Fear, and Other Love Languages", "Hopper", "Eat Your Heart Out", "SPF ME", "SINFUL", "Slay Bells", "Hallowpeen", "Taking Daddys Load", "susurros-en-la-oscuridad"]
-  }
-];
 
 function renderSeriesGrid() {
   const grid = document.getElementById('seriesGrid');
@@ -1419,21 +1392,37 @@ function renderSeriesGrid() {
 }
 
 // ============================================
-//  RENDERIZAR CATEGORÍAS (en detalle de serie)
+//  RENDERIZAR CATEGORÍAS (en detalle de serie) - DINÁMICO
 // ============================================
 
-function renderCategoryMenuDetail() {
+window.openSerieDetail = function(serieId) {
+  // Guardar la serie seleccionada globalmente
+  window.serieSeleccionada = serieId;
+  
+  // Obtener las categorías para esta serie
+  const categorias = CATEGORIAS_POR_SERIE[serieId] || [];
+  
+  // Renderizar el menú con las categorías de la serie
+  renderCategoryMenuDetail(categorias);
+  
+  openScreen('serie-detail');
+};
+
+function renderCategoryMenuDetail(categorias) {
   const menu = document.getElementById('categoryMenuDetail');
   if (!menu) return;
 
-  menu.innerHTML = CATEGORIES.map(cat => `
+  // Usar las categorías pasadas, o las del mapa si no se pasaron
+  const categoriasMostrar = categorias || CATEGORIAS_POR_SERIE[window.serieSeleccionada] || [];
+  
+  menu.innerHTML = categoriasMostrar.map(cat => `
     <button class="category-btn" data-category="${cat.id}" onclick="selectCategoryDetail('${cat.id}')">
       ${cat.label}
     </button>
   `).join('');
 
-  if (CATEGORIES.length > 0) {
-    selectCategoryDetail(CATEGORIES[0].id);
+  if (categoriasMostrar.length > 0) {
+    selectCategoryDetail(categoriasMostrar[0].id);
   }
 }
 
@@ -1442,40 +1431,31 @@ function selectCategoryDetail(categoryId) {
     btn.classList.toggle('active', btn.dataset.category === categoryId);
   });
 
-  const category = CATEGORIES.find(c => c.id === categoryId);
+  // Obtener las categorías de la serie seleccionada
+  const categorias = CATEGORIAS_POR_SERIE[window.serieSeleccionada] || [];
+  const category = categorias.find(c => c.id === categoryId);
   if (!category) return;
 
   const container = document.getElementById('categoryContentDetail');
   if (!container) return;
 
   if (category.type === 'series') {
-    const serie = SERIES.find(s => s.id === category.seriesId);
-    if (!serie) return;
+    // Mostrar series con números
+    const seriesList = category.seriesIds
+      .map(id => SERIES.find(s => s.id === id))
+      .filter(s => s !== undefined);
 
-    container.innerHTML = `
-      <div class="serie-detail-card">
-        <div class="serie-detail-header">
-          <h2>${escapeHtml(serie.title)}</h2>
-          <p>${escapeHtml(serie.subtitle)}</p>
-        </div>
-        <div class="serie-detail-body">
-          <p class="desc">${escapeHtml(serie.description)}</p>
-          <div class="order-list">
-            ${serie.books.map(book => `
-              <div class="order-item" onclick="openBookDetail('${book.id}')" style="cursor:pointer;">
-                <span class="num">${book.number}</span>
-                <div class="info">
-                  <div class="title">${escapeHtml(book.title)}</div>
-                  <div class="sub">${escapeHtml(book.subtitle)}</div>
-                </div>
-                <span class="status">${escapeHtml(book.status)}</span>
-              </div>
-            `).join('')}
-          </div>
+    container.innerHTML = seriesList.map(serie => `
+      <div class="serie-card" style="background-image: url('${serie.image}');" onclick="openSerieDetailWithId('${serie.id}')">
+        <div class="overlay">
+          <h3>${escapeHtml(serie.title)}</h3>
+          <div class="serie-sub">${escapeHtml(serie.subtitle)}</div>
+          <div class="serie-btn">Порядок чтения ›</div>
         </div>
       </div>
-    `;
+    `).join('');
   } else if (category.type === 'books') {
+    // Mostrar libros únicos (sin números)
     const booksList = category.bookIds
       .map(id => BOOKS.find(b => b.id === id))
       .filter(b => b !== undefined);
@@ -1494,44 +1474,54 @@ function selectCategoryDetail(categoryId) {
   }
 }
 
-window.openSerieDetail = function(serieId) {
-  renderCategoryMenuDetail();
+// Abrir detalle de una serie específica (con números)
+window.openSerieDetailWithId = function(serieId) {
+  const serie = SERIES.find(s => s.id === serieId);
+  if (!serie) return;
+
+  const container = document.getElementById('categoryContentDetail');
+  if (!container) return;
+
+  // Ocultar el menú de categorías
+  const menu = document.getElementById('categoryMenuDetail');
+  if (menu) menu.style.display = 'none';
+
+  container.innerHTML = `
+    <div class="serie-detail-card">
+      <div class="serie-detail-header">
+        <h2>${escapeHtml(serie.title)}</h2>
+        <p>${escapeHtml(serie.subtitle)}</p>
+      </div>
+      <div class="serie-detail-body">
+        <p class="desc">${escapeHtml(serie.description)}</p>
+        <div class="order-list">
+          ${serie.books.map(book => `
+            <div class="order-item" onclick="openBookDetail('${book.id}')" style="cursor:pointer;">
+              <span class="num">${book.number}</span>
+              <div class="info">
+                <div class="title">${escapeHtml(book.title)}</div>
+                <div class="sub">${escapeHtml(book.subtitle)}</div>
+              </div>
+              <span class="status">${escapeHtml(book.status)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+    <button class="back-btn" onclick="volverAlMenuCategorias()" style="margin-top:16px;">← Volver al menú</button>
+  `;
+
   openScreen('serie-detail');
 };
 
-function mostrarIlustraciones(categoria, contenedorId) {
-  const contenedor = document.getElementById(contenedorId);
-  if (!contenedor) return;
+function volverAlMenuCategorias() {
+  const menu = document.getElementById('categoryMenuDetail');
+  if (menu) menu.style.display = 'flex';
   
-  const items = ILUSTRACIONES[categoria] || [];
-  contenedor.innerHTML = items.map(item => `
-    <div class="illustration-card" onclick="abrirDetalleIlustracion('${categoria}', '${item.id}')">
-      <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
-      <div class="illustration-name">${item.nombre}</div>
-    </div>
-  `).join('');
+  // Volver a mostrar el menú con las categorías de la serie
+  const categorias = CATEGORIAS_POR_SERIE[window.serieSeleccionada] || [];
+  renderCategoryMenuDetail(categorias);
 }
-
-window.abrirDetalleIlustracion = function(categoria, id) {
-  const items = ILUSTRACIONES[categoria] || [];
-  const item = items.find(i => i.id === id);
-  if (!item) return;
-
-  const detailEl = document.getElementById('illustrationDetail');
-  if (detailEl) {
-    detailEl.innerHTML = `
-      <div class="detail-illustration">
-        <img src="${item.imagen}" alt="${item.nombre}">
-        <div class="detail-info">
-          <h2>${item.nombre}</h2>
-          <p class="detail-book">📖 <strong>Libro:</strong> ${item.libro}</p>
-          <p class="detail-desc">${item.descripcion}</p>
-        </div>
-      </div>
-    `;
-  }
-  openScreen('illustration-detail');
-};
 
 // ============================================
 //  NAVEGACIÓN INFERIOR
