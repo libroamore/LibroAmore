@@ -1272,7 +1272,7 @@ window.abrirDetalleIlustracion = function(categoria, id) {
 };
 
 // ============================================
-//  SERIES (CORREGIDO: UNO POR AUTOR)
+//  SERIES (CORREGIDO: SOLO UNA ENTRADA POR AUTOR)
 // ============================================
 
 const SERIES = [
@@ -1392,7 +1392,7 @@ function renderSeriesGrid() {
 }
 
 // ============================================
-//  RENDERIZAR CATEGORÍAS (en detalle de serie) - DINÁMICO
+//  NAVEGACIÓN DE DETALLE DE SERIE (dinámico y escalable)
 // ============================================
 
 window.openSerieDetail = function(serieId) {
@@ -1415,15 +1415,20 @@ function renderCategoryMenuDetail(categorias) {
   // Usar las categorías pasadas, o las del mapa si no se pasaron
   const categoriasMostrar = categorias || CATEGORIAS_POR_SERIE[window.serieSeleccionada] || [];
   
+  // Si no hay categorías, mostrar un mensaje (opcional)
+  if (categoriasMostrar.length === 0) {
+    menu.innerHTML = `<p style="color:var(--muted);padding:10px;text-align:center;">No hay categorías para esta serie.</p>`;
+    return;
+  }
+  
   menu.innerHTML = categoriasMostrar.map(cat => `
     <button class="category-btn" data-category="${cat.id}" onclick="selectCategoryDetail('${cat.id}')">
       ${cat.label}
     </button>
   `).join('');
 
-  if (categoriasMostrar.length > 0) {
-    selectCategoryDetail(categoriasMostrar[0].id);
-  }
+  // Seleccionar la primera categoría por defecto
+  selectCategoryDetail(categoriasMostrar[0].id);
 }
 
 function selectCategoryDetail(categoryId) {
