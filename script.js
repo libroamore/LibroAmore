@@ -712,7 +712,7 @@ const SCREEN_TITLES = {
   sfw: "🖼️ SFW",
   "illustration-detail": "Detalle",
   nosotras: "Nosotras",
-  "serie-detail": "Detalle de serie",
+  "serie-detail": "Detalle de autor", // Cambiado a "Detalle de autor"
   "ilustraciones-autores": "Autores"
 };
 
@@ -734,7 +734,7 @@ function showScreen(name) {
   });
 }
 
-// FUNCIONES DE NAVEGACIÓN (definidas DESPUÉS)
+// FUNCIONES DE NAVEGACIÓN
 window.openScreen = function(name) {
   if (navStack[navStack.length - 1] !== name) navStack.push(name);
   showScreen(name);
@@ -784,9 +784,9 @@ function renderTopbar(name) {
     `;
   } else {
     let title = SCREEN_TITLES[name] || name;
-if ((name === 'nsfw' || name === 'sfw') && autorSeleccionado) {
-    title = `👤 ${escapeHtml(autorSeleccionado)}`;
-}
+    if ((name === 'nsfw' || name === 'sfw') && autorSeleccionado) {
+        title = `👤 ${escapeHtml(autorSeleccionado)}`;
+    }
     topbar.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 4px;">
         <div style="display:flex;align-items:center;gap:8px;overflow:hidden;flex:1;">
@@ -1033,48 +1033,9 @@ window.downloadFormat = function(format) {
 };
 
 /* ---------- Orden de lectura (sección Autores) ---------- */
+// Esta función ya no se usa, pero la dejamos por si acaso
 function renderReadingOrder() {
-  const container = document.getElementById('orderList');
-  if (!container) return;
-
-  const orderIds = [
-    'mortal-vows',
-    'righteous-vows',
-    'treacherous-vows',
-    'reckless-vows',
-    'wrong-vows'
-  ];
-
-  const orderTitles = {
-    'mortal-vows': 'Смертельные клятвы',
-    'righteous-vows': 'Праведные клятвы',
-    'treacherous-vows': 'Коварные клятвы',
-    'reckless-vows': 'Безумные клятвы',
-    'wrong-vows': 'Неправильные клятвы'
-  };
-
-  const subtitles = {
-    'mortal-vows': 'НАЧАЛО ИСТОРИИ',
-    'righteous-vows': 'ПРОДОЛЖЕНИЕ',
-    'treacherous-vows': 'ПРОДОЛЖЕНИЕ',
-    'reckless-vows': 'ПРОДОЛЖЕНИЕ',
-    'wrong-vows': 'ФИНАЛ СЕРИИ'
-  };
-
-  container.innerHTML = orderIds.map((id, index) => {
-    const book = BOOKS.find(b => b.id === id);
-    const statusText = book && book.status === 'Disponible' ? '✅ перевод завершен' : '⏳ перевод в процессе';
-    return `
-      <div class="order-item" onclick="openBookDetail('${id}')">
-        <span class="order-number">${String(index + 1).padStart(2, '0')}</span>
-        <div class="order-info">
-          <div class="order-title">${orderTitles[id] || id}</div>
-          <div class="order-subtitle">${subtitles[id] || ''}</div>
-        </div>
-        <span class="order-status">${statusText}</span>
-      </div>
-    `;
-  }).join('');
+  // Vacío
 }
 
 /* ---------- Próximos proyectos ---------- */
@@ -1160,7 +1121,7 @@ const ILUSTRACIONES = {
 };
 
 // ============================================
-//  AUTORES DE ILUSTRACIONES (nuevo)
+//  AUTORES DE ILUSTRACIONES
 // ============================================
 
 window.abrirAutoresIlustraciones = function(categoria) {
@@ -1175,7 +1136,6 @@ function renderAutoresIlustraciones() {
   
   const items = ILUSTRACIONES[categoriaIlustraciones] || [];
   
-  // Contar cuántas ilustraciones tiene cada autor
   const autoresMap = {};
   items.forEach(item => {
     autoresMap[item.autor] = (autoresMap[item.autor] || 0) + 1;
@@ -1194,7 +1154,6 @@ function renderAutoresIlustraciones() {
     return;
   }
 
-  // Colores de fondo para los avatares (variados)
   const colores = ['#eeb0c0', '#c9a3c2', '#f3d9ad', '#b8d4e3', '#d9ecda', '#f6e6c4', '#e6e1ea'];
   
   grid.innerHTML = autores.map((autor, index) => {
@@ -1219,7 +1178,6 @@ window.abrirGaleriaAutor = function(autor) {
   openScreen(categoriaIlustraciones);
 };
 
-// Modificar mostrarIlustraciones para filtrar por autor
 function mostrarIlustraciones(categoria, contenedorId) {
   const contenedor = document.getElementById(contenedorId);
   if (!contenedor) return;
@@ -1248,7 +1206,6 @@ function mostrarIlustraciones(categoria, contenedorId) {
   `).join('');
 }
 
-// Modificar abrirDetalleIlustracion para incluir botón "LIBRO"
 window.abrirDetalleIlustracion = function(categoria, id) {
   const items = ILUSTRACIONES[categoria] || [];
   const item = items.find(i => i.id === id);
@@ -1272,146 +1229,96 @@ window.abrirDetalleIlustracion = function(categoria, id) {
 };
 
 // ============================================
-//  SERIES (para la sección Autores)
+//  AUTORES (tarjetas en la sección "Autores")
 // ============================================
 
-const SERIES = [
+// Definimos cada autor como un objeto con sus series y libros únicos
+const AUTORES = [
   {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía y Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "Esta es una serie ambientada en un mismo universo, situada en el pueblito paranormal más adorable de Oregón. Aquí hay un poquito de todo tipo de seres no humanos: desde cambiaformas hasta objetos conscientes, e incluso algunos encuentros con extraterrestres.",
-    books: [
-      { number: "01", title: "The Totally Typical Tale of Mappy McMapface", subtitle: "Mappy x Miguel", status: "✅ Traducido", id: "The Totally Typical Tale Of Mappy McMapface" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
-    ]
-  },
-  {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
-    books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
-    ]
-  },
-  {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
-    books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
-    ]
-  },
-  {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
-    books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
-    ]
-  },
-  {
-    id: "wittmore",
-    title: "G.M. Fairy",
-    subtitle: "Libros de romace, Fantasía, Ciencia ficción",
-    image: "https://i.postimg.cc/25rZPQWB/1.png",
-    description: "На льду играют жестко. Влюбляются — еще жестче. Четыре самостоятельные истории из университета Уиттмор: капитан, вратарь, защитник и тафгай — и девушки, рядом с которыми правила команды перестают работать.",
-    books: [
-      { number: "01", title: "Игра в любовь с форвардом", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "02", title: "Под защитой вратаря", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "03", title: "Мой дерзкий защитник", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Fervor" },
-      { number: "3.1", title: "Мой дерзкий защитник. Бонус", subtitle: "БОНУС К КНИГЕ 3", status: "✅ перевод завершен", id: "mapa-constelado" },
-      { number: "04", title: "Соблазн для тафгая", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Banging My Birthday Bear" }
+    id: "gm-fairy",
+    nombre: "G.M. Fairy",
+    descripcion: "Libros de romance, Fantasía y Ciencia ficción",
+    imagen: "https://i.postimg.cc/25rZPQWB/1.png",
+    series: [
+      {
+        id: "ghostlight",
+        nombre: "Serie Ghostlight",
+        libros: [
+          { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
+          { number: "02", title: "Hello, Nurse!", id: "Hello, Nurse!" },
+          { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" }
+        ]
+      },
+      {
+        id: "dark-empire",
+        nombre: "Serie Dark Empire",
+        libros: [
+          { number: "01", title: "Step Brother Bear", id: "Step Brother Bear" },
+          { number: "02", title: "Bad BeehAvior", id: "Bad BeehAvior" },
+          { number: "03", title: "Scream For Me", id: "Scream For Me" }
+        ]
+      }
+    ],
+    librosUnicos: [
+      { title: "Nimbus", id: "Nimbus" },
+      { title: "Fully Charged", id: "Fully Charged" }
     ]
   },
   {
     id: "wolf-king",
-    title: "Король волков",
-    subtitle: "РОМЭНТЕЗИ • 3 книги",
-    image: "https://i.postimg.cc/Y2ZmpKgp/2.png",
-    description: "3 книги • 2 из 3 готовы",
-    books: [
-      { number: "01", title: "Книга 1", subtitle: "НАЧАЛО", status: "✅ перевод завершен", id: "Pounded By Poseidon" },
-      { number: "02", title: "Книга 2", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "03", title: "Книга 3", subtitle: "ФИНАЛ", status: "⏳ перевод в процессе", id: "MONSTROUS" }
+    nombre: "Король волков",
+    descripcion: "РОМЭНТЕЗИ • 3 книги",
+    imagen: "https://i.postimg.cc/Y2ZmpKgp/2.png",
+    series: [
+      {
+        id: "wolf-king-saga",
+        nombre: "Saga del Rey Lobo",
+        libros: [
+          { number: "01", title: "Книга 1", id: "Pounded By Poseidon" },
+          { number: "02", title: "Книга 2", id: "Say My Name" },
+          { number: "03", title: "Книга 3", id: "MONSTROUS" }
+        ]
+      }
+    ],
+    librosUnicos: [
+      { title: "Fervor", id: "Fervor" }
     ]
   },
   {
     id: "mortal-vows",
-    title: "Смертельные клятвы",
-    subtitle: "МАФИОЗНАЯ РОМАНТИКА • 5 книг",
-    image: "https://i.postimg.cc/BnGLKTMB/3.png",
-    description: "5 книг • перевод завершен",
-    books: [
-      { number: "01", title: "Смертельные клятвы", subtitle: "НАЧАЛО ИСТОРИИ", status: "✅ перевод завершен", id: "The Totally Typical Tale Of Mappy McMapface" },
-      { number: "02", title: "Праведные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Pounded By Poseidon" },
-      { number: "03", title: "Коварные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "Say My Name" },
-      { number: "04", title: "Безумные клятвы", subtitle: "ПРОДОЛЖЕНИЕ", status: "✅ перевод завершен", id: "MONSTROUS" },
-      { number: "05", title: "Неправильные клятвы", subtitle: "ФИНАЛ СЕРИИ", status: "✅ перевод завершен", id: "Fervor" }
-    ]
+    nombre: "Смертельные клятвы",
+    descripcion: "МАФИОЗНАЯ РОМАНТИКА • 5 книг",
+    imagen: "https://i.postimg.cc/BnGLKTMB/3.png",
+    series: [
+      {
+        id: "mortal-vows-saga",
+        nombre: "Saga de las Cláusulas Mortales",
+        libros: [
+          { number: "01", title: "Смертельные клятвы", id: "The Totally Typical Tale Of Mappy McMapface" },
+          { number: "02", title: "Праведные клятвы", id: "Pounded By Poseidon" },
+          { number: "03", title: "Коварные клятвы", id: "Say My Name" },
+          { number: "04", title: "Безумные клятвы", id: "MONSTROUS" },
+          { number: "05", title: "Неправильные клятвы", id: "Fervor" }
+        ]
+      }
+    ],
+    librosUnicos: []
   }
 ];
 
 // ============================================
-//  RENDERIZAR SERIES
+//  RENDERIZAR AUTORES (tarjetas)
 // ============================================
 
-// ============================================
-//  CATEGORÍAS (para el detalle de serie)
-// ============================================
-
-const CATEGORIES = [
-  {
-    id: "serie-ghostlight",
-    label: "👻 Serie Ghostlight",
-    type: "series",
-    seriesId: "wittmore"
-  },
-  {
-    id: "serie-dark-empire",
-    label: "⚔️ Serie Dark Empire",
-    type: "series",
-    seriesId: "wolf-king"
-  },
-  {
-    id: "libros-unicos",
-    label: "📖 Libros únicos",
-    type: "books",
-    bookIds: ["Banging My Birthday Bear", "Pounded By Poseidon", "Say My Name", "MONSTROUS", "Fervor", "mapa-constelado", "Hopeless Necromantic", "Handle Me", "Spackled", "My Date With A Rubber Duckie", "Step Brother Bear", "Shower Head", "Fully Charged", "Bad BeehAvior", "Gimme A Pizza Dat Azz", "Rake", "Formaldehyde", "Laid by the Lint Monster", "Goldie and the Bear Affair", "Scream For Me", "Dead... Serious About You", "Fear, and Other Love Languages", "Hopper", "Eat Your Heart Out", "SPF ME", "SINFUL", "Slay Bells", "Hallowpeen", "Taking Daddys Load", "susurros-en-la-oscuridad"]
-  }
-];
-
-function renderSeriesGrid() {
-  const grid = document.getElementById('seriesGrid');
+function renderAutores() {
+  const grid = document.getElementById('seriesGrid'); // Reutilizamos el grid de series
   if (!grid) return;
 
-  grid.innerHTML = SERIES.map(serie => `
-    <div class="serie-card" style="background-image: url('${serie.image}');" onclick="openSerieDetail('${serie.id}')">
+  grid.innerHTML = AUTORES.map(autor => `
+    <div class="serie-card" style="background-image: url('${autor.imagen}');" onclick="openAutorDetail('${autor.id}')">
       <div class="overlay">
-        <h3>${escapeHtml(serie.title)}</h3>
-        <div class="serie-sub">${escapeHtml(serie.subtitle)}</div>
+        <h3>${escapeHtml(autor.nombre)}</h3>
+        <div class="serie-sub">${escapeHtml(autor.descripcion)}</div>
         <div class="serie-btn">Порядок чтения ›</div>
       </div>
     </div>
@@ -1419,21 +1326,57 @@ function renderSeriesGrid() {
 }
 
 // ============================================
-//  RENDERIZAR CATEGORÍAS (en detalle de serie)
+//  DETALLE DE AUTOR (series y libros únicos)
 // ============================================
 
-function renderCategoryMenuDetail() {
+let autorSeleccionadoDetalle = null; // Para saber qué autor estamos viendo
+
+window.openAutorDetail = function(autorId) {
+  const autor = AUTORES.find(a => a.id === autorId);
+  if (!autor) return;
+  
+  autorSeleccionadoDetalle = autorId;
+  
+  // Construir el menú de categorías (series + libros únicos)
+  const categorias = [];
+  
+  // Agregar las series como categorías
+  autor.series.forEach(serie => {
+    categorias.push({
+      id: serie.id,
+      label: `📚 ${serie.nombre}`,
+      type: 'series',
+      seriesData: serie // Guardamos la serie completa
+    });
+  });
+  
+  // Agregar "Libros únicos" si hay
+  if (autor.librosUnicos && autor.librosUnicos.length > 0) {
+    categorias.push({
+      id: 'libros-unicos',
+      label: '📖 Libros únicos',
+      type: 'books',
+      bookIds: autor.librosUnicos.map(libro => libro.id)
+    });
+  }
+  
+  // Renderizar el menú
+  renderCategoryMenuDetail(categorias);
+  openScreen('serie-detail');
+};
+
+function renderCategoryMenuDetail(categorias) {
   const menu = document.getElementById('categoryMenuDetail');
   if (!menu) return;
-
-  menu.innerHTML = CATEGORIES.map(cat => `
+  
+  menu.innerHTML = categorias.map(cat => `
     <button class="category-btn" data-category="${cat.id}" onclick="selectCategoryDetail('${cat.id}')">
       ${cat.label}
     </button>
   `).join('');
-
-  if (CATEGORIES.length > 0) {
-    selectCategoryDetail(CATEGORIES[0].id);
+  
+  if (categorias.length > 0) {
+    selectCategoryDetail(categorias[0].id);
   }
 }
 
@@ -1441,45 +1384,69 @@ function selectCategoryDetail(categoryId) {
   document.querySelectorAll('#categoryMenuDetail .category-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.category === categoryId);
   });
-
-  const category = CATEGORIES.find(c => c.id === categoryId);
-  if (!category) return;
-
+  
+  const autor = AUTORES.find(a => a.id === autorSeleccionadoDetalle);
+  if (!autor) return;
+  
+  // Buscar la categoría seleccionada en las series o en libros únicos
+  let categoria = null;
+  let seriesData = null;
+  
+  // Buscar en las series
+  for (const serie of autor.series) {
+    if (serie.id === categoryId) {
+      categoria = {
+        id: serie.id,
+        type: 'series',
+        seriesData: serie
+      };
+      break;
+    }
+  }
+  
+  // Si no es una serie, puede ser "libros-unicos"
+  if (!categoria && categoryId === 'libros-unicos') {
+    categoria = {
+      id: 'libros-unicos',
+      type: 'books',
+      bookIds: autor.librosUnicos.map(libro => libro.id)
+    };
+  }
+  
+  if (!categoria) return;
+  
   const container = document.getElementById('categoryContentDetail');
   if (!container) return;
-
-  if (category.type === 'series') {
-    const serie = SERIES.find(s => s.id === category.seriesId);
-    if (!serie) return;
-
+  
+  if (categoria.type === 'series') {
+    // Mostrar libros de la serie
+    const serie = categoria.seriesData;
     container.innerHTML = `
       <div class="serie-detail-card">
         <div class="serie-detail-header">
-          <h2>${escapeHtml(serie.title)}</h2>
-          <p>${escapeHtml(serie.subtitle)}</p>
+          <h2>${escapeHtml(serie.nombre)}</h2>
         </div>
         <div class="serie-detail-body">
-          <p class="desc">${escapeHtml(serie.description)}</p>
           <div class="order-list">
-            ${serie.books.map(book => `
-              <div class="order-item" onclick="openBookDetail('${book.id}')" style="cursor:pointer;">
-                <span class="num">${book.number}</span>
+            ${serie.libros.map(libro => `
+              <div class="order-item" onclick="openBookDetail('${libro.id}')" style="cursor:pointer;">
+                <span class="num">${libro.number}</span>
                 <div class="info">
-                  <div class="title">${escapeHtml(book.title)}</div>
-                  <div class="sub">${escapeHtml(book.subtitle)}</div>
+                  <div class="title">${escapeHtml(libro.title)}</div>
                 </div>
-                <span class="status">${escapeHtml(book.status)}</span>
+                <span class="status">✅ Disponible</span>
               </div>
             `).join('')}
           </div>
         </div>
       </div>
     `;
-  } else if (category.type === 'books') {
-    const booksList = category.bookIds
+  } else if (categoria.type === 'books') {
+    // Mostrar libros únicos
+    const booksList = categoria.bookIds
       .map(id => BOOKS.find(b => b.id === id))
       .filter(b => b !== undefined);
-
+    
     container.innerHTML = `
       <div class="books-grid">
         ${booksList.map(book => `
@@ -1493,45 +1460,6 @@ function selectCategoryDetail(categoryId) {
     `;
   }
 }
-
-window.openSerieDetail = function(serieId) {
-  renderCategoryMenuDetail();
-  openScreen('serie-detail');
-};
-
-function mostrarIlustraciones(categoria, contenedorId) {
-  const contenedor = document.getElementById(contenedorId);
-  if (!contenedor) return;
-  
-  const items = ILUSTRACIONES[categoria] || [];
-  contenedor.innerHTML = items.map(item => `
-    <div class="illustration-card" onclick="abrirDetalleIlustracion('${categoria}', '${item.id}')">
-      <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
-      <div class="illustration-name">${item.nombre}</div>
-    </div>
-  `).join('');
-}
-
-window.abrirDetalleIlustracion = function(categoria, id) {
-  const items = ILUSTRACIONES[categoria] || [];
-  const item = items.find(i => i.id === id);
-  if (!item) return;
-
-  const detailEl = document.getElementById('illustrationDetail');
-  if (detailEl) {
-    detailEl.innerHTML = `
-      <div class="detail-illustration">
-        <img src="${item.imagen}" alt="${item.nombre}">
-        <div class="detail-info">
-          <h2>${item.nombre}</h2>
-          <p class="detail-book">📖 <strong>Libro:</strong> ${item.libro}</p>
-          <p class="detail-desc">${item.descripcion}</p>
-        </div>
-      </div>
-    `;
-  }
-  openScreen('illustration-detail');
-};
 
 // ============================================
 //  NAVEGACIÓN INFERIOR
@@ -1668,11 +1596,10 @@ document.addEventListener('DOMContentLoaded', function() {
   
   renderTopbar("home");
   renderBooksGrid();
-  renderReadingOrder();
   renderUpcomingBooks();
   renderUpdates();
   mostrarIlustraciones('nsfw', 'nsfwGrid');
   mostrarIlustraciones('sfw', 'sfwGrid');
-  renderSeriesGrid();
+  renderAutores(); // Ahora renderiza AUTORES en lugar de SERIES
   renderAutoresIlustraciones();
 });
