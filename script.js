@@ -1411,21 +1411,21 @@ const AUTORES = [
           { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
           { number: "02", title: "Paper and Passion", id: "Paper and Passion" },
           { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" },
-          { number: "04", title: "Bread by the Grim", id: null},
-          { number: "05", title: "Cooking Up a Demon", id: null},
-          { number: "06", title: "Twi-Flight", id: null},
-          { number: "07", title: "Taking a Tumble", id: null},
-          { number: "08", title: "Defined and Defiled", id: null},
+          { number: "04", title: "Bread by the Grim", id: null },
+          { number: "05", title: "Cooking Up a Demon", id: null },
+          { number: "06", title: "Twi-Flight", id: null },
+          { number: "07", title: "Taking a Tumble", id: null },
+          { number: "08", title: "Defined and Defiled", id: null },
           { number: "09", title: "Hello, Nurse!", id: "Hello, Nurse!" },
-          { number: "10", title: "Her Wonderful Wonder Belle", id: null},
-          { number: "11", title: "Knot Falling in Love", id: null},
-          { number: "12", title: "Cirrus About You", id: null}
+          { number: "10", title: "Her Wonderful Wonder Belle", id: null },
+          { number: "11", title: "Knot Falling in Love", id: null },
+          { number: "12", title: "Cirrus About You", id: null }
         ]
       }
     ],
     librosUnicos: [
-      title: "Step Brother Bear", id: "Step Brother Bear" },
-      title: "Bad BeehAvior", id: "Bad BeehAvior" }
+      { title: "Step Brother Bear", id: "Step Brother Bear" },
+      { title: "Bad BeehAvior", id: "Bad BeehAvior" }
     ]
   },
   {
@@ -1469,6 +1469,7 @@ const AUTORES = [
     librosUnicos: []
   }
 ];
+
 
 // ============================================
 //  RENDERIZAR AUTORES (tarjetas)
