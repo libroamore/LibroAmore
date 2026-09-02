@@ -1406,26 +1406,26 @@ const AUTORES = [
     series: [
       {
         id: "ghostlight",
-        nombre: "Serie Ghostlight",
+        nombre: "Serie Ghostlight Falls",
         libros: [
           { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
-          { number: "02", title: "Hello, Nurse!", id: "Hello, Nurse!" },
-          { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" }
-        ]
-      },
-      {
-        id: "dark-empire",
-        nombre: "Serie Dark Empire",
-        libros: [
-          { number: "01", title: "Step Brother Bear", id: "Step Brother Bear" },
-          { number: "02", title: "Bad BeehAvior", id: "Bad BeehAvior" },
-          { number: "03", title: "Scream For Me", id: "Scream For Me" }
+          { number: "02", title: "Paper and Passion", id: "Paper and Passion" },
+          { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" },
+          { number: "04", title: "Bread by the Grim", id: null},
+          { number: "05", title: "Cooking Up a Demon", id: null},
+          { number: "06", title: "Twi-Flight", id: null},
+          { number: "07", title: "Taking a Tumble", id: null},
+          { number: "08", title: "Defined and Defiled", id: null},
+          { number: "09", title: "Hello, Nurse!", id: "Hello, Nurse!" },
+          { number: "10", title: "Her Wonderful Wonder Belle", id: null},
+          { number: "11", title: "Knot Falling in Love", id: null},
+          { number: "12", title: "Cirrus About You", id: null}
         ]
       }
     ],
     librosUnicos: [
-      { title: "Nimbus", id: "Nimbus" },
-      { title: "Fully Charged", id: "Fully Charged" }
+      title: "Step Brother Bear", id: "Step Brother Bear" },
+      title: "Bad BeehAvior", id: "Bad BeehAvior" }
     ]
   },
   {
