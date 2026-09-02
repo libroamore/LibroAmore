@@ -1276,15 +1276,6 @@ function renderGaleriaLibro() {
   const detailEl = document.getElementById('illustrationDetail');
   if (!detailEl) return;
 
-function renderGaleriaLibro() {
-  const imagenes = window.galeriaImagenes;
-  const index = window.galeriaIndex || 0;
-  if (!imagenes || imagenes.length === 0) return;
-
-  const item = imagenes[index];
-  const detailEl = document.getElementById('illustrationDetail');
-  if (!detailEl) return;
-
   // Navegación entre ilustraciones (flechas)
   const navButtons = imagenes.length > 1 ? `
     <div class="detail-nav">
