@@ -1720,3 +1720,5 @@ document.addEventListener('DOMContentLoaded', function() {
   renderAutores(); // Ahora renderiza AUTORES en lugar de SERIES
   renderAutoresIlustraciones();
 });
+
+
