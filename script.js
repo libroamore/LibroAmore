@@ -1092,21 +1092,30 @@ const ILUSTRACIONES = {
       nombre: "Wattson x Jewel",
       libro: "Fully Charged",
       bookId: "Fully Charged",
-      autor: "Nicole Parker - Unfortunate Reads",
-      imagen: "https://i.postimg.cc/CxgRbZWf/bunny-NSFW-Watermark.png",
+      autor: "Nicole Parker",
+      imagen: "https://i.postimg.cc/T3CM9wkQ/fullycharged.webp",
       descripcion: "Jewel y su Conejito."
     },
     {
       id: "nsfw-2",
-      nombre: "Mia x Bear",
-      libro: "Banging My Birthday Bear",
-      bookId: "Banging My Birthday Bear",
-      autor: "Holly Wilde",
-      imagen: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
-      descripcion: "Mia y su osito de peluche en la cabaña de montaña."
+      nombre: "Angelina, Absurdo, Blabbo x Rebecca",
+      libro: "Hello, Nurse!",
+      bookId: "Hello, Nurse!",
+      autor: "Nicole Parker",
+      imagen: "https://i.postimg.cc/263zvvr6/Hello-Nurse.webp",
+      descripcion: "Ritual"
     },
     {
       id: "nsfw-3",
+      nombre: "Angelina x Blabbo",
+      libro: "Hello, Nurse!",
+      bookId: "Hello, Nurse!",
+      autor: "Nicole Parker",
+      imagen: "https://i.postimg.cc/9MPvDQqZ/Hello-Nurse2.webp",
+      descripcion: "Momento de Rebecca y Blabbo"
+    },
+    {
+      id: "nsfw-4",
       nombre: "Wattson x Jewel 2",
       libro: "Fully Charged",
       bookId: "Fully Charged",
