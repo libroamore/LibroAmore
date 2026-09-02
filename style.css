@@ -1754,6 +1754,7 @@ body.dark-mode .sort-btn.active {
 .galeria-info {
   margin-top: 16px;
   padding: 12px 0;
+  text-align: center;
 }
 
 .galeria-info h3 {
@@ -1857,4 +1858,29 @@ body.dark-mode .nav-arrow {
 
 body.dark-mode .nav-arrow:hover:not(:disabled) {
   background: rgba(255,255,255,0.15);
+}
+
+/* ---------- Botón "Ver libro" (para galería de ilustraciones) ---------- */
+.btn-libro {
+  display: block;
+  margin: 16px auto 0;
+  background: var(--pink-strong);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(217, 116, 143, 0.3);
+}
+
+.btn-libro:active {
+  transform: scale(0.95);
+}
+
+.btn-libro:hover {
+  background: var(--pink-ink);
 }
