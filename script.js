@@ -1092,8 +1092,8 @@ const ILUSTRACIONES = {
       nombre: "Wattson x Jewel",
       libro: "Fully Charged",
       bookId: "Fully Charged",
-      autor: "Holly Wilde",
-      imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
+      autor: "Nicole Parker - Unfortunate Reads",
+      imagen: "https://i.postimg.cc/CxgRbZWf/bunny-NSFW-Watermark.png",
       descripcion: "Jewel y su Conejito."
     },
     {
