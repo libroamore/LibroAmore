@@ -1093,7 +1093,7 @@ const ILUSTRACIONES = {
       libro: "Fully Charged",
       bookId: "Fully Charged",
       autor: "Nicole Parker",
-      imagen: "https://i.postimg.cc/T3CM9wkQ/fullycharged.webp",
+      imagen: "https://files.catbox.moe/ss2vl3.png",
       descripcion: "Jewel y su Conejito."
     },
     {
@@ -1102,7 +1102,7 @@ const ILUSTRACIONES = {
       libro: "Hello, Nurse!",
       bookId: "Hello, Nurse!",
       autor: "Nicole Parker",
-      imagen: "https://i.postimg.cc/263zvvr6/Hello-Nurse.webp",
+      imagen: "https://files.catbox.moe/cfsuac.webp",
       descripcion: "Ritual"
     },
     {
@@ -1111,7 +1111,7 @@ const ILUSTRACIONES = {
       libro: "Hello, Nurse!",
       bookId: "Hello, Nurse!",
       autor: "Nicole Parker",
-      imagen: "https://i.postimg.cc/9MPvDQqZ/Hello-Nurse2.webp",
+      imagen: "https://files.catbox.moe/cfsuac.webp",
       descripcion: "Momento de Rebecca y Blabbo"
     },
     {
