@@ -1105,6 +1105,15 @@ const ILUSTRACIONES = {
       autor: "Holly Wilde",
       imagen: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
       descripcion: "Mia y su osito de peluche en la cabaña de montaña."
+    },
+     {
+     id: "nsfw-3",
+     nombre: "Wattson x Jewel 2",
+     libro: "Fully Charged",
+     bookId: "Fully Charged",
+     autor: "Holly Wilde",
+     imagen: "URL_DE_TU_NUEVA_IMAGEN",
+     descripcion: "Otra escena de Jewel y su Conejito."
     }
   ],
   sfw: [
