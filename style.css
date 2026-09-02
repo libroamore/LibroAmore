@@ -1715,3 +1715,146 @@ body.dark-mode .sort-btn.active {
   border-radius: 20px;
   font-weight: 500;
 }
+
+/* ---------- Galería de ilustraciones por libro ---------- */
+.galeria-libro {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.galeria-header h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--pink-ink);
+  margin: 0 0 4px;
+}
+
+.galeria-autor {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.galeria-imagen-principal {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.galeria-imagen-principal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.galeria-info {
+  margin-top: 16px;
+  padding: 12px 0;
+}
+
+.galeria-info h3 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.galeria-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.galeria-thumbnails {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding: 4px 0 8px;
+}
+
+.thumbnail {
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail.active {
+  border-color: var(--pink-strong);
+  transform: scale(1.05);
+}
+
+.thumbnail:active {
+  transform: scale(0.92);
+}
+
+/* Navegación (flechas) */
+.detail-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 12px 0 8px;
+}
+
+.nav-arrow {
+  background: var(--pink-soft);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--pink-ink);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-arrow:active {
+  transform: scale(0.92);
+}
+
+.nav-arrow:hover:not(:disabled) {
+  background: var(--pink);
+}
+
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.nav-counter {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 500;
+  min-width: 60px;
+  text-align: center;
+}
+
+body.dark-mode .nav-arrow {
+  background: rgba(255,255,255,0.08);
+  color: var(--muted);
+}
+
+body.dark-mode .nav-arrow:hover:not(:disabled) {
+  background: rgba(255,255,255,0.15);
+}
