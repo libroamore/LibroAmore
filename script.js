@@ -1142,9 +1142,40 @@ const ILUSTRACIONES = {
 // ============================================
 
 window.abrirAutoresIlustraciones = function(categoria) {
-  categoriaIlustraciones = categoria;
-  autorSeleccionado = null;
-  openScreen('ilustraciones-autores');
+  // Solo mostramos la advertencia si es NSFW
+  if (categoria === 'nsfw') {
+    // Mostrar el popup de advertencia
+    if (window.Telegram && Telegram.WebApp) {
+      Telegram.WebApp.showPopup({
+        title: '⚠️ Advertencia',
+        message: 'El contenido presentado es para personas mayores de 18 años.\n\nCréditos respectivos a cada autor.',
+        buttons: [
+          { id: 'cancel', type: 'cancel', text: 'Cancelar' },
+          { id: 'accept', type: 'default', text: 'Soy mayor de 18 años' }
+        ]
+      }, function(buttonId) {
+        if (buttonId === 'accept') {
+          // Si acepta, navegar a la sección
+          categoriaIlustraciones = categoria;
+          autorSeleccionado = null;
+          openScreen('ilustraciones-autores');
+        }
+        // Si es 'cancel' o se cierra, no hace nada
+      });
+    } else {
+      // Fallback para navegadores web (por si acaso)
+      if (confirm('¿Eres mayor de 18 años para ver este contenido?')) {
+        categoriaIlustraciones = categoria;
+        autorSeleccionado = null;
+        openScreen('ilustraciones-autores');
+      }
+    }
+  } else {
+    // Para SFW, no mostrar advertencia
+    categoriaIlustraciones = categoria;
+    autorSeleccionado = null;
+    openScreen('ilustraciones-autores');
+  }
 };
 
 function renderAutoresIlustraciones() {
