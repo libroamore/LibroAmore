@@ -1175,6 +1175,8 @@ function renderAutoresIlustraciones() {
 
 window.abrirGaleriaAutor = function(autor) {
   autorSeleccionado = autor;
+  // Renderizar las ilustraciones con el filtro de autor
+  mostrarIlustraciones(categoriaIlustraciones, categoriaIlustraciones === 'nsfw' ? 'nsfwGrid' : 'sfwGrid');
   openScreen(categoriaIlustraciones);
 };
 
