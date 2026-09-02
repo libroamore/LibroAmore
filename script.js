@@ -1198,13 +1198,130 @@ function mostrarIlustraciones(categoria, contenedorId) {
     return;
   }
 
-  contenedor.innerHTML = items.map(item => `
-    <div class="illustration-card" onclick="abrirDetalleIlustracion('${categoria}', '${item.id}')">
-      <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
-      <div class="illustration-name">${escapeHtml(item.nombre)}</div>
+  // Si hay un autor seleccionado, agrupar por libro
+  if (autorSeleccionado) {
+    const grupos = {};
+    items.forEach(item => {
+      if (!grupos[item.bookId]) {
+        grupos[item.bookId] = {
+          bookId: item.bookId,
+          libro: item.libro,
+          autor: item.autor,
+          imagenes: []
+        };
+      }
+      grupos[item.bookId].imagenes.push(item);
+    });
+
+    const gruposArray = Object.values(grupos);
+    window.listaIlustracionesActual = gruposArray;
+
+    contenedor.innerHTML = gruposArray.map((grupo) => {
+      const primeraImagen = grupo.imagenes[0];
+      return `
+        <div class="illustration-card" onclick="abrirGaleriaLibro('${categoria}', '${grupo.bookId}')">
+          <img src="${primeraImagen.imagen}" alt="${grupo.libro}" loading="lazy">
+          <div class="illustration-name">${escapeHtml(grupo.libro)}</div>
+          <div style="font-size: 12px; color: var(--muted); margin-top: 2px;">${grupo.imagenes.length} ilustraciones</div>
+        </div>
+      `;
+    }).join('');
+  } else {
+    // Sin autor seleccionado, mostrar todas las ilustraciones (como antes)
+    window.listaIlustracionesActual = items;
+    contenedor.innerHTML = items.map((item, index) => `
+      <div class="illustration-card" onclick="abrirDetalleIlustracion('${categoria}', '${item.id}', ${index})">
+        <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
+        <div class="illustration-name">${escapeHtml(item.nombre)}</div>
+      </div>
+    `).join('');
+  }
+}
+
+// ============================================
+//  GALERÍA DE ILUSTRACIONES POR LIBRO
+// ============================================
+
+window.abrirGaleriaLibro = function(categoria, bookId) {
+  const items = ILUSTRACIONES[categoria] || [];
+  const imagenes = items.filter(item => item.bookId === bookId && item.autor === autorSeleccionado);
+  if (imagenes.length === 0) return;
+
+  // Guardar estado de la galería
+  window.galeriaImagenes = imagenes;
+  window.galeriaIndex = 0;
+  window.galeriaCategoria = categoria;
+
+  renderGaleriaLibro();
+  openScreen('illustration-detail');
+};
+
+function renderGaleriaLibro() {
+  const imagenes = window.galeriaImagenes;
+  const index = window.galeriaIndex || 0;
+  if (!imagenes || imagenes.length === 0) return;
+
+  const item = imagenes[index];
+  const detailEl = document.getElementById('illustrationDetail');
+  if (!detailEl) return;
+
+  // Navegación entre ilustraciones (flechas)
+  const navButtons = imagenes.length > 1 ? `
+    <div class="detail-nav">
+      <button class="nav-arrow" onclick="cambiarIlustracion(-1)" ${index === 0 ? 'disabled' : ''}>‹</button>
+      <span class="nav-counter">${index + 1} / ${imagenes.length}</span>
+      <button class="nav-arrow" onclick="cambiarIlustracion(1)" ${index === imagenes.length - 1 ? 'disabled' : ''}>›</button>
+    </div>
+  ` : '';
+
+  // Miniaturas de todas las ilustraciones del libro
+  const thumbnails = imagenes.map((img, i) => `
+    <div class="thumbnail ${i === index ? 'active' : ''}" onclick="cambiarIlustracionA(${i})">
+      <img src="${img.imagen}" alt="${img.nombre}">
     </div>
   `).join('');
+
+  detailEl.innerHTML = `
+    <div class="galeria-libro">
+      <div class="galeria-header">
+        <h2>${escapeHtml(item.libro)}</h2>
+        <p class="galeria-autor">${escapeHtml(item.autor)}</p>
+      </div>
+      <div class="galeria-imagen-principal">
+        <img src="${item.imagen}" alt="${item.nombre}">
+      </div>
+      ${navButtons}
+      <div class="galeria-info">
+        <h3>${escapeHtml(item.nombre)}</h3>
+        <p class="galeria-desc">${escapeHtml(item.descripcion)}</p>
+        <button class="btn-libro" onclick="openBookDetail('${item.bookId}')">📚 Ver libro</button>
+      </div>
+      <div class="galeria-thumbnails">
+        ${thumbnails}
+      </div>
+      <button class="back-btn" onclick="goBack()" style="margin-top:16px;">← Volver</button>
+    </div>
+  `;
 }
+
+// Cambiar a la siguiente/anterior ilustración
+window.cambiarIlustracion = function(direccion) {
+  const imagenes = window.galeriaImagenes;
+  if (!imagenes) return;
+  let nuevoIndex = (window.galeriaIndex || 0) + direccion;
+  if (nuevoIndex < 0) nuevoIndex = imagenes.length - 1;
+  if (nuevoIndex >= imagenes.length) nuevoIndex = 0;
+  window.galeriaIndex = nuevoIndex;
+  renderGaleriaLibro();
+};
+
+// Cambiar a una ilustración específica (desde miniatura)
+window.cambiarIlustracionA = function(index) {
+  const imagenes = window.galeriaImagenes;
+  if (!imagenes || index < 0 || index >= imagenes.length) return;
+  window.galeriaIndex = index;
+  renderGaleriaLibro();
+};
 
 window.abrirDetalleIlustracion = function(categoria, id) {
   const items = ILUSTRACIONES[categoria] || [];
