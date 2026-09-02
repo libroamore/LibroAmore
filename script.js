@@ -666,7 +666,7 @@ const BOOKS = [
   }
 ];
 
-/* ---------- Libros próximos (para sección "Próximos proyectos") ---------- */
+/* ---------- Libros próximos ---------- */
 const UPCOMING_BOOKS = [
   {
     id: "upcoming-1",
@@ -712,7 +712,7 @@ const SCREEN_TITLES = {
   sfw: "🖼️ SFW",
   "illustration-detail": "Detalle",
   nosotras: "Nosotras",
-  "serie-detail": "Detalle de autor", // Cambiado a "Detalle de autor"
+  "serie-detail": "Detalle de autor",
   "ilustraciones-autores": "Autores"
 };
 
@@ -1032,8 +1032,7 @@ window.downloadFormat = function(format) {
   showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
 };
 
-/* ---------- Orden de lectura (sección Autores) ---------- */
-// Esta función ya no se usa, pero la dejamos por si acaso
+/* ---------- Orden de lectura ---------- */
 function renderReadingOrder() {
   // Vacío
 }
@@ -1106,14 +1105,14 @@ const ILUSTRACIONES = {
       imagen: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
       descripcion: "Mia y su osito de peluche en la cabaña de montaña."
     },
-     {
-     id: "nsfw-3",
-     nombre: "Wattson x Jewel 2",
-     libro: "Fully Charged",
-     bookId: "Fully Charged",
-     autor: "Holly Wilde",
-     imagen: "URL_DE_TU_NUEVA_IMAGEN",
-     descripcion: "Otra escena de Jewel y su Conejito."
+    {
+      id: "nsfw-3",
+      nombre: "Wattson x Jewel 2",
+      libro: "Fully Charged",
+      bookId: "Fully Charged",
+      autor: "Holly Wilde",
+      imagen: "URL_DE_TU_NUEVA_IMAGEN",
+      descripcion: "Otra escena de Jewel y su Conejito."
     }
   ],
   sfw: [
@@ -1184,7 +1183,6 @@ function renderAutoresIlustraciones() {
 
 window.abrirGaleriaAutor = function(autor) {
   autorSeleccionado = autor;
-  // Renderizar las ilustraciones con el filtro de autor
   mostrarIlustraciones(categoriaIlustraciones, categoriaIlustraciones === 'nsfw' ? 'nsfwGrid' : 'sfwGrid');
   openScreen(categoriaIlustraciones);
 };
@@ -1238,7 +1236,7 @@ function mostrarIlustraciones(categoria, contenedorId) {
       `;
     }).join('');
   } else {
-    // Sin autor seleccionado, mostrar todas las ilustraciones (como antes)
+    // Sin autor seleccionado, mostrar todas las ilustraciones
     window.listaIlustracionesActual = items;
     contenedor.innerHTML = items.map((item, index) => `
       <div class="illustration-card" onclick="abrirDetalleIlustracion('${categoria}', '${item.id}', ${index})">
@@ -1258,7 +1256,6 @@ window.abrirGaleriaLibro = function(categoria, bookId) {
   const imagenes = items.filter(item => item.bookId === bookId && item.autor === autorSeleccionado);
   if (imagenes.length === 0) return;
 
-  // Guardar estado de la galería
   window.galeriaImagenes = imagenes;
   window.galeriaIndex = 0;
   window.galeriaCategoria = categoria;
@@ -1314,7 +1311,7 @@ function renderGaleriaLibro() {
     </div>
   `;
 }
-   
+
 // Cambiar a la siguiente/anterior ilustración
 window.cambiarIlustracion = function(direccion) {
   const imagenes = window.galeriaImagenes;
@@ -1360,7 +1357,6 @@ window.abrirDetalleIlustracion = function(categoria, id) {
 //  AUTORES (tarjetas en la sección "Autores")
 // ============================================
 
-// Definimos cada autor como un objeto con sus series y libros únicos
 const AUTORES = [
   {
     id: "gm-fairy",
@@ -1439,7 +1435,7 @@ const AUTORES = [
 // ============================================
 
 function renderAutores() {
-  const grid = document.getElementById('seriesGrid'); // Reutilizamos el grid de series
+  const grid = document.getElementById('seriesGrid');
   if (!grid) return;
 
   grid.innerHTML = AUTORES.map(autor => `
@@ -1457,7 +1453,7 @@ function renderAutores() {
 //  DETALLE DE AUTOR (series y libros únicos)
 // ============================================
 
-let autorSeleccionadoDetalle = null; // Para saber qué autor estamos viendo
+let autorSeleccionadoDetalle = null;
 
 window.openAutorDetail = function(autorId) {
   const autor = AUTORES.find(a => a.id === autorId);
@@ -1465,20 +1461,17 @@ window.openAutorDetail = function(autorId) {
   
   autorSeleccionadoDetalle = autorId;
   
-  // Construir el menú de categorías (series + libros únicos)
   const categorias = [];
   
-  // Agregar las series como categorías
   autor.series.forEach(serie => {
     categorias.push({
       id: serie.id,
       label: `📚 ${serie.nombre}`,
       type: 'series',
-      seriesData: serie // Guardamos la serie completa
+      seriesData: serie
     });
   });
   
-  // Agregar "Libros únicos" si hay
   if (autor.librosUnicos && autor.librosUnicos.length > 0) {
     categorias.push({
       id: 'libros-unicos',
@@ -1488,7 +1481,6 @@ window.openAutorDetail = function(autorId) {
     });
   }
   
-  // Renderizar el menú
   renderCategoryMenuDetail(categorias);
   openScreen('serie-detail');
 };
@@ -1516,11 +1508,9 @@ function selectCategoryDetail(categoryId) {
   const autor = AUTORES.find(a => a.id === autorSeleccionadoDetalle);
   if (!autor) return;
   
-  // Buscar la categoría seleccionada en las series o en libros únicos
   let categoria = null;
   let seriesData = null;
   
-  // Buscar en las series
   for (const serie of autor.series) {
     if (serie.id === categoryId) {
       categoria = {
@@ -1532,7 +1522,6 @@ function selectCategoryDetail(categoryId) {
     }
   }
   
-  // Si no es una serie, puede ser "libros-unicos"
   if (!categoria && categoryId === 'libros-unicos') {
     categoria = {
       id: 'libros-unicos',
@@ -1547,7 +1536,6 @@ function selectCategoryDetail(categoryId) {
   if (!container) return;
   
   if (categoria.type === 'series') {
-    // Mostrar libros de la serie
     const serie = categoria.seriesData;
     container.innerHTML = `
       <div class="serie-detail-card">
@@ -1570,7 +1558,6 @@ function selectCategoryDetail(categoryId) {
       </div>
     `;
   } else if (categoria.type === 'books') {
-    // Mostrar libros únicos
     const booksList = categoria.bookIds
       .map(id => BOOKS.find(b => b.id === id))
       .filter(b => b !== undefined);
@@ -1728,8 +1715,6 @@ document.addEventListener('DOMContentLoaded', function() {
   renderUpdates();
   mostrarIlustraciones('nsfw', 'nsfwGrid');
   mostrarIlustraciones('sfw', 'sfwGrid');
-  renderAutores(); // Ahora renderiza AUTORES en lugar de SERIES
+  renderAutores();
   renderAutoresIlustraciones();
 });
-
-
