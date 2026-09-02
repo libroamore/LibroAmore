@@ -1276,6 +1276,15 @@ function renderGaleriaLibro() {
   const detailEl = document.getElementById('illustrationDetail');
   if (!detailEl) return;
 
+ function renderGaleriaLibro() {
+  const imagenes = window.galeriaImagenes;
+  const index = window.galeriaIndex || 0;
+  if (!imagenes || imagenes.length === 0) return;
+
+  const item = imagenes[index];
+  const detailEl = document.getElementById('illustrationDetail');
+  if (!detailEl) return;
+
   // Navegación entre ilustraciones (flechas)
   const navButtons = imagenes.length > 1 ? `
     <div class="detail-nav">
@@ -1302,10 +1311,10 @@ function renderGaleriaLibro() {
         <img src="${item.imagen}" alt="${item.nombre}">
       </div>
       ${navButtons}
-      <div class="galeria-info">
-        <h3>${escapeHtml(item.nombre)}</h3>
-        <p class="galeria-desc">${escapeHtml(item.descripcion)}</p>
-        <button class="btn-libro" onclick="openBookDetail('${item.bookId}')">📚 Ver libro</button>
+      <div class="galeria-info" style="text-align: center;">
+        <h3 style="text-align: center;">${escapeHtml(item.nombre)}</h3>
+        <p class="galeria-desc" style="text-align: center;">${escapeHtml(item.descripcion)}</p>
+        <button class="btn-libro" onclick="openBookDetail('${item.bookId}')" style="display: block; margin: 0 auto;">📚 Ver libro</button>
       </div>
       <div class="galeria-thumbnails">
         ${thumbnails}
@@ -1314,7 +1323,7 @@ function renderGaleriaLibro() {
     </div>
   `;
 }
-
+   
 // Cambiar a la siguiente/anterior ilustración
 window.cambiarIlustracion = function(direccion) {
   const imagenes = window.galeriaImagenes;
