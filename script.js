@@ -1576,6 +1576,41 @@ function selectCategoryDetail(categoryId) {
   const container = document.getElementById('categoryContentDetail');
   if (!container) return;
   
+  function selectCategoryDetail(categoryId) {
+  document.querySelectorAll('#categoryMenuDetail .category-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.category === categoryId);
+  });
+  
+  const autor = AUTORES.find(a => a.id === autorSeleccionadoDetalle);
+  if (!autor) return;
+  
+  let categoria = null;
+  let seriesData = null;
+  
+  for (const serie of autor.series) {
+    if (serie.id === categoryId) {
+      categoria = {
+        id: serie.id,
+        type: 'series',
+        seriesData: serie
+      };
+      break;
+    }
+  }
+  
+  if (!categoria && categoryId === 'libros-unicos') {
+    categoria = {
+      id: 'libros-unicos',
+      type: 'books',
+      bookIds: autor.librosUnicos.map(libro => libro.id)
+    };
+  }
+  
+  if (!categoria) return;
+  
+  const container = document.getElementById('categoryContentDetail');
+  if (!container) return;
+  
   if (categoria.type === 'series') {
     const serie = categoria.seriesData;
     container.innerHTML = `
@@ -1585,15 +1620,22 @@ function selectCategoryDetail(categoryId) {
         </div>
         <div class="serie-detail-body">
           <div class="order-list">
-            ${serie.libros.map(libro => `
-              <div class="order-item" onclick="openBookDetail('${libro.id}')" style="cursor:pointer;">
-                <span class="num">${libro.number}</span>
-                <div class="info">
-                  <div class="title">${escapeHtml(libro.title)}</div>
+            ${serie.libros.map(libro => {
+              const isAvailable = libro.id !== null && libro.id !== undefined;
+              const onclick = isAvailable ? `onclick="openBookDetail('${libro.id}')"` : '';
+              const cursor = isAvailable ? 'pointer' : 'default';
+              const statusText = isAvailable ? '✅ Disponible' : '⏳ Próximamente';
+              const statusClass = isAvailable ? 'status-available' : 'status-soon';
+              return `
+                <div class="order-item" ${onclick} style="cursor:${cursor}; opacity:${isAvailable ? 1 : 0.7};">
+                  <span class="num">${libro.number}</span>
+                  <div class="info">
+                    <div class="title">${escapeHtml(libro.title)}</div>
+                  </div>
+                  <span class="status-badge ${statusClass}">${statusText}</span>
                 </div>
-                <span class="status">✅ Disponible</span>
-              </div>
-            `).join('')}
+              `;
+            }).join('')}
           </div>
         </div>
       </div>
