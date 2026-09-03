@@ -1540,41 +1540,6 @@ function renderCategoryMenuDetail(categorias) {
     selectCategoryDetail(categorias[0].id);
   }
 }
-
-function selectCategoryDetail(categoryId) {
-  document.querySelectorAll('#categoryMenuDetail .category-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.category === categoryId);
-  });
-  
-  const autor = AUTORES.find(a => a.id === autorSeleccionadoDetalle);
-  if (!autor) return;
-  
-  let categoria = null;
-  let seriesData = null;
-  
-  for (const serie of autor.series) {
-    if (serie.id === categoryId) {
-      categoria = {
-        id: serie.id,
-        type: 'series',
-        seriesData: serie
-      };
-      break;
-    }
-  }
-  
-  if (!categoria && categoryId === 'libros-unicos') {
-    categoria = {
-      id: 'libros-unicos',
-      type: 'books',
-      bookIds: autor.librosUnicos.map(libro => libro.id)
-    };
-  }
-  
-  if (!categoria) return;
-  
-  const container = document.getElementById('categoryContentDetail');
-  if (!container) return;
   
   function selectCategoryDetail(categoryId) {
   document.querySelectorAll('#categoryMenuDetail .category-btn').forEach(btn => {
