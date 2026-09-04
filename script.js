@@ -1409,7 +1409,7 @@ const AUTORES = [
         nombre: "Serie Ghostlight Falls",
         libros: [
           { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
-          { number: "02", title: "Paper and Passion", id: "Paper-and-Passion" },
+          { number: "02", title: "Paper and Passion", id: "paper-and-passion" },
           { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" },
           { number: "04", title: "Bread by the Grim", id: null },
           { number: "05", title: "Cooking Up a Demon", id: null },
@@ -1429,13 +1429,13 @@ const AUTORES = [
     ]
   },
   {
-    id: "Objetos",
+    id: "objetos",
     nombre: "Nicole Parker",
     descripcion: "Romance con objetos conscientes",
     imagen: "https://files.catbox.moe/q3wqfq.png",
     series: [
       {
-        id: "objetos",
+        id: "kyleverse",
         nombre: "Kyleverse",
         libros: [
           { number: "01", title: "Rake", id: "Rake" },
@@ -1456,34 +1456,62 @@ const AUTORES = [
           { number: "16", title: "Pixels", id: null },
           { number: "17", title: "Stuck", id: null }
         ]
-      }
-    ],
-    librosUnicos: [
-      { title: "Fervor", id: "Fervor" }
-    ]
-  },
-  {
-    id: "mortal-vows",
-    nombre: "Смертельные клятвы",
-    descripcion: "МАФИОЗНАЯ РОМАНТИКА • 5 книг",
-    imagen: "https://i.postimg.cc/BnGLKTMB/3.png",
-    series: [
+      },
       {
-        id: "mortal-vows-saga",
-        nombre: "Saga de las Cláusulas Mortales",
+        id: "ghostlight-nicole",
+        nombre: "Ghostlight Falls - MULTIAUTOR",
         libros: [
-          { number: "01", title: "Смертельные клятвы", id: "The Totally Typical Tale Of Mappy McMapface" },
-          { number: "02", title: "Праведные клятвы", id: "Pounded By Poseidon" },
-          { number: "03", title: "Коварные клятвы", id: "Say My Name" },
-          { number: "04", title: "Безумные клятвы", id: "MONSTROUS" },
-          { number: "05", title: "Неправильные клятвы", id: "Fervor" }
+          { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
+          { number: "02", title: "Paper and Passion", id: "paper-and-passion" },
+          { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" },
+          { number: "04", title: "Bread by the Grim", id: null },
+          { number: "05", title: "Cooking Up a Demon", id: null },
+          { number: "06", title: "Twi-Flight", id: null },
+          { number: "07", title: "Taking a Tumble", id: null },
+          { number: "08", title: "Defined and Defiled", id: null },
+          { number: "09", title: "Hello, Nurse!", id: "Hello, Nurse!" },
+          { number: "10", title: "Her Wonderful Wonder Belle", id: null },
+          { number: "11", title: "Knot Falling in Love", id: null },
+          { number: "12", title: "Cirrus About You", id: null }
         ]
       }
     ],
-    librosUnicos: []
-  }
+    librosUnicos: [
+      { title: "Spackled", id: "Spackled" }
+    ]
+  },
+  {
+{
+  id: "Unfortunate",
+  nombre: "Unfortunate Reads",
+  descripcion: "Romance con objetos conscientes y días festivos",
+  imagen: "https://i.postimg.cc/BnGLKTMB/3.png",
+  series: [
+    {
+      id: "sentient-holiday-saga",
+      nombre: "The Sentient Object Holiday Series",
+      libros: [
+        { number: "01", title: "My Date With a Rubber Duckie", id: "My Date With A Rubber Duckie", autor: "Thea Masen" },
+        { number: "02", title: "My Date With a Pair of Sweatpants", id: null, autor: "Dakota Cockaday" },
+        { number: "03", title: "My Date With a White T-shirt", id: null, autor: "Dakota Cockaday" },
+        { number: "04", title: "My Date With Water", id: null, autor: "Unfortunate Reads" },
+        { number: "05", title: "My Date With an Edible Book", id: null, autor: "Holly Wilde" },
+        { number: "06", title: "My Date With Bubble Tea", id: null, autor: "Sylvia Morrow" },
+        { number: "07", title: "My Date With Caps Lock", id: null, autor: "Thea Masen" },
+        { number: "08", title: "My Date With an Unidentified Flying Object", id: null, autor: "Luna Cantrip" },
+        { number: "09", title: "My Date With Rock, Paper, & Scissors", id: null, autor: "Holly Wilde" },
+        { number: "10", title: "My Date With an Ampersand", id: null, autor: "Nicole Parker" },
+        { number: "11", title: "My Date With a LED", id: null, autor: "Vera Valentine" },
+        { number: "12", title: "My Date With a Leif Erikson Statue", id: null, autor: "Biblio Barbie" },
+        { number: "13", title: "My Date With a Jelly Fish", id: null, autor: "Unfortunate Reads" },
+        { number: "14", title: "My Date With a Mountain", id: null, autor: "Luna Cantrip" }
+      ]
+    }
+  ],
+  librosUnicos: []
+}
+ }
 ];
-
 
 // ============================================
 //  RENDERIZAR AUTORES (tarjetas)
