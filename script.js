@@ -1481,12 +1481,11 @@ const AUTORES = [
     ]
   },
   {
-{
-  id: "Unfortunate",
-  nombre: "Unfortunate Reads",
-  descripcion: "Romance con objetos conscientes y días festivos",
-  imagen: "https://i.postimg.cc/BnGLKTMB/3.png",
-  series: [
+   id: "Unfortunate",
+   nombre: "Unfortunate Reads",
+   descripcion: "Romance con objetos conscientes y días festivos",
+   imagen: "https://i.postimg.cc/BnGLKTMB/3.png",
+   series: [
     {
       id: "sentient-holiday-saga",
       nombre: "The Sentient Object Holiday Series",
@@ -1509,7 +1508,6 @@ const AUTORES = [
     }
   ],
   librosUnicos: []
-}
  }
 ];
 
