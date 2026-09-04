@@ -1402,11 +1402,11 @@ const AUTORES = [
     id: "gm-fairy",
     nombre: "G.M. Fairy",
     descripcion: "Libros de romance, Fantasía y Ciencia ficción",
-    imagen: "https://files.catbox.moe/vifrrh.png",
+    imagen: "https://files.catbox.moe/tz7jgy.jpg",
     series: [
       {
         id: "ghostlight",
-        nombre: "Serie Ghostlight Falls",
+        nombre: "Serie Ghostlight Falls - MULTIAUTOR",
         libros: [
           { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
           { number: "02", title: "Paper and Passion", id: "paper-and-passion" },
@@ -1432,7 +1432,7 @@ const AUTORES = [
     id: "objetos",
     nombre: "Nicole Parker",
     descripcion: "Romance con objetos conscientes",
-    imagen: "https://files.catbox.moe/q3wqfq.png",
+    imagen: "https://files.catbox.moe/4cgt4i.jpg",
     series: [
       {
         id: "kyleverse",
@@ -1484,11 +1484,11 @@ const AUTORES = [
    id: "Unfortunate",
    nombre: "Unfortunate Reads",
    descripcion: "Romance con objetos conscientes y días festivos",
-   imagen: "https://i.postimg.cc/BnGLKTMB/3.png",
+   imagen: "https://files.catbox.moe/c86bhp.jpg",
    series: [
     {
       id: "sentient-holiday-saga",
-      nombre: "The Sentient Object Holiday Series",
+      nombre: "The Sentient Object Holiday Series - MULTIAUTOR",
       libros: [
         { number: "01", title: "My Date With a Rubber Duckie", id: "My Date With A Rubber Duckie", autor: "Thea Masen" },
         { number: "02", title: "My Date With a Pair of Sweatpants", id: null, autor: "Dakota Cockaday" },
@@ -1513,7 +1513,7 @@ const AUTORES = [
   id: "shiloh-briar",
   nombre: "Shiloh Briar",
   descripcion: "Romantic Fantasy • Necromancy",
-  imagen: "https://i.postimg.cc/tu-enlace-imagen.jpg",
+  imagen: "https://files.catbox.moe/c86bhp.jpg",
   series: [
     {
       id: "catseye-chronicles",
@@ -1531,11 +1531,11 @@ const AUTORES = [
   id: "thea-masen",
   nombre: "Thea Masen",
   descripcion: "Romance • Fantasía",
-  imagen: "https://i.postimg.cc/tu-enlace-imagen.jpg",
+  imagen: "https://files.catbox.moe/tn32i2.jpg",
   series: [
     {
       id: "thea-sentient-holiday",
-      nombre: "Sentient Object Holiday",
+      nombre: "Sentient Object Holiday - MULTIAUTOR",
       libros: [
         { number: "01", title: "My Date With a Rubber Duckie", id: "My Date With A Rubber Duckie", autor: "Thea Masen" },
         { number: "02", title: "My Date With a Pair of Sweatpants", id: null, autor: "Dakota Cockaday" },
@@ -1581,7 +1581,7 @@ const AUTORES = [
   id: "holly-wilde",
   nombre: "Holly Wilde",
   descripcion: "Romance • Objetos conscientes",
-  imagen: "https://i.postimg.cc/tu-enlace-imagen.jpg",
+  imagen: "https://files.catbox.moe/e1pazu.jpg",
   series: [
     {
       id: "sentient-celebrations",
@@ -1594,7 +1594,7 @@ const AUTORES = [
     },
     {
       id: "thea-sentient-holiday",
-      nombre: "Sentient Object Holiday",
+      nombre: "Sentient Object Holiday - MULTIAUTOR",
       libros: [
         { number: "01", title: "My Date With a Rubber Duckie", id: "My Date With A Rubber Duckie", autor: "Thea Masen" },
         { number: "02", title: "My Date With a Pair of Sweatpants", id: null, autor: "Dakota Cockaday" },
@@ -1615,7 +1615,7 @@ const AUTORES = [
     ],
   librosUnicos: [
     { title: "Laid by the Lint Monster", id: "Laid by the Lint Monster" },
-    { title: "Shower Head", id: "Shower Head" },
+    { title: "Pounded By Poseidon", id: "Pounded By Poseidon" },
     { title: "Airpeen", id: "Airpeen" },
     { title: "Hallowpeen", id: "Hallowpeen" },
     { title: "SPF ME", id: "SPF ME" }
@@ -1625,7 +1625,7 @@ const AUTORES = [
   id: "nerdy-reed",
   nombre: "T.R. Oldin - Nerdy Reed",
   descripcion: "Romance • Comida • Fantasía",
-  imagen: "https://i.postimg.cc/tu-enlace-imagen.jpg",
+  imagen: "https://files.catbox.moe/mlfs9n.jpg",
   series: [
     {
       id: "erotic-eatz",
@@ -1644,7 +1644,7 @@ const AUTORES = [
   id: "jn-bamforth",
   nombre: "J.N. Bamforth",
   descripcion: "Dark Romance • Horror",
-  imagen: "https://i.postimg.cc/tu-enlace-imagen.jpg",
+  imagen: "https://files.catbox.moe/joq8p2.jpg",
   series: [],
   librosUnicos: [
     { title: "Formaldehyde", id: "Formaldehyde" },
@@ -1667,7 +1667,7 @@ function renderAutores() {
       <div class="overlay">
         <h3>${escapeHtml(autor.nombre)}</h3>
         <div class="serie-sub">${escapeHtml(autor.descripcion)}</div>
-        <div class="serie-btn">Порядок чтения ›</div>
+        <div class="serie-btn">Orden de lectura ›</div>
       </div>
     </div>
   `).join('');
