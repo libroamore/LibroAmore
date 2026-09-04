@@ -1402,14 +1402,14 @@ const AUTORES = [
     id: "gm-fairy",
     nombre: "G.M. Fairy",
     descripcion: "Libros de romance, Fantasía y Ciencia ficción",
-    imagen: "https://i.postimg.cc/25rZPQWB/1.png",
+    imagen: "https://files.catbox.moe/vifrrh.png",
     series: [
       {
         id: "ghostlight",
         nombre: "Serie Ghostlight Falls",
         libros: [
           { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
-          { number: "02", title: "Paper and Passion", id: "Paper and Passion" },
+          { number: "02", title: "Paper and Passion", id: "Paper-and-Passion" },
           { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" },
           { number: "04", title: "Bread by the Grim", id: null },
           { number: "05", title: "Cooking Up a Demon", id: null },
@@ -1429,18 +1429,32 @@ const AUTORES = [
     ]
   },
   {
-    id: "wolf-king",
-    nombre: "Король волков",
-    descripcion: "РОМЭНТЕЗИ • 3 книги",
-    imagen: "https://i.postimg.cc/Y2ZmpKgp/2.png",
+    id: "Objetos",
+    nombre: "Nicole Parker",
+    descripcion: "Romance con objetos conscientes",
+    imagen: "https://files.catbox.moe/q3wqfq.png",
     series: [
       {
-        id: "wolf-king-saga",
-        nombre: "Saga del Rey Lobo",
+        id: "objetos",
+        nombre: "Kyleverse",
         libros: [
-          { number: "01", title: "Книга 1", id: "Pounded By Poseidon" },
-          { number: "02", title: "Книга 2", id: "Say My Name" },
-          { number: "03", title: "Книга 3", id: "MONSTROUS" }
+          { number: "01", title: "Rake", id: "Rake" },
+          { number: "02", title: "Faulty", id: "Faulty" },
+          { number: "03", title: "Wrapped", id: "Wrapped" },
+          { number: "04", title: "Nimbus", id: "Nimbus" },
+          { number: "05", title: "Spread", id: "Spread" },
+          { number: "06", title: "Solved", id: null },
+          { number: "07", title: "Fluff", id: null },
+          { number: "08", title: "Licked", id: null },
+          { number: "09", title: "Wacky", id: null },
+          { number: "10", title: "Hosed", id: null },
+          { number: "11", title: "Agitated", id: null },
+          { number: "12", title: "Shift", id: null },
+          { number: "13", title: "Stacked", id: null },
+          { number: "14", title: "Slay", id: null },
+          { number: "15", title: "Lit", id: null },
+          { number: "16", title: "Pixels", id: null },
+          { number: "17", title: "Stuck", id: null }
         ]
       }
     ],
