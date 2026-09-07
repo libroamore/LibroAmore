@@ -1124,7 +1124,16 @@ const ILUSTRACIONES = {
       descripcion: "Escape del laboratorio"
     },
     {
-      id: "nsfw-4",
+      id: "nsfw-5",
+      nombre: "Kyle",
+      libro: "Rake",
+      bookId: "Rake",
+      autor: "Nicole Parker",
+      imagen: "https://files.catbox.moe/8jl210.png",
+      descripcion: "Kyle, Taylor y Connor"
+    },
+    {
+      id: "nsfw-6",
       nombre: "Wattson x Jewel 2",
       libro: "Fully Charged",
       bookId: "Fully Charged",
