@@ -1102,7 +1102,7 @@ const ILUSTRACIONES = {
       libro: "Hello, Nurse!",
       bookId: "Hello, Nurse!",
       autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/cfsuac.webp",
+      imagen: "https://files.catbox.moe/rraofi.png",
       descripcion: "Ritual"
     },
     {
@@ -1113,6 +1113,15 @@ const ILUSTRACIONES = {
       autor: "Nicole Parker",
       imagen: "https://files.catbox.moe/cfsuac.webp",
       descripcion: "Momento de Rebecca y Blabbo"
+    },
+    {
+      id: "nsfw-4",
+      nombre: "Absurdo x Blabbo",
+      libro: "Hello, Nurse!",
+      bookId: "Hello, Nurse!",
+      autor: "Nicole Parker",
+      imagen: "https://files.catbox.moe/h8aae5.webp",
+      descripcion: "Escape del laboratorio"
     },
     {
       id: "nsfw-4",
