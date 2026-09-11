@@ -1158,17 +1158,62 @@ const ILUSTRACIONES = {
       bookId: "Rake",
       autor: "Nicole Parker",
       imagen: "https://files.catbox.moe/8jl210.png",
-      descripcion: "Kyle, Taylor y Connor"
+      descripcion: "Taylor y Kyle"
     },
     {
       id: "nsfw-6",
-      nombre: "Wattson x Jewel 2",
-      libro: "Fully Charged",
-      bookId: "Fully Charged",
-      autor: "Holly Wilde",
-      imagen: "URL_DE_TU_NUEVA_IMAGEN",
-      descripcion: "Otra escena de Jewel y su Conejito."
-    }
+      nombre: "Flurbo",
+      libro: "Faulty",
+      bookId: "Faulty",
+      autor: "Nicole Parker",
+      imagen: "https://files.catbox.moe/5jwa9e.png",
+      descripcion: "Chloe y su adorable juguete"
+    },
+    {
+      id: "nsfw-7",
+      nombre: "Nube",
+      libro: "Nimbus",
+      bookId: "Nimbus",
+      autor: "Nicole Parker",
+      imagen: "https://files.catbox.moe/uc5ug7.png",
+      descripcion: "Owen y su chico nube (con kyle)"
+    },
+    {
+      id: "nsfw-8",
+      nombre: "Más",
+      libro: "Nimbus",
+      bookId: "Nimbus",
+      autor: "Nicole Parker",
+      imagen: "https://files.catbox.moe/6f3urg.png",
+      descripcion: "Owen y su chico nube (con kyle) x2"
+    },
+    {
+      id: "nsfw-9",
+      nombre: "Spatha",
+      libro: "Spread",
+      bookId: "Spread",
+      autor: "Nicole Parker",
+      imagen: "https://files.catbox.moe/yj21l4.jpg",
+      descripcion: "Mel y su demonio"
+    },
+    {
+      id: "nsfw-10",
+      nombre: "Asher x Emmett",
+      libro: "Spackled",
+      bookId: "Spackled",
+      autor: "Nicole Parker",
+      imagen: "https://files.catbox.moe/crayho.jpeg",
+      descripcion: "..."
+    },
+    {
+      id: "nsfw-11",
+      nombre: "Asher x Emmett",
+      libro: "Spackled",
+      bookId: "Spackled",
+      autor: "Nicole Parker",
+      imagen: "https://files.catbox.moe/27iri4.png",
+      descripcion: "Regalo de Asher"
+    },
   ],
   sfw: [
     {
@@ -1457,7 +1502,7 @@ const AUTORES = [
           { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
           { number: "02", title: "Paper and Passion", id: "paper-and-passion" },
           { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" },
-          { number: "04", title: "Bread by the Grim", id: null },
+          { number: "04", title: "Bread by the Grim", id: "Bread by the Grim" },
           { number: "05", title: "Cooking Up a Demon", id: null },
           { number: "06", title: "Twi-Flight", id: null },
           { number: "07", title: "Taking a Tumble", id: null },
@@ -1606,7 +1651,7 @@ const AUTORES = [
           { number: "01", title: "The Totally Typical Tale of Mappy McMapface", id: "The Totally Typical Tale Of Mappy McMapface" },
           { number: "02", title: "Paper and Passion", id: "paper-and-passion" },
           { number: "03", title: "Romanced By The Rat", id: "Romanced By The Rat" },
-          { number: "04", title: "Bread by the Grim", id: null },
+          { number: "04", title: "Bread by the Grim", id: "Bread by the Grim" },
           { number: "05", title: "Cooking Up a Demon", id: null },
           { number: "06", title: "Twi-Flight", id: null },
           { number: "07", title: "Taking a Tumble", id: null },
