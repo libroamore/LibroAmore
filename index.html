@@ -155,6 +155,15 @@
             <span class="menu-tile-label">Contenido extra</span>
             <span class="menu-tile-sub">Material adicional</span>
           </button>
+
+          <!-- ⬇️⬇️⬇️ NUEVO TILE: MODO TINDER ⬇️⬇️⬇️ -->
+          <button class="menu-tile" style="--i:4" onclick="abrirTinder()">
+            <span class="menu-tile-icon" style="background: linear-gradient(155deg, #f7b0b0, #e74c3c);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-sparkle"></use></svg>
+            </span>
+            <span class="menu-tile-label">Descubrir</span>
+            <span class="menu-tile-sub">Desliza y encuentra</span>
+          </button>
         </nav>
 
         <section class="card notice">
@@ -310,6 +319,26 @@
                 <span><strong>Reglas y seguridad</strong> 18+ • moderación • derechos de autor</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MODO TINDER (DESCUBRIR) ============ -->
+      <section class="screen" data-screen="tinder" id="screen-tinder" hidden>
+        <div class="tinder-container">
+          <div class="tinder-stack" id="tinderStack"></div>
+
+          <div class="tinder-empty" id="tinderEmpty" hidden>
+            <div style="font-size: 56px;">🎉</div>
+            <h2>¡Ya viste todo!</h2>
+            <p style="color: var(--muted); margin: 0;">No hay más libros por descubrir.</p>
+            <button onclick="resetTinder()">Volver a empezar</button>
+          </div>
+
+          <div class="tinder-actions" id="tinderActions">
+            <button class="tinder-btn tinder-btn--nope" onclick="tinderSwipe('left')" title="Paso">✕</button>
+            <button class="tinder-btn tinder-btn--info" onclick="tinderInfo()" title="Ver detalles">ℹ️</button>
+            <button class="tinder-btn tinder-btn--like" onclick="tinderSwipe('right')" title="Me gusta">❤️</button>
           </div>
         </div>
       </section>
