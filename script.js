@@ -2012,6 +2012,197 @@ window.closeStarSelector = function() {
 };
 
 // ============================================
+//  MODO TINDER (DESCUBRIR)
+// ============================================
+
+let tinderDeck = [];
+let tinderIndex = 0;
+let tinderDragging = false;
+let tinderStartX = 0;
+let tinderStartY = 0;
+let tinderCurrentX = 0;
+let tinderCurrentY = 0;
+let tinderCurrentCard = null;
+
+window.abrirTinder = function() {
+  openScreen('tinder');
+  startTinder();
+};
+
+function startTinder() {
+  // Mezclar todos los libros disponibles
+  tinderDeck = BOOKS.filter(b => b.status === "Disponible");
+  for (let i = tinderDeck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [tinderDeck[i], tinderDeck[j]] = [tinderDeck[j], tinderDeck[i]];
+  }
+  tinderIndex = 0;
+  renderTinderStack();
+}
+
+function renderTinderStack() {
+  const stack = document.getElementById('tinderStack');
+  const empty = document.getElementById('tinderEmpty');
+  const actions = document.getElementById('tinderActions');
+  if (!stack) return;
+
+  const remaining = tinderDeck.slice(tinderIndex);
+
+  if (remaining.length === 0) {
+    stack.innerHTML = '';
+    if (empty) empty.hidden = false;
+    if (actions) actions.style.visibility = 'hidden';
+    tinderCurrentCard = null;
+    return;
+  }
+
+  if (empty) empty.hidden = true;
+  if (actions) actions.style.visibility = 'visible';
+
+  // Renderizar hasta 3 tarjetas (la del tope al final del DOM)
+  const visibles = remaining.slice(0, 3).reverse();
+
+  stack.innerHTML = visibles.map((book, idx) => {
+    const realIndex = visibles.length - 1 - idx; // 0 = tope
+    const isTop = realIndex === 0;
+    return `
+      <div class="tinder-card" data-book-id="${escapeHtml(book.id)}" data-top="${isTop}" style="--offset:${realIndex}">
+        <div class="tinder-cover">
+          ${coverMarkup(book, false)}
+        </div>
+        <div class="tinder-info">
+          <h2 class="tinder-title">${escapeHtml(book.title)}</h2>
+          <p class="tinder-author">${escapeHtml(book.author)}</p>
+          ${book.series ? `<p class="tinder-series">${escapeHtml(book.series)}${book.part ? ` · Parte ${book.part}` : ''}</p>` : ''}
+          <div class="tinder-tags">
+            ${book.tags.slice(0, 3).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}
+          </div>
+        </div>
+        <div class="tinder-badge tinder-badge--like">Me gusta</div>
+        <div class="tinder-badge tinder-badge--nope">Paso</div>
+      </div>
+    `;
+  }).join('');
+
+  // Conectar arrastre a la tarjeta del tope
+  tinderCurrentCard = stack.querySelector('.tinder-card[data-top="true"]');
+  if (tinderCurrentCard) {
+    tinderCurrentCard.addEventListener('pointerdown', tinderOnDown);
+  }
+}
+
+function tinderOnDown(e) {
+  if (!tinderCurrentCard) return;
+  tinderDragging = true;
+  tinderStartX = e.clientX;
+  tinderStartY = e.clientY;
+  tinderCurrentX = 0;
+  tinderCurrentY = 0;
+  try { tinderCurrentCard.setPointerCapture(e.pointerId); } catch (err) {}
+  tinderCurrentCard.classList.add('dragging');
+  tinderCurrentCard.addEventListener('pointermove', tinderOnMove);
+  tinderCurrentCard.addEventListener('pointerup', tinderOnUp);
+  tinderCurrentCard.addEventListener('pointercancel', tinderOnUp);
+}
+
+function tinderOnMove(e) {
+  if (!tinderDragging || !tinderCurrentCard) return;
+  tinderCurrentX = e.clientX - tinderStartX;
+  tinderCurrentY = e.clientY - tinderStartY;
+  const rotation = tinderCurrentX / 20;
+
+  tinderCurrentCard.style.transform =
+    `translate(${tinderCurrentX}px, ${tinderCurrentY}px) rotate(${rotation}deg)`;
+
+  const likeBadge = tinderCurrentCard.querySelector('.tinder-badge--like');
+  const nopeBadge = tinderCurrentCard.querySelector('.tinder-badge--nope');
+  const threshold = 60;
+
+  if (tinderCurrentX > threshold) {
+    likeBadge.style.opacity = Math.min(1, (tinderCurrentX - threshold) / 90);
+    nopeBadge.style.opacity = 0;
+  } else if (tinderCurrentX < -threshold) {
+    nopeBadge.style.opacity = Math.min(1, (-tinderCurrentX - threshold) / 90);
+    likeBadge.style.opacity = 0;
+  } else {
+    likeBadge.style.opacity = 0;
+    nopeBadge.style.opacity = 0;
+  }
+}
+
+function tinderOnUp(e) {
+  if (!tinderDragging || !tinderCurrentCard) return;
+  tinderDragging = false;
+  tinderCurrentCard.classList.remove('dragging');
+  tinderCurrentCard.removeEventListener('pointermove', tinderOnMove);
+  tinderCurrentCard.removeEventListener('pointerup', tinderOnUp);
+  tinderCurrentCard.removeEventListener('pointercancel', tinderOnUp);
+
+  const threshold = 100;
+  if (tinderCurrentX > threshold) {
+    tinderSwipe('right');
+  } else if (tinderCurrentX < -threshold) {
+    tinderSwipe('left');
+  } else {
+    // Regresar a su lugar
+    tinderCurrentCard.style.transform = '';
+    const likeBadge = tinderCurrentCard.querySelector('.tinder-badge--like');
+    const nopeBadge = tinderCurrentCard.querySelector('.tinder-badge--nope');
+    if (likeBadge) likeBadge.style.opacity = 0;
+    if (nopeBadge) nopeBadge.style.opacity = 0;
+    tinderCurrentX = 0;
+    tinderCurrentY = 0;
+  }
+}
+
+window.tinderSwipe = function(direction) {
+  if (!tinderCurrentCard) return;
+  const book = tinderDeck[tinderIndex];
+  if (!book) return;
+
+  const card = tinderCurrentCard;
+  const flyX = direction === 'right' ? (window.innerWidth || 400) : -(window.innerWidth || 400);
+  const rotation = direction === 'right' ? 30 : -30;
+
+  card.style.transition = 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s';
+  card.style.transform = `translate(${flyX}px, ${tinderCurrentY}px) rotate(${rotation}deg)`;
+  card.style.opacity = '0';
+
+  // Vibración
+  try {
+    if (window.Telegram?.WebApp?.HapticFeedback) {
+      Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+    } else if (navigator.vibrate) {
+      navigator.vibrate(20);
+    }
+  } catch (err) {}
+
+  if (direction === 'right') {
+    saveReaction(book.id, 'heart', true);
+    showToast(`❤️ Añadido a favoritos: ${book.title}`);
+  }
+
+  tinderIndex++;
+  tinderCurrentX = 0;
+  tinderCurrentY = 0;
+  tinderCurrentCard = null;
+
+  setTimeout(() => {
+    renderTinderStack();
+  }, 420);
+};
+
+window.tinderInfo = function() {
+  const book = tinderDeck[tinderIndex];
+  if (!book) return;
+  openBookDetail(book.id);
+};
+
+window.resetTinder = function() {
+  startTinder();
+};
+
+// ============================================
 //  INICIO
 // ============================================
 
