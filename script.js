@@ -1116,118 +1116,146 @@ function renderUpdates() {
 const ILUSTRACIONES = {
   nsfw: [
     {
-      id: "nsfw-1",
-      nombre: "Wattson x Jewel",
+      id: "nsfw-fully-charged",
       libro: "Fully Charged",
       bookId: "Fully Charged",
       autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/ss2vl3.png",
-      descripcion: "Jewel y su Conejito."
+      imagenes: [
+        {
+          nombre: "Wattson x Jewel",
+          imagen: "https://files.catbox.moe/ss2vl3.png",
+          descripcion: "Jewel y su Conejito."
+        }
+      ]
     },
     {
-      id: "nsfw-2",
-      nombre: "Angelina, Absurdo, Blabbo x Rebecca",
+      id: "nsfw-hello-nurse",
       libro: "Hello, Nurse!",
       bookId: "Hello, Nurse!",
       autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/rraofi.png",
-      descripcion: "Ritual"
+      imagenes: [
+        {
+          nombre: "Angelina, Absurdo, Blabbo x Rebecca",
+          imagen: "https://files.catbox.moe/rraofi.png",
+          descripcion: "Ritual"
+        },
+        {
+          nombre: "Angelina x Blabbo",
+          imagen: "https://files.catbox.moe/cfsuac.webp",
+          descripcion: "Momento de Rebecca y Blabbo"
+        },
+        {
+          nombre: "Absurdo x Blabbo",
+          imagen: "https://files.catbox.moe/h8aae5.webp",
+          descripcion: "Escape del laboratorio"
+        }
+      ]
     },
     {
-      id: "nsfw-3",
-      nombre: "Angelina x Blabbo",
-      libro: "Hello, Nurse!",
-      bookId: "Hello, Nurse!",
-      autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/cfsuac.webp",
-      descripcion: "Momento de Rebecca y Blabbo"
-    },
-    {
-      id: "nsfw-4",
-      nombre: "Absurdo x Blabbo",
-      libro: "Hello, Nurse!",
-      bookId: "Hello, Nurse!",
-      autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/h8aae5.webp",
-      descripcion: "Escape del laboratorio"
-    },
-    {
-      id: "nsfw-5",
-      nombre: "Kyle",
+      id: "nsfw-rake",
       libro: "Rake",
       bookId: "Rake",
       autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/8jl210.png",
-      descripcion: "Taylor y Kyle"
+      imagenes: [
+        {
+          nombre: "Kyle",
+          imagen: "https://files.catbox.moe/8jl210.png",
+          descripcion: "Taylor y Kyle"
+        }
+      ]
     },
     {
-      id: "nsfw-6",
-      nombre: "Flurbo",
+      id: "nsfw-faulty",
       libro: "Faulty",
       bookId: "Faulty",
       autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/5jwa9e.png",
-      descripcion: "Chloe y su adorable juguete"
+      imagenes: [
+        {
+          nombre: "Flurbo",
+          imagen: "https://files.catbox.moe/5jwa9e.png",
+          descripcion: "Chloe y su adorable juguete"
+        }
+      ]
     },
     {
-      id: "nsfw-7",
-      nombre: "Nube",
+      id: "nsfw-nimbus",
       libro: "Nimbus",
       bookId: "Nimbus",
       autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/uc5ug7.png",
-      descripcion: "Owen y su chico nube (con kyle)"
+      imagenes: [
+        {
+          nombre: "Nube",
+          imagen: "https://files.catbox.moe/uc5ug7.png",
+          descripcion: "Owen y su chico nube (con kyle)"
+        },
+        {
+          nombre: "Más",
+          imagen: "https://files.catbox.moe/6f3urg.png",
+          descripcion: "Owen y su chico nube (con kyle) x2"
+        }
+      ]
     },
     {
-      id: "nsfw-8",
-      nombre: "Más",
-      libro: "Nimbus",
-      bookId: "Nimbus",
-      autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/6f3urg.png",
-      descripcion: "Owen y su chico nube (con kyle) x2"
-    },
-    {
-      id: "nsfw-9",
-      nombre: "Spatha",
+      id: "nsfw-spread",
       libro: "Spread",
       bookId: "Spread",
       autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/yj21l4.jpg",
-      descripcion: "Mel y su demonio"
+      imagenes: [
+        {
+          nombre: "Spatha",
+          imagen: "https://files.catbox.moe/yj21l4.jpg",
+          descripcion: "Mel y su demonio"
+        }
+      ]
     },
     {
-      id: "nsfw-10",
-      nombre: "Asher x Emmett",
+      id: "nsfw-spackled",
       libro: "Spackled",
       bookId: "Spackled",
       autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/crayho.jpeg",
-      descripcion: "..."
+      imagenes: [
+        {
+          nombre: "Asher x Emmett",
+          imagen: "https://files.catbox.moe/crayho.jpeg",
+          descripcion: "..."
+        },
+        {
+          nombre: "Asher x Emmett (Regalo)",
+          imagen: "https://files.catbox.moe/27iri4.png",
+          descripcion: "Regalo de Asher"
+        }
+      ]
     },
     {
-      id: "nsfw-11",
-      nombre: "Asher x Emmett",
-      libro: "Spackled",
-      bookId: "Spackled",
-      autor: "Nicole Parker",
-      imagen: "https://files.catbox.moe/27iri4.png",
-      descripcion: "Regalo de Asher"
-    },
+      id: "nsfw-fully-charged-2",
+      libro: "Fully Charged",
+      bookId: "Fully Charged",
+      autor: "Holly Wilde",
+      imagenes: [
+        {
+          nombre: "Wattson x Jewel 2",
+          imagen: "URL_DE_TU_NUEVA_IMAGEN",
+          descripcion: "Otra escena de Jewel y su Conejito."
+        }
+      ]
+    }
   ],
   sfw: [
     {
-      id: "sfw-1",
-      nombre: "Paisaje de Nimbus",
+      id: "sfw-nimbus",
       libro: "Nimbus",
       bookId: "Nimbus",
       autor: "Nicole Parker",
-      imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
-      descripcion: "Ilustración del paisaje de Nimbus al atardecer."
+      imagenes: [
+        {
+          nombre: "Paisaje de Nimbus",
+          imagen: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
+          descripcion: "Ilustración del paisaje de Nimbus al atardecer."
+        }
+      ]
     }
   ]
 };
-
 // ============================================
 //  AUTORES DE ILUSTRACIONES
 // ============================================
@@ -1338,56 +1366,39 @@ function mostrarIlustraciones(categoria, contenedorId) {
     return;
   }
 
-  // Si hay un autor seleccionado, agrupar por libro
-  if (autorSeleccionado) {
-    const grupos = {};
-    items.forEach(item => {
-      if (!grupos[item.bookId]) {
-        grupos[item.bookId] = {
-          bookId: item.bookId,
-          libro: item.libro,
-          autor: item.autor,
-          imagenes: []
-        };
-      }
-      grupos[item.bookId].imagenes.push(item);
-    });
+  window.listaIlustracionesActual = items;
 
-    const gruposArray = Object.values(grupos);
-    window.listaIlustracionesActual = gruposArray;
-
-    contenedor.innerHTML = gruposArray.map((grupo) => {
-      const primeraImagen = grupo.imagenes[0];
-      return `
-        <div class="illustration-card" onclick="abrirGaleriaLibro('${categoria}', '${grupo.bookId}')">
-          <img src="${primeraImagen.imagen}" alt="${grupo.libro}" loading="lazy">
-          <div class="illustration-name">${escapeHtml(grupo.libro)}</div>
-          <div style="font-size: 12px; color: var(--muted); margin-top: 2px;">${grupo.imagenes.length} ilustraciones</div>
-        </div>
-      `;
-    }).join('');
-  } else {
-    // Sin autor seleccionado, mostrar todas las ilustraciones
-    window.listaIlustracionesActual = items;
-    contenedor.innerHTML = items.map((item, index) => `
-      <div class="illustration-card" onclick="abrirDetalleIlustracion('${categoria}', '${item.id}', ${index})">
-        <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
-        <div class="illustration-name">${escapeHtml(item.nombre)}</div>
+  contenedor.innerHTML = items.map((grupo) => {
+    const primera = grupo.imagenes[0];
+    const count = grupo.imagenes.length;
+    const autorEscapado = grupo.autor.replace(/'/g, "\\'");
+    return `
+      <div class="illustration-card" onclick="abrirGaleriaLibro('${categoria}', '${grupo.bookId}', '${autorEscapado}')">
+        <img src="${primera.imagen}" alt="${escapeHtml(grupo.libro)}" loading="lazy">
+        <div class="illustration-name">${escapeHtml(grupo.libro)}</div>
+        ${count > 1 ? `<div style="font-size: 12px; color: var(--muted); margin-top: 2px;">${count} ilustraciones</div>` : ''}
       </div>
-    `).join('');
-  }
+    `;
+  }).join('');
 }
 
 // ============================================
 //  GALERÍA DE ILUSTRACIONES POR LIBRO
 // ============================================
 
-window.abrirGaleriaLibro = function(categoria, bookId) {
+window.abrirGaleriaLibro = function(categoria, bookId, autor) {
   const items = ILUSTRACIONES[categoria] || [];
-  const imagenes = items.filter(item => item.bookId === bookId && item.autor === autorSeleccionado);
-  if (imagenes.length === 0) return;
+  const grupo = items.find(item => item.bookId === bookId && item.autor === autor);
+  if (!grupo || grupo.imagenes.length === 0) return;
 
-  window.galeriaImagenes = imagenes;
+  // Aplanamos las imágenes del grupo para que renderGaleriaLibro siga funcionando igual
+  window.galeriaImagenes = grupo.imagenes.map((img, i) => ({
+    ...img,
+    id: `${grupo.id}-${i}`,
+    libro: grupo.libro,
+    bookId: grupo.bookId,
+    autor: grupo.autor
+  }));
   window.galeriaIndex = 0;
   window.galeriaCategoria = categoria;
 
@@ -1460,28 +1471,6 @@ window.cambiarIlustracionA = function(index) {
   if (!imagenes || index < 0 || index >= imagenes.length) return;
   window.galeriaIndex = index;
   renderGaleriaLibro();
-};
-
-window.abrirDetalleIlustracion = function(categoria, id) {
-  const items = ILUSTRACIONES[categoria] || [];
-  const item = items.find(i => i.id === id);
-  if (!item) return;
-
-  const detailEl = document.getElementById('illustrationDetail');
-  if (detailEl) {
-    detailEl.innerHTML = `
-      <div class="detail-illustration">
-        <img src="${item.imagen}" alt="${item.nombre}">
-        <div class="detail-info">
-          <h2>${escapeHtml(item.nombre)}</h2>
-          <p class="detail-book">📖 <strong>Libro:</strong> ${escapeHtml(item.libro)}</p>
-          <p class="detail-desc">${escapeHtml(item.descripcion)}</p>
-          <button class="btn-libro" onclick="openBookDetail('${item.bookId}')">📚 Ver libro</button>
-        </div>
-      </div>
-    `;
-  }
-  openScreen('illustration-detail');
 };
 
 // ============================================
