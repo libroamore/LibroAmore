@@ -755,8 +755,8 @@ const SCREEN_TITLES = {
   "illustration-detail": "Detalle",
   nosotras: "Nosotras",
   "serie-detail": "Detalle de autor",
-  "ilustraciones-autores": "Autores"
-   "tinder:" "Tu próxima lectura"
+  "ilustraciones-autores": "Autores",
+  tinder: "Tu próxima lectura"
 };
 
 /* ---------- Navegación ---------- */
