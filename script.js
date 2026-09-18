@@ -1279,6 +1279,7 @@ const ILUSTRACIONES = {
           nombre: "Miguel x2 😏",
           imagen: "https://files.catbox.moe/5vxr46.png",
           descripcion: "..."
+        }
       ]
     }
   ],
