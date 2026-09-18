@@ -1253,6 +1253,33 @@ const ILUSTRACIONES = {
           descripcion: "Otra escena de Jewel y su Conejito."
         }
       ]
+    },
+    {
+      id: "nsfw-mappy-mcmapface",
+      libro: "The Totally Typical Tale Of Mappy McMapface",
+      bookId: "The Totally Typical Tale Of Mappy McMapface",
+      autor: "Nicole Parker",
+      imagenes: [
+        {
+          nombre: "Mappy y Miguel",
+          imagen: "https://files.catbox.moe/1ivdrc.png",
+          descripcion: "Mappy x Miguel"
+        },
+        {
+          nombre: "Mappy 😏",
+          imagen: "https://files.catbox.moe/384pn0.webp",
+          descripcion: "..."
+        },
+        {
+          nombre: "Miguel 😏",
+          imagen: "https://files.catbox.moe/dqe8nl.jpeg",
+          descripcion: "..."
+        },
+        {
+          nombre: "Miguel x2 😏",
+          imagen: "https://files.catbox.moe/5vxr46.png",
+          descripcion: "..."
+      ]
     }
   ],
   sfw: [
