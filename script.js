@@ -1242,15 +1242,15 @@ const ILUSTRACIONES = {
       ]
     },
     {
-      id: "nsfw-fully-charged-2",
-      libro: "Fully Charged",
-      bookId: "Fully Charged",
-      autor: "Holly Wilde",
+      id: "nsfw-scream-for-me",
+      libro: "Scream For Me",
+      bookId: "Scream For Me",
+      autor: "G.M. Fairy",
       imagenes: [
         {
-          nombre: "Wattson x Jewel 2",
-          imagen: "URL_DE_TU_NUEVA_IMAGEN",
-          descripcion: "Otra escena de Jewel y su Conejito."
+          nombre: "Scully x Marie",
+          imagen: "https://files.catbox.moe/k85ppy.jpg",
+          descripcion: "..."
         }
       ]
     },
@@ -1279,6 +1279,96 @@ const ILUSTRACIONES = {
           nombre: "Miguel x2 😏",
           imagen: "https://files.catbox.moe/5vxr46.png",
           descripcion: "..."
+       }
+      ]
+    },
+    {
+      id: "nsfw-Bad-BeehAvior",
+      libro: "Bad BeehAvior",
+      bookId: "Bad BeehAvior",
+      autor: "G.M. Fairy",
+      imagenes: [
+        {
+          nombre: "Baryx",
+          imagen: "https://files.catbox.moe/w5047w.jpg",
+          descripcion: "..."
+        }
+      ]
+    },
+    {
+      id: "nsfw-Goldie-and-the-Bear-Affair",
+      libro: "Goldie and the Bear Affair",
+      bookId: "Goldie and the Bear Affair",
+      autor: "Liana Valerian",
+      imagenes: [
+        {
+          nombre: "Goldie y sus tres osos",
+          imagen: "https://files.catbox.moe/5945nz.jpg",
+          descripcion: "..."
+        },
+        {
+          nombre: "...",
+          imagen: "https://files.catbox.moe/gysd7c.jpg",
+          descripcion: "...."
+        }
+      ]
+    },
+    {
+      id: "nsfw-AUTOR2-LIBRO1",
+      libro: "LIBRO 1 DEL AUTOR 2",
+      bookId: "LIBRO 1 DEL AUTOR 2",
+      autor: "AUTOR 2",
+      imagenes: [
+        {
+          nombre: "Nombre imagen 1",
+          imagen: "URL_IMAGEN_1",
+          descripcion: "Descripción de la imagen 1."
+        }
+      ]
+    },
+    {
+      id: "nsfw-AUTOR2-LIBRO2",
+      libro: "LIBRO 2 DEL AUTOR 2",
+      bookId: "LIBRO 2 DEL AUTOR 2",
+      autor: "AUTOR 2",
+      imagenes: [
+        {
+          nombre: "Nombre imagen 1",
+          imagen: "URL_IMAGEN_1",
+          descripcion: "Descripción de la imagen 1."
+        },
+        {
+          nombre: "Nombre imagen 2",
+          imagen: "URL_IMAGEN_2",
+          descripcion: "Descripción de la imagen 2."
+        },
+        {
+          nombre: "Nombre imagen 3",
+          imagen: "URL_IMAGEN_3",
+          descripcion: "Descripción de la imagen 3."
+        },
+        {
+          nombre: "Nombre imagen 4",
+          imagen: "URL_IMAGEN_4",
+          descripcion: "Descripción de la imagen 4."
+        }
+      ]
+    },
+    {
+      id: "nsfw-AUTOR3-LIBRO1",
+      libro: "LIBRO 1 DEL AUTOR 3",
+      bookId: "LIBRO 1 DEL AUTOR 3",
+      autor: "AUTOR 3",
+      imagenes: [
+        {
+          nombre: "Nombre imagen 1",
+          imagen: "URL_IMAGEN_1",
+          descripcion: "Descripción de la imagen 1."
+        },
+        {
+          nombre: "Nombre imagen 2",
+          imagen: "URL_IMAGEN_2",
+          descripcion: "Descripción de la imagen 2."
         }
       ]
     }
