@@ -143,7 +143,7 @@ const BOOKS = [
     statusClass: "available",
     tags: ["Dark", "Romance", "Fantasía"],
     synopsis: "La ha llamado durante toda su vida, pero ella nunca pudo responderle… Midonia, una transportista interplanetaria independiente, se encuentra en una situación delicada después de un accidente fatal ocurrido durante uno de sus trabajos. Por eso, no protesta cuando le encomiendan la tediosa tarea de llevar a la devota hermana Irena a un remoto planeta en los confines del espacio, donde una pequeña colonia religiosa venera a una extraña deidad llamada Angustia. Hasta ahora. Cuando una llamarada solar deja su nave en tierra, Midonia se encuentra atrapada junto a las hermanas de aquella secta. Y, para empeorar las cosas, él se le aparece durante la noche, con aquella voz familiar más fuerte que nunca. Invade su mente con su hambre, despertando en ella una obsesión voraz de la que será casi imposible escapar.",
-    coverUrl: "https://m.media-amazon.com/images/I/41egFhRk3UL._SY445_SX342_FMwebp_.jpg",
+    coverUrl: "https://m.media-amazon.com/images/I/718E8hFPoyL._SL1500_.jpg",
     hue: 150
   },
   {
@@ -381,7 +381,7 @@ const BOOKS = [
     statusClass: "available",
     tags: ["Romance", "cambiaformas", "Conejo"],
     synopsis: "Jack Hopper. Nunca fue mi intención que ella me viera así, mitad hombre, mitad bola de pelo, saltando en mi propio jardín bajo la luna llena que me convertía en un conejo gigante. Me he pasado la vida ocultando este peludo secreto, porque ¿qué más podía hacer? ¿Quién quiere una pareja con temporada de apareamiento, cola de algodón y orejas caídas? Pero cuando Esther Basquette se mudó a la casa de al lado, para ayudar a salvar la famosa Eggstravaganza de Pascua de Carrot Creek, una palabra resonó en mi cabeza de conejo: mía. Ella es un rayo de sol cuando sonríe, y su risa es tan linda que cuando la escucho, tengo que luchar contra el impulso de transformarme en Hopper, mi alter ego conejo, perseguirla a través de los campos de zanahorias y aparearla para hacerla mía. Con la luna llena saliendo y mi celo de Pascua acercándose, espero que Esther salte a mi cama y a mi corazón. ¿Pero todavía le agradaré cuando sepa que soy un hombre conejo?",
-    coverUrl: "https://m.media-amazon.com/images/I/410vKWT8jhL._SY445_SX342_QL70_FMwebp_.jpg",
+    coverUrl: "https://m.media-amazon.com/images/I/61rRGjekhGL._SL1500_.jpg",
     hue: 180
   },
   {
@@ -395,7 +395,7 @@ const BOOKS = [
     statusClass: "available",
     tags: ["Dar romance", "Asesinato", "Victimas"],
     synopsis: "¿Quieres saber cuál es la mejor manera de llegar al corazón de un hombre? Es con un cuchillo, directo al pecho. Mi nombre es Cherry, y hace tres años la vida que tenía terminó, pero no me mató. En cambio, me convirtió en la mujer que soy ahora. Una perra del infierno en un camino de venganza para encontrar al hombre —y a otros como él— que arruinó mi vida. Pero lo único que nunca esperé encontrar fue el amor.",
-    coverUrl: "https://m.media-amazon.com/images/I/71QqsHpEjrL._SY425_.jpg",
+    coverUrl: "https://m.media-amazon.com/images/I/71QqsHpEjrL._SL1493_.jpg",
     hue: 180
   },
   {
@@ -437,7 +437,7 @@ const BOOKS = [
     statusClass: "available",
     tags: ["Necrofilia", "Dubcon", "Asesinato"],
     synopsis: "Este podría ser mi Navidad más sangrienta hasta ahora. Hay un nuevo Santa en la ciudad. Con un tajo de mi hacha y una puñalada de mi cuchillo, haré que todas tus pesadillas navideñas se vuelvan realidad.",
-    coverUrl: "https://m.media-amazon.com/images/I/714-963eegL._SY385_.jpg",
+    coverUrl: "https://m.media-amazon.com/images/I/714-963eegL._SL1493_.jpg",
     hue: 180
   },
   {
@@ -451,7 +451,7 @@ const BOOKS = [
     statusClass: "available",
     tags: ["Romance", "Fantasía", "Objeto Consciente"],
     synopsis: "Tres mujeres, un ritual oculto y una leyenda urbana hecha realidad te esperan para descubrir lo deliciosamente aterrador que puede ser Halloween. Todos en el pequeño pueblo de Hollow Springs saben que la noche de Halloween es cuando el velo de la conciencia es más delgado. Así que nadie intentaría un ritual ridículo en la noche de luna llena, ¿verdad? Falso.",
-    coverUrl: "https://m.media-amazon.com/images/I/41JO9ez9uLL._SY445_SX342_QL70_FMwebp_.jpg",
+    coverUrl: "https://m.media-amazon.com/images/I/71vAS96mYVL._SL1500_.jpg",
     hue: 180
   },
   {
@@ -691,6 +691,20 @@ const BOOKS = [
     synopsis: "Un tipo agradable como tú merece a alguien que le ayude a superar la tormenta. Owen está teniendo otro de esos días de el cielo se está cayendo. Un día en el que nada le sale bien y su ansiedad se descontrola por completo. Se lleva más que una sorpresa al descubrir que esta vez el cielo realmente se cae, pero no de la manera que temía. Le espera algo mucho más impactante",
     coverUrl: "https://m.media-amazon.com/images/I/812JO7GmLwL._SL1500_.jpg",
     hue: 180
+  },
+  {
+    id: "The Never Heirs",
+    title: "The Never Heirs",
+    author: "G.M. Fairy",
+    series: null,
+    part: null,
+    classification: "+18",
+    status: "Disponible",
+    statusClass: "available",
+    tags: ["Romance", "Peter Pan", "Hook", "Secuentro", "Embarazo", "Retelling"],
+    synopsis: "Una duendecillo arrebatada de su mundo. Dos hermanos luchando por reclamarla. La magia zumba bajo las yemas de los dedos de Belle; una chispa inexplicable que ha usado para perseguir la estabilidad en una vida que ha sido cualquier cosa menos estable. Pero cuando unos piratas de un reino llamado Nunca Jamás la secuestran, descubre que su magia no es solo metafórica. Como la última duendecillo viva, el verdadero poder corre por sus venas. No hay tiempo para saborear sus nuevas habilidades, ya que Belle es atada a un Darling que restringe su poder y vendida al gobernante del reino. Lord Pan exige que produzca un heredero mágico a través de uno de sus dos hijos: Peter, un desperdicio de potencial trágicamente hermoso, o Rourke, su demente hijastro, marcado por un ataque de cocodrilo y reconstruido con los restos de la bestia, además de una mano con garfio. El hijo que reclame a la duendecillo primero heredará el trono. Aterrorizada por sus captores pero atraída hacia sus mundos rotos, Belle descubre que Peter y Rourke están tan atados a la crueldad de Pan como ella. Para sobrevivir, debe resistir a sus captores, sus cadenas y el peligroso fuego que amenaza con consumirla en una jaula dorada donde el amor y el poder son armas.",
+    coverUrl: "https://m.media-amazon.com/images/I/91Te8ktRKPL._SL1500_.jpg",
+    hue: 180
   }
 ];
 
@@ -742,6 +756,7 @@ const SCREEN_TITLES = {
   nosotras: "Nosotras",
   "serie-detail": "Detalle de autor",
   "ilustraciones-autores": "Autores"
+   "tinder:" "Tu próxima lectura"
 };
 
 /* ---------- Navegación ---------- */
