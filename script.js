@@ -1087,29 +1087,46 @@ window.downloadFormat = async function(bookId, format) {
     return;
   }
 
+  const safeTitle = book.title.replace(/[^\w\s\-]/g, "").trim().replace(/\s+/g, "_");
+  const fileName = `${safeTitle}.${format}`;
+
   try {
     if (window.Telegram?.WebApp?.HapticFeedback) {
       Telegram.WebApp.HapticFeedback.impactOccurred('light');
     }
   } catch (e) {}
 
-  // Nombre limpio del archivo (con el título del libro)
-  const safeTitle = book.title.replace(/[^\w\s\-]/g, "").trim().replace(/\s+/g, "_");
-  const fileName = `${safeTitle}.${format}`;
-
-  showToast(`⬇️ Descargando ${format.toUpperCase()}...`);
+  showToast(`⬇️ Preparando ${format.toUpperCase()}...`);
 
   try {
-    // 1. Descargamos el archivo como binario
+    // 1. Descargar el archivo como blob
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
     const blob = await response.blob();
 
-    // 2. Creamos una URL temporal
-    const blobUrl = URL.createObjectURL(blob);
+    // 2. Crear un File object
+    const file = new File([blob], fileName, { type: blob.type || 'application/octet-stream' });
 
-    // 3. Creamos un <a> invisible y simulamos el clic
+    // 3. Si el dispositivo soporta Web Share API con archivos → usarlo
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share({
+          files: [file],
+          title: book.title,
+          text: `Descargado desde LibroAmore: ${book.title}`
+        });
+        showToast(`✅ Elige dónde guardar el archivo`);
+        return;
+      } catch (shareErr) {
+        // Si el usuario canceló el share, no hacemos nada
+        if (shareErr.name === 'AbortError') return;
+        // Si falló por otra razón, caemos al método clásico
+        console.warn('Share cancelado o falló, usando método alternativo:', shareErr);
+      }
+    }
+
+    // 4. Fallback: método clásico con <a download>
+    const blobUrl = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = blobUrl;
     a.download = fileName;
@@ -1117,7 +1134,6 @@ window.downloadFormat = async function(bookId, format) {
     document.body.appendChild(a);
     a.click();
 
-    // 4. Limpieza
     setTimeout(() => {
       URL.revokeObjectURL(blobUrl);
       document.body.removeChild(a);
@@ -1125,7 +1141,6 @@ window.downloadFormat = async function(bookId, format) {
 
     showToast(`✅ ${fileName} descargado`);
 
-    // Vibración de éxito
     try {
       if (window.Telegram?.WebApp?.HapticFeedback) {
         Telegram.WebApp.HapticFeedback.notificationOccurred('success');
@@ -1134,7 +1149,7 @@ window.downloadFormat = async function(bookId, format) {
 
   } catch (err) {
     console.error("Error descargando:", err);
-    showToast(`❌ Error al descargar. Inténtalo de nuevo.`);
+    showToast(`❌ Error al descargar`);
 
     try {
       if (window.Telegram?.WebApp?.HapticFeedback) {
