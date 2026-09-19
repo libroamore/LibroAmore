@@ -1077,7 +1077,7 @@ function bookDetailMarkup(book) {
   `;
 }
 
-window.downloadFormat = function(bookId, format) {
+window.downloadFormat = async function(bookId, format) {
   const book = BOOKS.find(b => b.id === bookId);
   if (!book) return;
 
@@ -1093,14 +1093,54 @@ window.downloadFormat = function(bookId, format) {
     }
   } catch (e) {}
 
+  // Nombre limpio del archivo (con el título del libro)
+  const safeTitle = book.title.replace(/[^\w\s\-]/g, "").trim().replace(/\s+/g, "_");
+  const fileName = `${safeTitle}.${format}`;
+
+  showToast(`⬇️ Descargando ${format.toUpperCase()}...`);
+
   try {
-    if (window.Telegram?.WebApp?.openLink) {
-      Telegram.WebApp.openLink(url, { try_instant_view: false });
-    } else {
-      window.open(url, "_blank");
-    }
-  } catch (e) {
-    window.location.href = url;
+    // 1. Descargamos el archivo como binario
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const blob = await response.blob();
+
+    // 2. Creamos una URL temporal
+    const blobUrl = URL.createObjectURL(blob);
+
+    // 3. Creamos un <a> invisible y simulamos el clic
+    const a = document.createElement("a");
+    a.href = blobUrl;
+    a.download = fileName;
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+
+    // 4. Limpieza
+    setTimeout(() => {
+      URL.revokeObjectURL(blobUrl);
+      document.body.removeChild(a);
+    }, 1000);
+
+    showToast(`✅ ${fileName} descargado`);
+
+    // Vibración de éxito
+    try {
+      if (window.Telegram?.WebApp?.HapticFeedback) {
+        Telegram.WebApp.HapticFeedback.notificationOccurred('success');
+      }
+    } catch (e) {}
+
+  } catch (err) {
+    console.error("Error descargando:", err);
+    showToast(`❌ Error al descargar. Inténtalo de nuevo.`);
+
+    try {
+      if (window.Telegram?.WebApp?.HapticFeedback) {
+        Telegram.WebApp.HapticFeedback.notificationOccurred('error');
+      }
+    } catch (e) {}
   }
 };
 
