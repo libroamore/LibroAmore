@@ -210,7 +210,7 @@ const BOOKS = [
     coverUrl: "https://m.media-amazon.com/images/I/717qK5s0vCL._SL1500_.jpg",
     hue: 15,
      downloads: {
-      epub: "https://files.catbox.moe/pb121l.pdf",
+      epub: "https://files.catbox.moe/ss15v5.epub",
       pdf: "https://files.catbox.moe/pb121l.pdf"
     }
   },
@@ -226,7 +226,11 @@ const BOOKS = [
     tags: ["Omegaverse", "Betas", "Clinica de celo"],
     synopsis: "Asher trabaja en la clínica de celos por motivos que van más allá de un simple sueldo, pero algunos días pueden ser realmente duros. Omegas en celo, alfas posesivos y muchísimo lubricante. Menos mal que el atractivo contratista nuevo aparece para levantarle el ánimo... y alguna que otra cosa más. Emmett no tiene ninguna ilusión por su nuevo contrato para remodelar una antigua clínica de celo en el centro de la ciudad, hasta que ve al adorable beta de recepción. Es lujuria a primera vista, y de repente ambos hombres empiezan a entender a los pacientes que no pueden quitarse las manos el uno del otro. Después de un alfa fuera de control, un tranquilizante y una visita al hospital, Emmett y Asher finalmente se rinden a lo que sienten y descubren lo bien que pueden estar juntos.",
     coverUrl: "https://m.media-amazon.com/images/I/81NzAYTHJlL._SL1500_.jpg",
-    hue: 15
+    hue: 15,
+     downloads: {
+      epub: "https://files.catbox.moe/9jqp5n.epub",
+      pdf: "https://files.catbox.moe/rw8uh0.pdf"
+    }
   },
   {
     id: "My Date With A Rubber Duckie",
