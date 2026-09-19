@@ -1077,7 +1077,7 @@ function bookDetailMarkup(book) {
   `;
 }
 
-window.downloadFormat = async function(bookId, format) {
+window.downloadFormat = function(bookId, format) {
   const book = BOOKS.find(b => b.id === bookId);
   if (!book) return;
 
@@ -1087,78 +1087,47 @@ window.downloadFormat = async function(bookId, format) {
     return;
   }
 
-  const safeTitle = book.title.replace(/[^\w\s\-]/g, "").trim().replace(/\s+/g, "_");
-  const fileName = `${safeTitle}.${format}`;
-
   try {
     if (window.Telegram?.WebApp?.HapticFeedback) {
       Telegram.WebApp.HapticFeedback.impactOccurred('light');
     }
   } catch (e) {}
 
-  showToast(`⬇️ Preparando ${format.toUpperCase()}...`);
+  const safeTitle = book.title.replace(/[^\w\s\-]/g, "").trim().replace(/\s+/g, "_");
+  const fileName = `${safeTitle}.${format}`;
+
+  // === MÉTODO 1: API nativa de Telegram (solo funciona en móvil moderno) ===
+  if (window.Telegram?.WebApp?.downloadFile) {
+    try {
+      Telegram.WebApp.downloadFile(
+        { url: url, file_name: fileName },
+        (accepted) => {
+          if (accepted) {
+            showToast(`⬇️ Descargando ${fileName}`);
+          } else {
+            showToast(`❌ Descarga cancelada`);
+          }
+        }
+      );
+      return;
+    } catch (e) {
+      console.warn('downloadFile falló, usando fallback:', e);
+    }
+  }
+
+  // === MÉTODO 2: Fallback a openLink (abre navegador interno de Telegram) ===
+  showToast(`⬇️ Descargando ${format.toUpperCase()}...`);
 
   try {
-    // 1. Descargar el archivo como blob
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const blob = await response.blob();
-
-    // 2. Crear un File object
-    const file = new File([blob], fileName, { type: blob.type || 'application/octet-stream' });
-
-    // 3. Si el dispositivo soporta Web Share API con archivos → usarlo
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      try {
-        await navigator.share({
-          files: [file],
-          title: book.title,
-          text: `Descargado desde LibroAmore: ${book.title}`
-        });
-        showToast(`✅ Elige dónde guardar el archivo`);
-        return;
-      } catch (shareErr) {
-        // Si el usuario canceló el share, no hacemos nada
-        if (shareErr.name === 'AbortError') return;
-        // Si falló por otra razón, caemos al método clásico
-        console.warn('Share cancelado o falló, usando método alternativo:', shareErr);
-      }
+    if (window.Telegram?.WebApp?.openLink) {
+      Telegram.WebApp.openLink(url, { try_instant_view: false });
+    } else {
+      window.location.href = url;
     }
-
-    // 4. Fallback: método clásico con <a download>
-    const blobUrl = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = blobUrl;
-    a.download = fileName;
-    a.style.display = "none";
-    document.body.appendChild(a);
-    a.click();
-
-    setTimeout(() => {
-      URL.revokeObjectURL(blobUrl);
-      document.body.removeChild(a);
-    }, 1000);
-
-    showToast(`✅ ${fileName} descargado`);
-
-    try {
-      if (window.Telegram?.WebApp?.HapticFeedback) {
-        Telegram.WebApp.HapticFeedback.notificationOccurred('success');
-      }
-    } catch (e) {}
-
-  } catch (err) {
-    console.error("Error descargando:", err);
-    showToast(`❌ Error al descargar`);
-
-    try {
-      if (window.Telegram?.WebApp?.HapticFeedback) {
-        Telegram.WebApp.HapticFeedback.notificationOccurred('error');
-      }
-    } catch (e) {}
+  } catch (e) {
+    window.location.href = url;
   }
 };
-
 /* ---------- Orden de lectura ---------- */
 function renderReadingOrder() {
   // Vacío
