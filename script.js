@@ -704,7 +704,10 @@ const BOOKS = [
     tags: ["Romance", "Peter Pan", "Hook", "Secuentro", "Embarazo", "Retelling"],
     synopsis: "Una duendecillo arrebatada de su mundo. Dos hermanos luchando por reclamarla. La magia zumba bajo las yemas de los dedos de Belle; una chispa inexplicable que ha usado para perseguir la estabilidad en una vida que ha sido cualquier cosa menos estable. Pero cuando unos piratas de un reino llamado Nunca Jamás la secuestran, descubre que su magia no es solo metafórica. Como la última duendecillo viva, el verdadero poder corre por sus venas. No hay tiempo para saborear sus nuevas habilidades, ya que Belle es atada a un Darling que restringe su poder y vendida al gobernante del reino. Lord Pan exige que produzca un heredero mágico a través de uno de sus dos hijos: Peter, un desperdicio de potencial trágicamente hermoso, o Rourke, su demente hijastro, marcado por un ataque de cocodrilo y reconstruido con los restos de la bestia, además de una mano con garfio. El hijo que reclame a la duendecillo primero heredará el trono. Aterrorizada por sus captores pero atraída hacia sus mundos rotos, Belle descubre que Peter y Rourke están tan atados a la crueldad de Pan como ella. Para sobrevivir, debe resistir a sus captores, sus cadenas y el peligroso fuego que amenaza con consumirla en una jaula dorada donde el amor y el poder son armas.",
     coverUrl: "https://m.media-amazon.com/images/I/91Te8ktRKPL._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/bje9tv.epub"
+    }
   }
 ];
 
@@ -1005,11 +1008,14 @@ window.openBookDetail = function(bookId) {
 };
 
 function bookDetailMarkup(book) {
+  const downloads = book.downloads || {};
+
   const formats = ["epub", "pdf", "fb2"].map((fmt) => {
-    const available = book.status === "Disponible";
+    const url = downloads[fmt];
+    const available = !!url;
     return `
       <button class="format-btn${available ? "" : " format-btn--disabled"}"
-        ${available ? `onclick="downloadFormat('${fmt}')"` : "disabled"}>
+        ${available ? `onclick="downloadFormat('${book.id}', '${fmt}')"` : "disabled"}>
         <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-download"></use></svg>
         ${fmt.toUpperCase()}
       </button>
@@ -1071,8 +1077,31 @@ function bookDetailMarkup(book) {
   `;
 }
 
-window.downloadFormat = function(format) {
-  showToast(`Este es un libro de ejemplo — el archivo ${format.toUpperCase()} real se habilitará más adelante.`);
+window.downloadFormat = function(bookId, format) {
+  const book = BOOKS.find(b => b.id === bookId);
+  if (!book) return;
+
+  const url = book.downloads?.[format];
+  if (!url) {
+    showToast(`El formato ${format.toUpperCase()} no está disponible.`);
+    return;
+  }
+
+  try {
+    if (window.Telegram?.WebApp?.HapticFeedback) {
+      Telegram.WebApp.HapticFeedback.impactOccurred('light');
+    }
+  } catch (e) {}
+
+  try {
+    if (window.Telegram?.WebApp?.openLink) {
+      Telegram.WebApp.openLink(url, { try_instant_view: false });
+    } else {
+      window.open(url, "_blank");
+    }
+  } catch (e) {
+    window.location.href = url;
+  }
 };
 
 /* ---------- Orden de lectura ---------- */
