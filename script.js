@@ -78,6 +78,7 @@ const BOOKS = [
      downloads: {
       epub: "https://files.catbox.moe/t4chx8.epub",
       pdf: "https://files.catbox.moe/kkfwvj.pdf"
+    }
   },
   {
     id: "spread",
@@ -669,6 +670,7 @@ const BOOKS = [
      downloads: {
       epub: "https://files.catbox.moe/3w629g.epub",
       pdf: "https://files.catbox.moe/cexfg3.pdf"
+    }
   },
   {
     id: "Bread by the Grim",
@@ -685,7 +687,8 @@ const BOOKS = [
     hue: 180,
      downloads: {
       epub: "https://files.catbox.moe/bje9tv.epub",
-      pdf: "https://files.catbox.moe/wtb0a6.epub"
+      pdf: "https://files.catbox.moe/vkyaue.pdf"
+    }
   },
   {
     id: "Nimbus",
