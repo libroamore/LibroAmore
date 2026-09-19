@@ -46,7 +46,11 @@ const BOOKS = [
     tags: ["Romance", "Fantasía", "Objeto Consciente"],
     synopsis: "Pasar su trigésimo cumpleaños con amigas escondidas en las montañas es exactamente lo que quiere. Pero tener una aventura cruda y apasionada con un osito de peluche de tamaño real es exactamente lo que necesita. ¡Es el Dirty Thirty de Mia y está lista para divertirse! Cuando sus amigas la sorprenden con un osito de peluche gigante, con una anatomía realista, su día especial se convierte en algo de ensueño. Y me refiero a rellena, que es exactamente como pasa la noche con su sorpresa de cumpleaños, llena hasta el borde y lista para explotar. ¿Estás lista para enamorarte de Bear?",
     coverUrl: "https://m.media-amazon.com/images/I/81R8l1TBpWL._SY425_.jpg",
-    hue: 340
+    hue: 340,
+     downloads: {
+      epub: "https://files.catbox.moe/ldxng1.epub",
+      pdf: "https://files.catbox.moe/p5iwnm.pdf"
+    }
   },
   {
     id: "ice scream for you",
@@ -60,7 +64,11 @@ const BOOKS = [
     tags: ["Romance", "Objetto Consciente", "FF"],
     synopsis: "Nikki y Rae están de viaje para celebrar su aniversario cuando alguien les recomienda una nueva tienda de champán y helados a la vuelta de la esquina. Incapaces de resistirse, la visitan y descubren un delicioso helado de fresa que combina a la perfección con un mágico Prosecco rosado. Su acogedor viaje de aniversario da un giro inesperado cuando una mujer fresa con conciencia propia aparece en su habitación de hotel. Al principio, nadie sabe qué hacer con una mujer capaz de hacer que el helado brote de las yemas de sus dedos, así como de… otros lugares. Nikki y Rae siempre están dispuestas a hacerle un lugar a una tercera, pero nunca habían vivido una experiencia como esta. Las dos se lo pasan tan bien con ella que temen que algo así no pueda repetirse jamás. Cuando después pasan un tiempo solas en su habitación de hotel, la decepción se apodera de ellas. Pero no se preocupen: una aventura más hará que encuentren a su unicornio perfecto. Uno que hará que griten pidiendo helado.",
     coverUrl: "https://m.media-amazon.com/images/I/71OSC2qOjoL._SL1500_.jpg",
-    hue: 340
+    hue: 340,
+     downloads: {
+      epub: "https://files.catbox.moe/p9557o.epub",
+      pdf: "https://files.catbox.moe/pnqz1r.pdf"
+    }
   },
   {
     id: "paper-and-passion",
@@ -92,7 +100,11 @@ const BOOKS = [
     tags: ["Romance", "Demonio", "Objeto Consciente"],
     synopsis: "Me recoge a mí en su lugar, frotando sus manos sobre mi mango ergonómico. —Bueno. La silicona es silicona, ¿no? Mel está limpiando después de una fiesta cuando encuentra algo que no le pertenece. Ella no sabe que su hallazgo es afortunado en más de un sentido. Cuando una apuesta sale mal, Spatha termina atrapado en una situación bastante desafortunada. Por suerte, cae en las excelentes manos de Mel.",
     coverUrl: "https://m.media-amazon.com/images/I/818YLTs7DvL._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/qcu8gs.epub",
+      pdf: "https://files.catbox.moe/xmeggs.pdf"
+    }
   },
   {
     id: "Pounded By Poseidon",
@@ -106,7 +118,11 @@ const BOOKS = [
     tags: ["Romance", "Fantasía", "Objeto Consciente"],
     synopsis: "Se suponía que ganar el concurso de esculturas de arena de Mountcastle Cove sería el boleto de Isla Moore para superar las acciones destructivas de su padre en el evento del año pasado. Cuando pierde y su impresionante escultura de arena es alcanzada por un rayo, cree que sus esperanzas se han desvanecido como la marea. Pero entonces conoce a un nuevo papi que quiere cuidarla y hacerla suya. Todo lo que necesita hacer es confiar en él y dejar todo bajo su control. Es más fácil decirlo que hacerlo. Papi viene por ti.",
     coverUrl: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
-    hue: 25
+    hue: 25,
+     downloads: {
+      epub: "hhttps://files.catbox.moe/62c1vu.epub",
+      pdf: "https://files.catbox.moe/7isonb.pdf"
+    }
   },
   {
     id: "Say My Name",
@@ -120,7 +136,11 @@ const BOOKS = [
     tags: ["Fantasía oscura", "Misterio"],
     synopsis: "Un trato con una demonio es su único camino hacia la libertad, pero ¿cuál será el precio?",
     coverUrl: "https://m.media-amazon.com/images/I/81qF3fLWVCL._SY425_.jpg",
-    hue: 260
+    hue: 260,
+     downloads: {
+      epub: "https://files.catbox.moe/wou2wn.epub",
+      pdf: "https://files.catbox.moe/hswtui.pdf"
+    }
   },
   {
     id: "MONSTROUS",
@@ -134,7 +154,11 @@ const BOOKS = [
     tags: ["Histórico", "Romance", "Retelling"],
     synopsis: "En la Inglaterra victoriana de la década de 1840, la botánica Camellia Reed acepta un puesto como asistente de investigación del reservado Dr. Nicholas Ambrose, un brillante pero atormentado médico que estudia la pérdida de memoria mediante peligrosos experimentos con plantas. Desesperada por recuperar sus propios recuerdos perdidos después de un misterioso colapso que dejó vacíos en su pasado, Camellia se siente atraída tanto por la revolucionaria investigación del doctor como por el propio hombre. Pero la Casa Ambrose oculta oscuros secretos: un sirviente vegetal llamado Hawthorne, un invernadero lleno de especímenes que brillan en la oscuridad y el fantasma de la difunta esposa del doctor, cuya presencia impregna cada rincón de la casa. Sin embargo, Camellia también guarda sus propios secretos y jamás se quita la cinta de terciopelo verde que rodea su garganta. ¿Qué oculta?",
     coverUrl: "https://m.media-amazon.com/images/I/417DqRE5fmL._SY445_SX342_QL70_FMwebp_.jpg",
-    hue: 200
+    hue: 200,
+     downloads: {
+      epub: "https://files.catbox.moe/foskyd.epub",
+      pdf: "https://files.catbox.moe/dsfcj0.pdf"
+    }
   },
   {
     id: "Fervor",
@@ -148,7 +172,11 @@ const BOOKS = [
     tags: ["Dark", "Romance", "Fantasía"],
     synopsis: "La ha llamado durante toda su vida, pero ella nunca pudo responderle… Midonia, una transportista interplanetaria independiente, se encuentra en una situación delicada después de un accidente fatal ocurrido durante uno de sus trabajos. Por eso, no protesta cuando le encomiendan la tediosa tarea de llevar a la devota hermana Irena a un remoto planeta en los confines del espacio, donde una pequeña colonia religiosa venera a una extraña deidad llamada Angustia. Hasta ahora. Cuando una llamarada solar deja su nave en tierra, Midonia se encuentra atrapada junto a las hermanas de aquella secta. Y, para empeorar las cosas, él se le aparece durante la noche, con aquella voz familiar más fuerte que nunca. Invade su mente con su hambre, despertando en ella una obsesión voraz de la que será casi imposible escapar.",
     coverUrl: "https://m.media-amazon.com/images/I/718E8hFPoyL._SL1500_.jpg",
-    hue: 150
+    hue: 150,
+     downloads: {
+      epub: "https://files.catbox.moe/uenwmv.epub",
+      pdf: "https://files.catbox.moe/9xa196.pdf"
+    }
   },
   {
     id: "Hopeless Necromantic",
@@ -162,7 +190,11 @@ const BOOKS = [
     tags: ["Fantasía", "Aventura", "Romance"],
     synopsis: "ELLA DESATA EL INFIERNO. ÉL LEVANTA A LOS MUERTOS. ¿QUÉ PODRÍA SALIR MAL? Cuando la nueva recluta Helspira acepta la misión suicida que ningún otro soldado quiere, la vida —y la muerte— empiezan a complicarse un poco. Helspira deberá escoltar a Sikras, un necromante frustrantemente guapo con el poder de levantar a los muertos, mientras él intenta llevar a cabo una misión que ya ha fracasado dos veces: detener a un ejército de no muertos en las fronteras del reino. Nadie cree que vaya a lograrlo. Ni siquiera Sikras. Pero, cuanto más tiempo pasan juntos, más fácil les resulta imaginar un futuro mejor. A medida que salen a la luz los secretos y ambos estrechan su vínculo —y el esquelético compañero de Sikras, Benjamin, intente desesperadamente no ser un tercero en discordia—, ¿serán suficientes los sentimientos que nacen entre Sikras y Helspira para superar el peligro cada vez mayor? ALZA UNA COPA. LEVANTA A LOS MUERTOS. SOLO NO ALBERGUES DEMASIADAS ESPERANZAS.",
     coverUrl: "https://m.media-amazon.com/images/I/91t8wUTqFNL._SL1500_.jpg",
-    hue: 15
+    hue: 15,
+     downloads: {
+      epub: "https://files.catbox.moe/g294jz.epub",
+      pdf: "https://files.catbox.moe/tp1r7d.pdf"
+    }
   },
   {
     id: "Handle Me",
@@ -176,7 +208,11 @@ const BOOKS = [
     tags: ["MM", "Hockey", "Objeto Consciente"],
     synopsis: "Jace Masterson es un dios. Hábil con las manos y con una boca deliciosamente obscena, es uno de los hombres más codiciados de Toronto. Y es mío. Si pudiera sonreír, lo haría. Amo estar aquí. Amo a Jace. Pero, sobre todo, amo la forma en que Jace me trata.",
     coverUrl: "https://m.media-amazon.com/images/I/717qK5s0vCL._SL1500_.jpg",
-    hue: 15
+    hue: 15,
+     downloads: {
+      epub: "https://files.catbox.moe/pb121l.pdf",
+      pdf: "https://files.catbox.moe/pb121l.pdf"
+    }
   },
   {
     id: "Spackled",
