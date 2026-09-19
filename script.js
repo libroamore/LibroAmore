@@ -74,7 +74,10 @@ const BOOKS = [
     tags: ["Romance", "Fantasía", "MMF"],
     synopsis: "Tillie lleva poco tiempo siendo dueña de Sheet-y Stationery, y ya desearía no haberlo sido. La tienda es rebelde e impredecible. No deja de cambiar de lugar y de ahuyentar a los posibles empleados que intenta contratar. Después de incontables entrevistas que salen mal, se queda sorprendida cuando una hermosa criatura a la que nunca antes había visto entra por la puerta para solicitar trabajo. Alex es preciosa, segura de sí misma, serena y deja muy claro que quiere algo más que un empleo. Quiere a Tillie. Y su esposo también la quiere. Pero Tillie ya ha sufrido antes y no está segura de querer formar parte de una relación ya establecida. Ni siquiera si ellos dicen que es su pareja destinada.",
     coverUrl: "https://m.media-amazon.com/images/I/71sUZHOlmhL._SL1500_.jpg",
-    hue: 200
+    hue: 200,
+     downloads: {
+      epub: "https://files.catbox.moe/t4chx8.epub",
+      pdf: "https://files.catbox.moe/kkfwvj.pdf"
   },
   {
     id: "spread",
@@ -662,7 +665,10 @@ const BOOKS = [
     tags: ["Halloween", "Objeto Consciente", "Esqueleto"],
     synopsis: "Este Halloween, Tori Graves está celebrando su divorcio comprando por fin aquello que su exmarido nunca le permitió tener. El esqueleto gigante de doce pies. La Asociación de Propietarios pierde inmediatamente la cabeza y le declara la guerra. Cuando la desesperada petición de Tori para salvar su adorada decoración de Halloween se vuelve viral, se ve obligada a ser creativa. De repente, Mr. Bonejangles se convierte en lo mejor que le ha pasado a su negocio de fotografía. Y a su corazón. En algún punto entre tallar calabazas, maratones de películas de terror y beber cerveza de calabaza bajo las estrellas otoñales, Tori se enamora del esqueleto. Y, de alguna manera, él también se enamora de ella. Pero Lois, la autoproclamada reina de la Asociación de Propietarios, está decidida a deshacerse de Mr. Bonejangles de una vez por todas. A medida que se acerca Halloween y la disputa se convierte en algo mucho más destructivo, Tori se da cuenta de que amarlo es la parte fácil. Conservarlo podría ser imposible sin un milagro de Halloween.",
     coverUrl: "https://m.media-amazon.com/images/I/81Y1bthOLaL._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/3w629g.epub",
+      pdf: "https://files.catbox.moe/cexfg3.pdf"
   },
   {
     id: "Bread by the Grim",
@@ -676,7 +682,10 @@ const BOOKS = [
     tags: ["Grim", "Cambiaformas", "Panaderia"],
     synopsis: "Grim es un solitario, no porque quiera serlo, sino porque guarda un secreto. Durante el día, es un monstruo de modales tranquilos que trabaja en una panadería-cafetería en el pequeño pueblo de Ghostlight Falls, pero después de medianoche se convierte en algo más... algo que necesita ser contenido. Cuando un accidente lo obliga a contratar a una nueva panadera para el turno de la mañana, no tiene idea de que está contratando a la mujer de sus sueños. Pero contener al monstruo que lleva dentro no será fácil ahora que este ha comenzado a fijarse en ella. Los deseos del monstruo no pueden satisfacerse con las expresiones de amor humanas normales... el monstruo necesita aparearse, y una vez que tome el control, nada se interpondrá en su camino.",
     coverUrl: "https://m.media-amazon.com/images/I/811iBZJV-wL._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/bje9tv.epub",
+      pdf: "https://files.catbox.moe/wtb0a6.epub"
   },
   {
     id: "Nimbus",
@@ -706,7 +715,8 @@ const BOOKS = [
     coverUrl: "https://m.media-amazon.com/images/I/91Te8ktRKPL._SL1500_.jpg",
     hue: 180,
      downloads: {
-      epub: "https://files.catbox.moe/bje9tv.epub"
+      epub: "https://files.catbox.moe/bje9tv.epub",
+      pdf: "https://files.catbox.moe/lkkgdm.pdf"
     }
   }
 ];
