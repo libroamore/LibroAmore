@@ -120,7 +120,7 @@ const BOOKS = [
     coverUrl: "https://m.media-amazon.com/images/I/81NbDUhl0nL._SY425_.jpg",
     hue: 25,
      downloads: {
-      epub: "hhttps://files.catbox.moe/62c1vu.epub",
+      epub: "https://files.catbox.moe/62c1vu.epub",
       pdf: "https://files.catbox.moe/7isonb.pdf"
     }
   },
@@ -244,7 +244,11 @@ const BOOKS = [
     tags: ["Romance", "Objeto Consciente", "Patito de goma"],
     synopsis: "La hora del baño acaba de volverse mucho más divertida. Cuando Anita compra un patito de goma igual al que tenía de niña, cree que su terrible día está a punto de mejorar. No hay mejor confidente que un patito de goma, y ahora que tiene uno, está decidida a resolver todos los problemas de su vida con un largo baño. Pero este patito de goma no es lo que parece…",
     coverUrl: "https://m.media-amazon.com/images/I/712GotZnc5L._SL1500_.jpg",
-    hue: 15
+    hue: 15,
+     downloads: {
+      epub: "https://files.catbox.moe/9rwvb9.epub",
+      pdf: "https://files.catbox.moe/43zui1.pdf"
+    }
   },
   {
     id: "Step Brother Bear",
@@ -258,7 +262,11 @@ const BOOKS = [
     tags: ["Cambiaforma", "Hermanastros", "Romance prohibido"],
     synopsis: "Su hermanastro es un animal, y ella es su presa. Isabella siempre ha odiado a su rebelde hermanastro, Derek. Por suerte para ella, él pasó la mayor parte de su solitaria infancia y adolescencia en un internado para niños problemáticos. Ahora que es adulta y ha regresado a la casa donde creció, odia aún más al hombre tatuado y malhumorado en el que se ha convertido. Principalmente porque está justo en la habitación de al lado, decidido a hacerle la vida imposible y comportarse como un auténtico animal. La situación empeora aún más cuando su madre y su padrastro se marchan de la ciudad y le encargan cuidar del animal y de sus recién adquiridas heridas de bala. La cercanía entre ellos revela secretos acalorados con consecuencias monstruosas. Hay más en Derek de lo que parece a simple vista, dejando a Isabella excavar en sentimientos aterradores y confusos. ¿Podrá ver más allá de las garras, o decidirá que son simplemente especies completamente diferentes? ",
     coverUrl: "https://m.media-amazon.com/images/I/81fDa8WnlEL._SL1500_.jpg",
-    hue: 15
+    hue: 15,
+     downloads: {
+      epub: "https://files.catbox.moe/fdgbfe.epub",
+      pdf: "https://files.catbox.moe/pap83e.pdf"
+    }
   },
   {
     id: "Shower Head",
