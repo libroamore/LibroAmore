@@ -229,7 +229,7 @@ const BOOKS = [
     hue: 15,
      downloads: {
       epub: "https://files.catbox.moe/9jqp5n.epub",
-      pdf: "https://files.catbox.moe/rw8uh0.pdf"
+      pdf: "https://files.catbox.moe/ysfv9z.pdf"
     }
   },
   {
@@ -247,7 +247,7 @@ const BOOKS = [
     hue: 15,
      downloads: {
       epub: "https://files.catbox.moe/9rwvb9.epub",
-      pdf: "https://files.catbox.moe/43zui1.pdf"
+      pdf: "https://files.catbox.moe/15e4sr.pdf"
     }
   },
   {
@@ -280,7 +280,11 @@ const BOOKS = [
     tags: ["Romance", "Fantasía", "Objeto Consciente"],
     synopsis: "Lydia adora una buena ducha. Pero el cabezal de su ducha ya casi no tiene presión de agua. Cuando un cabezal de ducha con el rostro de un hombre absurdamente atractivo aparece en la puerta de su casa, sabe que no es para ella, pero no puede evitar relacionarlo con su problema en la ducha. Solo que este cabezal de ducha no es lo que parece. Es un cabezal de ducha consciente, dispuesto a darle a Lydia la mejor ducha de su vida. Solo para lectores mayores de 18 años. Esta es una historia corta y erótica sobre un objeto consciente.",
     coverUrl: "https://m.media-amazon.com/images/I/812LK39vQ+L._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/n92uii.epub",
+      pdf: "https://files.catbox.moe/kbppn2.pdf"
+    }
   },
   {
     id: "Fully Charged",
@@ -294,7 +298,11 @@ const BOOKS = [
     tags: ["Romance", "Fantasía", "Conejo rosa mitico"],
     synopsis: "Jewel es una madre recién soltera que solo quiere relajarse en su escaso tiempo a solas. Los niños no están en casa, y es hora de que mamá se divierta... consigo misma. Excepto que las baterías genéricas de su juguete favorito se agotan a mitad de la sesión. Cuando las reemplaza por las de la marca líder de la industria, Ohm-azing, Jewel obtiene mucho más que placer de larga duración. Wattson ha sido enviado desde la sede de Ohm-azing para garantizar que Jewel esté 100% satisfecha.",
     coverUrl: "https://m.media-amazon.com/images/I/81LZwossbBL._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/wxqb79.epub",
+      pdf: "https://files.catbox.moe/j7plrv.pdf"
+    }
   },
   {
     id: "Bad BeehAvior",
@@ -308,7 +316,11 @@ const BOOKS = [
     tags: ["Romance", "Abeja", "Secuestro", "Dubcon"],
     synopsis: "Un polinizador y una florista: un amor que florece a través de la galaxia. Baryx emprende un viaje por el universo para repoblar a los de su especie y salvar el planeta Tierra. Cuando llega, toma su forma más pequeña, y un hombre humano intenta aplastarlo, casi matándolo. Jennessa, una florista dulce y amable, lo rescata y lo cuida hasta devolverle la salud. A medida que Baryx pasa más tiempo con ella, revela su verdadera identidad mientras descubre emociones nuevas y prohibidas. Dividido entre el deber y el deseo, Bee, como le gusta llamarlo a Jennessa, debe elegir: cumplir su misión o entregarse a un amor prohibido con la mujer que le mostró el verdadero significado de la pasión más allá de los mundos.",
     coverUrl: "https://m.media-amazon.com/images/I/71CKqbFqtmL._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/ccvjar.epub",
+      pdf: "https://files.catbox.moe/a9xy05.pdf"
+    }
   },
   {
     id: "Gimme A Pizza Dat Azz",
@@ -322,7 +334,11 @@ const BOOKS = [
     tags: ["Comida", "Pizza", "Drogas alucinógenas"],
     synopsis: "Sage está disfrutando de un agradable día en la playa cuando pide una Pizza Everything en un nuevo local de la ciudad. Su deliciosa combinación de queso es justo lo que necesita para recuperarse después de pasar toda la mañana surfeando. Pero, sin que Sage lo supiera, la pizza tiene algunos ingredientes especiales. Al despertar de una siesta en la orilla, descubre que su pizza ha cobrado vida y que la piña que había arrancado busca venganza por haber sido rechazada. Ahora Sage debe afrontar las consecuencias de sus actos … y tragarse sus propias decisiones. Muy pronto descubrirá cuánto le gusta realmente un poco de piña en su pizza.",
     coverUrl: "https://m.media-amazon.com/images/I/811EttuL+wL._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/v74rqc.epub",
+      pdf: "https://files.catbox.moe/6f54hy.pdf"
+    }
   },
   {
     id: "Rake",
@@ -336,7 +352,11 @@ const BOOKS = [
     tags: ["Romance", "Objeto consciente", "Rastrillo"],
     synopsis: "Taylor es una chica que necesita sacar sus hojas al contenedor antes de que pase el camión de la basura. Connor es un “rastrillo” en todos los sentidos de la palabra. Kyle es el mejor amigo que está ahí para acompañar en todo. Lo que comenzó como un día extraño se convertirá en mucho más. Taylor sabe que necesita limpiar su patio antes de la recolección de basura de mañana, pero cuando va al garaje a buscar sus herramientas, algo parece fuera de lugar. Por suerte, su mejor amigo Kyle está disponible para ofrecer su ayuda. Cuando ambos se unen para encargarse de las hojas, Taylor conoce a Connor, quien sacude su mundo por completo.",
     coverUrl: "https://m.media-amazon.com/images/I/81S9sZoDBmL._SL1500_.jpg",
-    hue: 180
+    hue: 180,
+     downloads: {
+      epub: "https://files.catbox.moe/2h02s8.epub",
+      pdf: "https://files.catbox.moe/u6ghl1.pdf"
+    }
   },
   {
     id: "Formaldehyde",
@@ -1224,6 +1244,7 @@ function renderUpdates() {
 
   const updates = [
     { version: "v1.0.0", date: "30/08/2026", desc: "Lanzamiento inicial de LibroAmore con catálogo básico." },
+    { version: "v1.1.0", date: "20/09/2026", desc: "Libros para descarga gratuita añadidos correctamente." },
     { version: "v1.1.0", date: "Próximamente", desc: "Sección de 'Próximos proyectos' y 'Actualizaciones' añadida." }
   ];
 
@@ -1327,7 +1348,7 @@ const ILUSTRACIONES = {
     {
       id: "nsfw-spread",
       libro: "Spread",
-      bookId: "Spread",
+      bookId: "spread",
       autor: "Nicole Parker",
       imagenes: [
         {
@@ -1752,6 +1773,7 @@ const AUTORES = [
     ],
     librosUnicos: [
       { title: "Step Brother Bear", id: "Step Brother Bear" },
+      { title: "The Never Heirs", id: "The Never Heirs" },
       { title: "Bad BeehAvior", id: "Bad BeehAvior" }
     ]
   },
